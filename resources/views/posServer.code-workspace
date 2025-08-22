@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../dashlite"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "dashlite"
+	}
+}
