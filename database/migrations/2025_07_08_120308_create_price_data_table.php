@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('price_data', function (Blueprint $table) {
             $table->id();
             $table->foreignId('item_id')->constrained();
+            $table->foreignId('attribute_id')->nullable()->constrained();
             $table->foreignId('price_id')->constrained();
             $table->double('value',15,2);
             $table->timestamps();
-            $table->unique(['item_id','price_id']);
+            $table->unique(['item_id','attribute_id','price_id']);
         });
     }
 

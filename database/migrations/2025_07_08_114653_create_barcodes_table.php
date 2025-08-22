@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('item_id')->constrained();
             $table->string('value');
+           // $table->foreignId('attribute_id')->nullable()->constrained();
             $table->integer('qty')->default(1);
             $table->boolean('active')->default(true);
             $table->timestamps();

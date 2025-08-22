@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('department_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('item_id')->constrained();
+            $table->foreignId('attribute_id')->nullable()->constrained();
             $table->foreignId('department_id')->constrained();
             $table->timestamps();
         });
