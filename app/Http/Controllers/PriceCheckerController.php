@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
+use App\Models\PriceChecker;
 use Illuminate\Http\Request;
 
 class PriceCheckerController extends Controller
@@ -11,7 +13,9 @@ class PriceCheckerController extends Controller
      */
     public function index()
     {
-        return view('pricechecker.index');
+        $priceCheckers=PriceChecker::With('shop')->get();
+        //dd($priceCheckers);
+        return view('pricechecker.index',['priceCheckers'=>$priceCheckers]);
     }
 
     /**
@@ -35,7 +39,9 @@ class PriceCheckerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $company=Company::first();
+
+        return view('pricechecker.show',['id'=>$id,'company'=>$company]);
     }
 
     /**
