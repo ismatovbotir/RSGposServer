@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BarcodeController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\PartnerController;
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('/price',PriceController::class);
+Route::resource('/barcode',BarcodeController::class);
 Route::resource('/shop',ShopController::class);
 Route::resource('/category',CategoryController::class);
 Route::resource('/partner',PartnerController::class);

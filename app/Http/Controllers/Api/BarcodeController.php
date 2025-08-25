@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Barcode;
 use Illuminate\Http\Request;
 
 class BarcodeController extends Controller
@@ -20,7 +21,14 @@ class BarcodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->data;
+        Barcode::upsert(
+            $data,
+            ['id'],
+            ['item_id']
+
+        );
+        return response()->json(['status' => 'done']);
     }
 
     /**

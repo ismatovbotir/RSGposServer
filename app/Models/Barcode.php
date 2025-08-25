@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Barcode extends Model
 {
     use HasFactory;
+    public $guarded=[];
+    public $incrementing = false;   // отключаем автоинкремент
+    protected $keyType = 'string';  // говорим что id — строка
 }

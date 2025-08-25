@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Company;
 use App\Models\Price;
+use App\Models\PriceChecker;
 use App\Models\Shop;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -36,20 +37,27 @@ class DatabaseSeeder extends Seeder
             'name'=>'Retail Service Group'
 
         ]);
-        Price::create([
+        Price::create(
             [
                 'id'=>1,
                 'name'=>'buy'
-            ],
+            ]
+        );
+        Price::create(
+            
             [
                 'id'=>2,
                 'name'=>'sell'
             ]
-        ]);
+        );
         Shop::create([
             'id'=>1,
             'name'=>'Shop',
             'price_id'=>2
+        ]);
+        PriceChecker::create([
+            'shop_id'=>1,
+            'name'=>"PriceChecker 1"
         ]);
     }
 }

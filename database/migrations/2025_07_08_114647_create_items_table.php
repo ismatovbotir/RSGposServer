@@ -17,10 +17,10 @@ return new class extends Migration
             $table->foreignId('category_id')->nullable()->constrained();
             $table->foreignId('partner_id')->nullable()->constrained();
 
-            $table->string('name');
+            $table->string('name')->index();
             $table->string('mark')->nullable();
             $table->string('mxik')->nullable();
-            
+            $table->double('price',12,2)->default(0);
             $table->integer('width')->default(0);
             $table->integer('height')->default(0);
             $table->integer('length')->default(0);

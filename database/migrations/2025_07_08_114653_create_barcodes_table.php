@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('barcodes', function (Blueprint $table) {
-            $table->id();
+            $table->string('id')->primary();
             $table->foreignId('item_id')->constrained();
-            $table->string('value');
+            //$table->string('value');
            // $table->foreignId('attribute_id')->nullable()->constrained();
             $table->integer('qty')->default(1);
             $table->boolean('active')->default(true);

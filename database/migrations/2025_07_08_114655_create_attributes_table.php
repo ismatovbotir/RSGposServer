@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('item_id')->constrained();
-            $table->foreignId('barcode_id')->nullable()->constrained();
+            $table->string('barcode_id')->index();
+            $table->foreign('barcode_id')->references('id')->on('barcodes')->onDelete('cascade');
             $table->string('name');
             $table->timestamps();
         });

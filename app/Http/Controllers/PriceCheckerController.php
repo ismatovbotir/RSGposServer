@@ -1,17 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\PriceData;
 use Illuminate\Http\Request;
 
-class PriceDataController extends Controller
+class PriceCheckerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
+    {
+        return view('pricechecker.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
         //
     }
@@ -21,20 +27,21 @@ class PriceDataController extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request->data;
-        PriceData::upsert(
-            $data,
-            ['item_id','attribute_id','price_id'],
-            ['value']
-
-        );
-        return response()->json(['status' => 'done']);
+        //
     }
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         //
     }
