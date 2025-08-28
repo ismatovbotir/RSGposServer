@@ -7,7 +7,7 @@ use App\Http\Controllers\Api\PartnerController;
 use App\Http\Controllers\Api\PriceController;
 use App\Http\Controllers\Api\PriceDataController;
 use App\Http\Controllers\Api\ShopController;
-use App\Models\Partner;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

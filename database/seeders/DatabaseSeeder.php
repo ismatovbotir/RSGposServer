@@ -52,6 +52,7 @@ class DatabaseSeeder extends Seeder
         );
         Shop::create([
             'id'=>1,
+            'company_id'=>1,
             'name'=>'Shop',
             'price_id'=>2
         ]);
