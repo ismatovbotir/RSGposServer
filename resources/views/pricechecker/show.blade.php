@@ -11,11 +11,17 @@
   <div class="max-w-5xl mx-auto p-6 w-full">
     <!-- Header -->
     <header class="flex items-center gap-4 mb-6">
-      <div class="flex items-center gap-3 bg-white shadow-md rounded-xl px-4 py-2 w-full">
+      <div class="flex items-center gap-10 bg-white shadow-md rounded-xl px-4 py-4 w-full">
         <img src="/images/logo.png" class="max-h-20 object-contain" alt="">
         <div>
           <div class="font-bold text-lg text-blue-800">Salomat</div>
-          <div class="text-xs text-gray-500">Price Checker</div>
+          <div class="text-xs text-gray-500">Supermarket</div>
+        </div>
+      
+        
+        <div>
+          <div class="font-bold text-lg text-blue-800">73 479 17 31</div>
+          <div class="text-xs text-gray-500">Fargona biloyati Bagdod tumani Mustaqillik k.56</div>
         </div>
       </div>
     </header>
@@ -99,7 +105,7 @@
                 document.getElementById('name').innerHTML=data.message.name;
                 document.getElementById('price').innerHTML=data.message.price;
                 document.getElementById('barcode').innerHTML=barcode;
-                document.getElementById('code').innerHTML=data.message.code;
+                document.getElementById('code').innerHTML=data.message.id;
               }
             })
             .catch((err) => console.error("Ошибка запроса:", err));
