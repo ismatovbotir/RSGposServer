@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/price-check',[PriceController::class,'priceCheck']);
 Route::resource('/price',PriceController::class);
 Route::resource('/barcode',BarcodeController::class);
 Route::resource('/shop',ShopController::class);
@@ -29,3 +30,5 @@ Route::resource('/category',CategoryController::class);
 Route::resource('/partner',PartnerController::class);
 Route::resource('/item',ItemController::class);
 Route::resource('/priceData',PriceDataController::class);
+
+
