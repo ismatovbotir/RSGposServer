@@ -13,7 +13,8 @@ class PriceDataController extends Controller
      */
     public function index()
     {
-        //
+        PriceData::last('updated_at')->first();
+        
     }
 
     /**

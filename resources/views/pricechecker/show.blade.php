@@ -101,6 +101,7 @@
           })
             .then((res) => res.json())
             .then((data) => {
+              console.log(data)
               if(data.status=="ok"){
                 document.getElementById('name').innerHTML=data.message.name;
                 document.getElementById('price').innerHTML=data.message.price;
