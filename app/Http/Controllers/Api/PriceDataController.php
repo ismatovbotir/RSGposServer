@@ -29,7 +29,7 @@ class PriceDataController extends Controller
         $data=$request->data;
         PriceData::upsert(
             $data,
-            ['item_id','attribute_id','price_id'],
+            ['item_id','price_id'],
             ['value']
 
         );

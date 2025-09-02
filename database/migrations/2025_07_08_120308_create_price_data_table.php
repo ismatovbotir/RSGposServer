@@ -18,7 +18,8 @@ return new class extends Migration
             $table->foreignId('price_id')->constrained();
             $table->double('value',15,2);
             $table->timestamps();
-            $table->unique(['item_id','attribute_id','price_id']);
+            $table->unique(['item_id','price_id']);
+            //$table->unique(['item_id','attribute_id','price_id']);
         });
     }
 
