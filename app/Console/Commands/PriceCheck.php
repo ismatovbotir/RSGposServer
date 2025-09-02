@@ -29,7 +29,7 @@ class PriceCheck extends Command
      */
     public function handle()
     {
-        $shop=Shop::first();
+        $shop=PriceChecker::first();
         $id=$shop->id;
 
         $barcode="4780051070073";
@@ -42,9 +42,11 @@ class PriceCheck extends Command
         }
         $this->info($item);
         $shop=PriceChecker::where('id',$id)->with('shop')->first();
-        dd($shop);
+        $this->info($shop);
         $price=$shop->shop->price_id;
+        
         $nData=PriceData::where('price_id',$price)->where('item_id',$item->item->id)->first();
+        $this->info($nData);
         if(!$nData){
             return [
                 'status'=>'error',
