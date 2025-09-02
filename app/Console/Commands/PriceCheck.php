@@ -48,19 +48,9 @@ class PriceCheck extends Command
         $nData=PriceData::where('price_id',$price)->where('item_id',$item->item->id)->first();
         $this->info($nData);
         if(!$nData){
-            $this->info( [
-                'status'=>'error',
-                'message'=>'no pricedata for this item'
-            ]);
+            $this->info( 'no pricedata for this item');
         }
-        $this->info( [
-                'status'=>'ok',
-                'message'=>[
-                    'id'=>$item->item->id,
-                    'name'=>$item->item->name,
-                    'price'=>$nData->value
-                ]
-        ]);
+        $this->info( $nData->value);
 
     }
 }
