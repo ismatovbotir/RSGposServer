@@ -40,7 +40,7 @@ class PriceCheck extends Command
                 'message'=>'barcode not fount'
             ];
         }
-        //$this->info($item);
+        $this->info($item);
         $shop=PriceChecker::where('id',$id)->with('shop')->first();
         //$this->info($shop);
         $price=$shop->shop->price_id;
