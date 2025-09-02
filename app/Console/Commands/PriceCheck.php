@@ -44,7 +44,7 @@ class PriceCheck extends Command
         $shop=PriceChecker::where('id',$id)->with('shop')->first();
         //$this->info($shop);
         $price=$shop->shop->price_id;
-        
+        $this->info($price);
         $nData=PriceData::where('price_id',$price)->where('item_id',$item->item->id)->first();
         $this->info($nData);
         if(!$nData){
