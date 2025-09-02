@@ -13,7 +13,11 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return  response()->json(['data' => 0]);
+        $id=Item::max('id');
+        return  response()->json([
+                                    'status'=>'done',
+                                    'data' => $id
+                            ]);
     }
 
     /**

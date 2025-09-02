@@ -13,8 +13,13 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        //
+        $id=Partner::max('id');
+        return  response()->json([
+                                    'status'=>'done',
+                                    'data' => $id
+                            ]);
     }
+
 
     /**
      * Store a newly created resource in storage.

@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('phone')->nullable();
+            $table->text('address')->nullable();
             $table->string('logo')->nullable();
             $table->string('prefix_kg')->default('20');
             $table->string('prefix_pcs')->default('21');

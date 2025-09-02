@@ -13,8 +13,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $id=Category::max('id');
+        return  response()->json([
+                                    'status'=>'done',
+                                    'data' => $id
+                            ]);
     }
+
 
     /**
      * Store a newly created resource in storage.

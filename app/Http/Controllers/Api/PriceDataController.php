@@ -13,8 +13,12 @@ class PriceDataController extends Controller
      */
     public function index()
     {
-        PriceData::last('updated_at')->first();
-        
+        $last=PriceData::max('updated_at');
+        return [
+            'status'=>'done',
+            'data'=> date('YmdHis',strtotime($last))
+        ];
+
     }
 
     /**
