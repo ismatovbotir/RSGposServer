@@ -21,7 +21,7 @@
         
         <div>
           <div class="font-bold text-lg text-blue-800">73 479 17 31</div>
-          <div class="text-xs text-gray-500">Fargona biloyati Bagdod tumani Mustaqillik k.56</div>
+          <div class="text-xs text-gray-500">Fargona viloyati Bagdod tumani Mustaqillik k.56</div>
         </div>
       </div>
     </header>
