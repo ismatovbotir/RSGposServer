@@ -39,8 +39,10 @@ class PriceCheckerController extends Controller
      */
     public function show(string $id)
     {
-        $company=Company::first();
-
+        $company=Company::where('id',$id)->first();
+        if($company==null){
+            return to_route('price.index');
+        }
         return view('pricechecker.show',['id'=>$id,'company'=>$company]);
     }
 
