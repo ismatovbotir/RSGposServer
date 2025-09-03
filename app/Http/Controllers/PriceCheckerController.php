@@ -40,6 +40,7 @@ class PriceCheckerController extends Controller
     public function show(string $id)
     {
         $company=Company::where('id',$id)->first();
+        dd($company);
         if($company==null){
             return to_route('price.index');
         }
