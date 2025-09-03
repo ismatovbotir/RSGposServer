@@ -16,7 +16,7 @@ class CategoryController extends Controller
         $id=Category::max('id');
         return  response()->json([
                                     'status'=>'done',
-                                    'data' => $id
+                                    'data' => $id ?? 0
                             ]);
     }
 

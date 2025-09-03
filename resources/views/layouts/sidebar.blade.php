@@ -34,7 +34,10 @@
                                             <a href="{{route('admin.shop.index')}}" class="nk-menu-link"><span class="nk-menu-text">Shop</span></a>
                                         </li>
                                         <li class="nk-menu-item">
-                                            <a href="{{route('admin.company.index')}}" class="nk-menu-link"><span class="nk-menu-text">PriceChecker</span></a>
+                                            <a href="" class="nk-menu-link"><span class="nk-menu-text">CashDesk</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="" class="nk-menu-link"><span class="nk-menu-text">PriceChecker</span></a>
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
