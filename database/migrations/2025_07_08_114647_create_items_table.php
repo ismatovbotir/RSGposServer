@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('height')->default(0);
             $table->integer('length')->default(0);
             $table->integer('weight')->default(0);
+            $table->decimal('volume',5,3)->default(0);
             
             $table->timestamps();
         });
