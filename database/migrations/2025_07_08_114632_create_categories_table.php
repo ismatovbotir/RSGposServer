@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_id')->constrained();
+            //$table->integer('erp_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->string('prefix')->nullable();
             $table->string('name');

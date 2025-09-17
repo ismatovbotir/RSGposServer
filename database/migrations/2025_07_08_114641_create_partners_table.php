@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_id')->constrained();
             $table->string('name');
-            $table->string('vat')->nullable();
+            $table->string('stir',9)->nullable();
+            $table->integer('vat')->default(12);
             
             $table->timestamps();
         });

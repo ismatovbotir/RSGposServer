@@ -16,9 +16,10 @@ return new class extends Migration
             $table->foreignId('shop_id')->constrained();
             $table->foreignId('item_id')->constrained();
             $table->foreignId('attribute_id')->nullable()->constrained();
-            $table->foreignId('department_id')->nullable()->constrained();
+            $table->foreignId('department_id')->nullable()->default(1)->constrained();
             $table->double('qty',15,3)->default(0);
             $table->timestamps();
+            $table->unique(['item_id','department_id','shop_id']);
         });
     }
 

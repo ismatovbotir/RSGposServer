@@ -19,7 +19,8 @@ return new class extends Migration
 
             $table->string('name')->index();
             $table->string('mark')->nullable();
-            $table->string('mxik')->nullable();
+            $table->string('class_code',17)->nullable();
+            $table->integer('package_code')->nullable();
             $table->double('price',12,2)->default(0);
             $table->integer('width')->default(0);
             $table->integer('height')->default(0);

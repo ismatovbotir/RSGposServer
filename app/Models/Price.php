@@ -13,4 +13,7 @@ class Price extends Model
     public function shop(){
         return $this->hasOne(Shop::class);
     }
+    public function company(){
+        return $this->belongsTo(Company::class);
+    }
 }

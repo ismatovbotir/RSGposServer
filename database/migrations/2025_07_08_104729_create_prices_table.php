@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_id')->constrained();
+            //$table->integer('erp_id')->nullable();
             $table->string('name');
+            $table->enum('currency',['uzs','usd'])->default('uzs');
             $table->timestamps();
         });
     }

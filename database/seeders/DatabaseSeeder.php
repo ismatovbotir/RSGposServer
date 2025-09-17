@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Company;
+use App\Models\Department;
 use App\Models\Price;
 use App\Models\PriceChecker;
 use App\Models\Shop;
@@ -26,36 +27,44 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        User::create([
+        $company=Company::create([
+            'name'=>'My Company'
+
+        ]);
+
+        $company->users()->create([
             'id'=>1,
             'name'=>'Admin',
             'email'=>'price@pos.uz',
             'password'=>Hash::make('qwerty2025')
         ]);
-        Company::create([
+        $company->departments()->create([
             'id'=>1,
-            'name'=>'Retail Service Group'
-
+            'user_id'=>1,
+            'name'=>"Department",
         ]);
-        Price::create(
+
+        $company->prices()->create(
             [
                 'id'=>1,
+                
                 'name'=>'buy'
             ]
         );
-        Price::create(
+        $company->prices()->create(
             
             [
                 'id'=>2,
                 'name'=>'sell'
             ]
         );
-        Shop::create([
+        $company->shops()->create([
             'id'=>1,
-            'company_id'=>1,
+            
             'name'=>'Shop',
             'price_id'=>2
         ]);
+        
         PriceChecker::create([
             'shop_id'=>1,
             'name'=>"PriceChecker 1"

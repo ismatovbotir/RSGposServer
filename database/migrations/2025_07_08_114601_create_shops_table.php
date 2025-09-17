@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->default(1)->constrained();
+            //$table->integer('erp_id')->nullable();
+            $table->foreignId('company_id')->constrained();
+            //$table->foreignUuid('company_id')->nullable()->constrained();
             $table->string('name');
             $table->foreignId('price_id')->nullable()->constrained();
+            $table->double('area',5,3)->nullable();
             
             $table->timestamps();
         });

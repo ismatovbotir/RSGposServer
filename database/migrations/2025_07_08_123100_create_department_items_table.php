@@ -16,7 +16,9 @@ return new class extends Migration
             $table->foreignId('item_id')->constrained();
             $table->foreignId('attribute_id')->nullable()->constrained();
             $table->foreignId('department_id')->constrained();
+            $table->foreignId('shop_id')->nullable()->constrained();
             $table->timestamps();
+            $table->unique(['item_id','department_id']);
         });
     }
 

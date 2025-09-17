@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('shop_id')->constrained();
             $table->foreignId('price_id')->constrained();
-            $table->enum('type',[1,2]);//1-normal,2-discount
+            $table->enum('type',[1,2])->default(1);//1-normal,2-discount
             $table->string('name')->nullable();
             $table->timestamps();
         });
