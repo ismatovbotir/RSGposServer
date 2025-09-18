@@ -27,43 +27,43 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $company=Company::create([
-            'name'=>'My Company'
+        $company=Company::firstOrCreate(
+            ['id'=>1],
+            ['name'=>'My Company']
+        );
 
-        ]);
-
-        $company->users()->create([
-            'id'=>1,
-            'name'=>'Admin',
-            'email'=>'price@pos.uz',
-            'password'=>Hash::make('qwerty2025')
-        ]);
-        $company->departments()->create([
-            'id'=>1,
-            'user_id'=>1,
-            'name'=>"Department",
-        ]);
-
-        $company->prices()->create(
+        $company->users()->firstOrCreate(
+            ['id'=>1],
             [
-                'id'=>1,
-                
-                'name'=>'buy'
+                'name'=>'Admin',
+                'email'=>'price@pos.uz',
+                'password'=>Hash::make('qwerty2025')
             ]
         );
-        $company->prices()->create(
-            
+        $company->departments()->firstOrCreate(
+            ['id'=>1],
             [
-                'id'=>2,
-                'name'=>'sell'
+                'user_id'=>1,
+                'name'=>"Department"
             ]
         );
-        $company->shops()->create([
-            'id'=>1,
-            
-            'name'=>'Shop',
-            'price_id'=>2
-        ]);
+
+        $company->prices()->firstOrCreate(
+            ['id'=>1],
+            ['name'=>'buy']
+        );
+        $company->prices()->firstOrCreate(
+            ['id'=>2],
+            ['name'=>'sell']
+        );
+
+        $company->shops()->firstOrCreate(
+            ['id'=>1],
+            [
+                'name'=>'Shop',
+                'price_id'=>2
+            ]
+        );
         
         PriceChecker::create([
             'shop_id'=>1,
