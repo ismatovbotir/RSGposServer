@@ -32,7 +32,7 @@ Route::resource('/item',ItemController::class);
 Route::resource('/barcode',BarcodeController::class);
 Route::resource('/priceData',PriceDataController::class);
 
-Route::post('/items',ItemController::class);
+Route::post('/items',[ItemController::class,'items']);
 
 
 
