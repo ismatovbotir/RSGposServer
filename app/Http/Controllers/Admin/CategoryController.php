@@ -74,10 +74,5 @@ class CategoryController extends Controller
     {
         //
     }
-    public function categories(){
-        $data=Category::select('id','parent_id','name')->orderBy('id')->get();
-        return [
-            'data'=>$data
-        ];
-    }
+   
 }
