@@ -32,6 +32,7 @@ Route::resource('/item',ItemController::class);
 Route::resource('/barcode',BarcodeController::class);
 Route::resource('/priceData',PriceDataController::class);
 
+Route::post('/categories',[CategoryController::class,'categories']);
 Route::post('/items',[ItemController::class,'items']);
 
 

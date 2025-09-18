@@ -13,7 +13,17 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data=Category::all();
+        $tree=[];
+        $root=Category::whereNull('category_id')->select('id','name')->get()->toArray();
+        //dd($root);
+        foreach($root as $item){
+
+            $item['test']='test';
+
+        }
+        dd($root);
+        
+        $data=Category::withCount('items')->get();
         return view('admin.category.index',['data'=>$data]);
     }
 
@@ -63,5 +73,11 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function categories(){
+        $data=Category::select('id','parent_id','name')->orderBy('id')->get();
+        return [
+            'data'=>$data
+        ];
     }
 }
