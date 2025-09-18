@@ -4,18 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Item;
+use App\Models\Partner;
 
-class ItemController extends Controller
+class PartnerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data=Item::with(['category','partner','barcodes'])->withCount('barcodes')->paginate(20);
+        $data=Partner::withCount('items')->paginate(20);
         //dd($data);
-        return view('admin.item.index',['data'=>$data]);
+        return view('admin.partner.index',['data'=>$data]);
     }
 
     /**

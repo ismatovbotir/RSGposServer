@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained();
+            $table->foreignId('company_id')->default(1)->constrained();
             $table->string('name');
             $table->string('stir',9)->nullable();
             $table->integer('vat')->default(12);

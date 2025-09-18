@@ -16,7 +16,7 @@ return new class extends Migration
             
             $table->foreignId('category_id')->nullable()->constrained();
             $table->foreignId('partner_id')->nullable()->constrained();
-
+            $table->foreignId('company_id')->default(1)->constrained();
             $table->string('name')->index();
             $table->string('mark')->nullable();
             $table->string('class_code',17)->nullable();

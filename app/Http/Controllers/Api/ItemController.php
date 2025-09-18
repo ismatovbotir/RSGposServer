@@ -33,7 +33,7 @@ class ItemController extends Controller
         Item::upsert(
             $data,
             ['id'],
-            ['name','category_id','partner_id','mark','mxik','width','height','length','weight']
+            ['name','category_id','partner_id','mark','class_code','package_code','aslbelgi','width','height','length','weight','volume']
 
         );
         return response()->json(['status' => 'done']);
@@ -61,5 +61,11 @@ class ItemController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function items(Request $request){
+        return [
+            'status'=>'ok',
+            'data'=>$request->all()
+        ];
     }
 }

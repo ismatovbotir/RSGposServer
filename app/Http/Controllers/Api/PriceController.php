@@ -25,6 +25,7 @@ class PriceController extends Controller
     public function store(Request $request)
     {
         $data=$request->data;
+        //$data['company_id']=1;
         Price::upsert(
             $data,
             ['id'],

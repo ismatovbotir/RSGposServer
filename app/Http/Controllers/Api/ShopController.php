@@ -22,6 +22,7 @@ class ShopController extends Controller
     public function store(Request $request)
     {
         $data=$request->data;
+        //$data['company_id']=1;
             Shop::upsert(
             $data,
             ['id'],

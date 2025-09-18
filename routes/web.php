@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ShopController;
+use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +29,10 @@ Route::group(['middleware'=>'auth','prefix'=>'admin','as'=>'admin.'],function(){
     
     Route::get('/',function(){
         return view('welcome');
-    });
+    })->name('index');
     Route::resource('/company',CompanyController::class);
     Route::resource('/shop',ShopController::class);
+    Route::resource('/partner',PartnerController::class);
+    Route::resource('/category',CategoryController::class);
+    Route::resource('/item',ItemController::class);
 });

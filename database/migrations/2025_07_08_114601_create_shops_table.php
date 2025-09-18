@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             //$table->integer('erp_id')->nullable();
-            $table->foreignId('company_id')->constrained();
+            $table->foreignId('company_id')->default(1)->constrained();
             //$table->foreignUuid('company_id')->nullable()->constrained();
             $table->string('name');
             $table->foreignId('price_id')->nullable()->constrained();

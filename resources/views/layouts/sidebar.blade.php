@@ -16,13 +16,13 @@
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
                                 <li class="nk-menu-item">
-                                    <a href="html/crm/index.html" class="nk-menu-link">
+                                    <a href="{{route('admin.index')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
                                         <span class="nk-menu-text">Dashboard</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item has-sub">
-                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                    <a href="" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
                                         <span class="nk-menu-text">Main</span>
                                     </a>
@@ -70,6 +70,7 @@
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
+                                {{--
                                 <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span>
@@ -114,7 +115,7 @@
                                             <a href="html/crm/expense-management.html" class="nk-menu-link"><span class="nk-menu-text">Expense Management</span></a>
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
-                                </li><!-- .nk-menu-item -->
+                                </li> --}}
                                 <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-truck"></em></span>
@@ -122,7 +123,13 @@
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
-                                            <a href="html/crm/products.html" class="nk-menu-link"><span class="nk-menu-text">Products</span></a>
+                                            <a href="{{route('admin.partner.index')}}" class="nk-menu-link"><span class="nk-menu-text">Partners</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="{{route('admin.category.index')}}" class="nk-menu-link"><span class="nk-menu-text">Category</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="{{route('admin.item.index')}}" class="nk-menu-link"><span class="nk-menu-text">Items</span></a>
                                         </li>
                                         <li class="nk-menu-item">
                                             <a href="html/crm/warehouse.html" class="nk-menu-link"><span class="nk-menu-text">Warehouse</span></a>
