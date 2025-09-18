@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 //use App\Models\BaseModel;
 use App\Models\Shop;
+use App\Models\PriceData;
 
 
 class Price extends Model
@@ -17,5 +18,8 @@ class Price extends Model
     }
     public function company(){
         return $this->belongsTo(Company::class);
+    }
+    public function priceData(){
+        return $this->hasMany(PriceData::class);
     }
 }

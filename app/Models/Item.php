@@ -21,4 +21,11 @@ class Item extends Model
     public function barcodes(){
         return $this->hasMany(Barcode::class);
     }
+    public function prices(){
+        return $this->hasMany(PriceData::class);
+    }
+    public function sellPrice(){
+        return $this->hasMany(PriceData::class)->where('price_id',2);
+    }
+    
 }

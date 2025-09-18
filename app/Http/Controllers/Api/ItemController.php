@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use App\Models\Price;
 
 class ItemController extends Controller
 {
@@ -101,13 +102,16 @@ class ItemController extends Controller
                 
             ];
         }
+
+
+        //Price::where('shop_id',1)->firat();
+        $offset=
+        $data=Item::with(['category','barcodes','sellPrice.price'])->offset(($page - 1) * $size)->limit($size)->get();
         return [
             'code'=>200,
             'status'=>'ok',
             
-            'data'=>[
-                
-            ],
+            'data'=>$data,
             'page'=>$page,
             'size'=>$size,
             'record_count'=>$count,
