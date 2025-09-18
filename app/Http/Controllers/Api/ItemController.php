@@ -106,7 +106,7 @@ class ItemController extends Controller
 
         //Price::where('shop_id',1)->firat();
         $offset=
-        $data=Item::with(['category','barcodes','sellPrice.price'])->offset(($page - 1) * $size)->limit($size)->get();
+        $data=Item::with(['category','barcodes','sellPrice'])->offset(($page - 1) * $size)->limit($size)->get();
         return [
             'code'=>200,
             'status'=>'ok',
