@@ -25,7 +25,7 @@ class Item extends Model
         return $this->hasMany(PriceData::class);
     }
     public function sellPrice(){
-        return $this->hasMany(PriceData::class)->where('price_id',2);
+        return $this->hasOne(PriceData::class)->where('price_id',2);
     }
     
 }
