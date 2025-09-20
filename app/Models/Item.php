@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Partner;
 use App\Models\Barcode;
+use App\Models\Stock;
 
 class Item extends Model
 {
@@ -27,5 +28,17 @@ class Item extends Model
     public function sellPrice(){
         return $this->hasOne(PriceData::class)->where('price_id',2);
     }
+    public function stocks(){
+        return $this->hasMany(Stock::class);
+
+    }
+    public function currentStock()
+    {
+        $shop_id=env('SHOP',1);
+        return $this->hasOne(Stock::class)
+        ->where('shop_id', $shop_id)
+        ->latest('stock_date'); // latest by date
+    }
+
     
 }

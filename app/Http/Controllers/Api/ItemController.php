@@ -45,7 +45,19 @@ class ItemController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data=Item::where('id',$id)->with([
+            'category',
+            'barcodes',
+            'sellPrice',
+            'currentStock'
+            ])->first();
+        
+            return [
+            'code'=>200,
+            'status'=>'ok',
+            
+            'data'=>$data
+        ];
     }
 
     /**
@@ -105,9 +117,16 @@ class ItemController extends Controller
 
 
         //Price::where('shop_id',1)->firat();
-        $offset=
-        $data=Item::with(['category','barcodes','sellPrice'])->offset(($page - 1) * $size)->limit($size)->get();
-        return [
+        //$offset=
+        //$shop_id=1;
+        $data=Item::with([
+            'category',
+            'barcodes',
+            'sellPrice',
+            'currentStock'
+            ])->offset(($page - 1) * $size)->limit($size)->get();
+        
+            return [
             'code'=>200,
             'status'=>'ok',
             
