@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_id')->default(1)->constrained();
             $table->foreignId('shop_id')->constrained();
             $table->foreignId('item_id')->constrained();
             $table->foreignId('attribute_id')->nullable()->constrained();
-            $table->foreignId('department_id')->nullable()->default(1)->constrained();
-            $table->double('qty',15,3)->default(0);
+            $table->foreignId('department_id')->default(1)->constrained();
+            $table->decimal('qty',15,3)->default(0);
+            $table->decimal('cost',15,2)->default(0);
+            $table->date('stock_date');
             $table->timestamps();
-            $table->unique(['item_id','department_id','shop_id']);
+            $table->unique(['item_id','department_id','shop_id','stock_date']);
         });
     }
 

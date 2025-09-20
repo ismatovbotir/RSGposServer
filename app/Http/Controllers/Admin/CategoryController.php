@@ -14,17 +14,43 @@ class CategoryController extends Controller
     public function index()
     {
         $tree=[];
-        $root=Category::whereNull('category_id')->select('id','name')->get()->toArray();
+        $root=Category::whereNull('category_id')->select('id','name')->orderBy('id')->get()->toArray();
         //dd($root);
         foreach($root as $item){
 
-            $item['test']='test';
-
+            $tree[]=[
+                'id'=>$item['id'],
+                'name'=>$item['name'],
+                
+                'child'=>$this->getChild($item['id'])
+            ];
+            //dd($tree);
         }
-        dd($root);
+        dd($tree);
         
         $data=Category::withCount('items')->get();
         return view('admin.category.index',['data'=>$data]);
+    }
+
+    public function getChild($id){
+        $childTree=[];
+        $childrenCol=Category::where('category_id',$id)->select('id','name')->get();
+        //dd($childrenCol);
+        if (!$childrenCol){
+            return 0;
+        }
+        $children=$childrenCol->toArray();
+        foreach($children as $child){
+            $childTree[]=[
+                'id'=>$child['id'],
+                'name'=>$child['name'],
+                'child'=>$this->getChild($child['id'])
+            ];
+            //dd($childTree);
+            
+
+        }
+        return $childTree;
     }
 
     /**
