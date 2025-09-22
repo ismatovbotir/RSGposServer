@@ -148,12 +148,12 @@ class ItemController extends Controller
         
         $token=substr($bToken,7);
         if ($token!=="xF38j92x81Sdf93Jskd82HsPzks82ks9aP9a"){
-            return [
-                'code'=>400,
+            return response()->json([
+                'code'=>401,
                 'status'=>'error',
                 'message'=>"Wrong Token",
                 
-            ];
+            ],401);
         }
 
         $reqBody=$request->all();
@@ -164,12 +164,12 @@ class ItemController extends Controller
 
         $count=Item::count();
         if($count==0){
-            return [
-                'code'=>401,
+            return response()->json([
+                'code'=>404,
                 'status'=>'error',
                 'message'=>"no Items Found",
                 
-            ];
+            ],404);
         }
         $total=(int) ceil($count/$size);
 
