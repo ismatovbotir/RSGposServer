@@ -32,13 +32,62 @@ class ItemController extends Controller
         
         
         $data=$request->data;
-        Item::upsert(
-            $data,
-            ['id'],
-            ['name','category_id','partner_id','mark','class_code','package_code','aslbelgi','width','height','length','weight','volume']
+        // Item::upsert(
+        //     $data,
+        //     ['id'],
+        //     [
+        //         'name','category_id','partner_id','mark','class_code','package_code','aslbelgi','width','height','length','weight'
+        //     ]
 
-        );
-        return response()->json(['status' => 'done']);
+        // );
+        $inserted=0;
+        $updated=0;
+        $failed=[];
+        $code=200;
+        foreach ($data as $item) {
+            
+            try{
+
+                $currentItem=Item::updateOrCreate(
+                    ['id' => $item['id']], // что искать
+                    [                      // что обновлять/создавать
+                        'name'         => $item['name'],
+                        'category_id'  => $item['category_id'],
+                        'partner_id'   => $item['partner_id'],
+                        'mark'         => $item['mark'],
+                        'class_code'   => $item['class_code'],
+                        'package_code' => $item['package_code'],
+                        'aslbelgi'     => $item['aslbelgi'],
+                        'width'        => $item['width'],
+                        'height'       => $item['height'],
+                        'length'       => $item['length'],
+                        'weight'       => $item['weight'],
+                    ]
+                );
+                if ($currentItem->wasRecentlyCreated) {
+                    $inserted++;
+                } else {
+                    $updated++;
+                }
+
+            }catch(Exception $e){
+
+                $failed[]=$item['id']??null;
+                $code=500;
+
+            }
+
+
+        }
+
+        return response()->json([
+            'status' => 'done',
+            'data'=>[
+                'inserted'=>$inserted,
+                'updated'=>$updated,
+                'failed'=>$failed
+            ]
+        ],$code);
     }
 
     /**
@@ -56,8 +105,8 @@ class ItemController extends Controller
             return [
             'code'=>200,
             'status'=>'ok',
-            //'data'=>new ItemResource($data)
-            'data'=>$data
+            'data'=>new ItemResource($data)
+            //'data'=>$data
         ];
     }
 

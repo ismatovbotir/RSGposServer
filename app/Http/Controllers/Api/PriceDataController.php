@@ -27,13 +27,58 @@ class PriceDataController extends Controller
     public function store(Request $request)
     {
         $data=$request->data;
-        PriceData::upsert(
-            $data,
-            ['item_id','price_id'],
-            ['value']
+        // PriceData::upsert(
+        //     $data,
+        //     ['item_id','price_id'],
+        //     ['value']
 
-        );
-        return response()->json(['status' => 'done']);
+        // );
+
+        //return response()->json(['status' => 'done']);
+        $inserted=0;
+        $updated=0;
+        $failed=[];
+        $code=200;
+        foreach ($data as $item) {
+            
+            try{
+
+                $currentItem=PriceData::updateOrCreate(
+                    [
+                        'item_id' => $item['item_id'],
+                        'price_id'=>$item['price_id']
+                        
+                    ], // что искать
+                    [                      // что обновлять/создавать
+                        'item_id' => $item['item_id'],
+                        'price_id' => $item['price_id'],
+                        'value' => $item['value']                       
+                    ]
+                );
+                if ($currentItem->wasRecentlyCreated) {
+                    $inserted++;
+                } else {
+                    $updated++;
+                }
+
+            }catch(Exception $e){
+
+                $failed[] = $item['id']??null;
+                $code = 500;
+
+            }
+
+
+        }
+
+        return response()->json([
+            'status' => 'done',
+            'data'=>[
+                'inserted'=>$inserted,
+                'updated'=>$updated,
+                'failed'=>$failed
+            ]
+        ],$code);
     }
 
     /**
