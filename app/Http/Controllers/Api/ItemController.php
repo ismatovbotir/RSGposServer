@@ -44,6 +44,7 @@ class ItemController extends Controller
         $updated=0;
         $failed=[];
         $code=200;
+        $error='';
         foreach ($data as $item) {
             
             try{
@@ -51,6 +52,7 @@ class ItemController extends Controller
                 $currentItem=Item::updateOrCreate(
                     ['id' => $item['id']], // что искать
                     [                      // что обновлять/создавать
+                        'id'=>$item['id'],
                         'name'         => $item['name'],
                         'category_id'  => $item['category_id'],
                         'partner_id'   => $item['partner_id'],
@@ -71,7 +73,7 @@ class ItemController extends Controller
                 }
 
             }catch(\Exception $e){
-
+                $error=$e->getMessage();
                 $failed[]=$item['id']??null;
                 $code=500;
 
@@ -82,11 +84,13 @@ class ItemController extends Controller
 
         return response()->json([
             'status' => 'done',
+            'error'=>$error,
             'data'=>[
                 'inserted'=>$inserted,
                 'updated'=>$updated,
                 'failed'=>$failed
-            ]
+            ],
+            
         ],$code);
     }
 

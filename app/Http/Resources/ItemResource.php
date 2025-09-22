@@ -27,8 +27,8 @@ class ItemResource extends JsonResource
                 'asl_belgi'=>$this->aslbelgi
             ],
             'barcodes'=>BarcodeResource::collection($this->barcodes),
-            "price"=>$this->sellPrice ? $this->sellPrice->value : null,
-            "stock"=>$this->currentStock ? $this->currentStock->qty :null,
+            "price"=>$this->sellPrice ? $this->sellPrice->value : 0,
+            "stock"=>$this->currentStock ? $this->currentStock->qty :0,
             'delivery'=>[
                 'width'=>$this->width,
                 'height'=>$this->height,
