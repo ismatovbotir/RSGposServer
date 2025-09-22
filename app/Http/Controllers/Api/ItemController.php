@@ -165,7 +165,7 @@ class ItemController extends Controller
         $count=Item::count();
         if($count==0){
             return [
-                'code'=>400,
+                'code'=>401,
                 'status'=>'error',
                 'message'=>"no Items Found",
                 
