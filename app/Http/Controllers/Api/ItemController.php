@@ -70,7 +70,7 @@ class ItemController extends Controller
                     $updated++;
                 }
 
-            }catch(Exception $e){
+            }catch(\Exception $e){
 
                 $failed[]=$item['id']??null;
                 $code=500;
