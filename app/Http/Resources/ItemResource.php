@@ -14,6 +14,30 @@ class ItemResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        //return parent::toArray($request);
+        return [
+            'id'=>$this->id,
+            'name'=>$this->name,
+            'mark'=>$this->mark,
+            'category'=>new CategoryResource($this->whenLoaded('category')),
+            
+            'mxik'=>[
+                'class_code'=>$this->class_code,
+                'package_code'=>$this->package_code,
+                'asl_belgi'=>$this->aslbelgi
+            ],
+            'barcodes'=>BarcodeResource::collection($this->barcodes),
+            "price"=>$this->sellPrice ? $this->sellPrice->value : null,
+            "stock"=>$this->currentStock ? $this->currentStock->qty :null,
+            'delivery'=>[
+                'width'=>$this->width,
+                'height'=>$this->height,
+                'length'=>$this->length,
+                'weight'=>$this->weight
+                ]
+
+
+
+        ];
     }
 }

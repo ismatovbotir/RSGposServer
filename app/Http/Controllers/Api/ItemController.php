@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Models\Price;
+use App\Http\Resources\ItemResource;
 
 class ItemController extends Controller
 {
@@ -55,8 +56,8 @@ class ItemController extends Controller
             return [
             'code'=>200,
             'status'=>'ok',
-            
-            'data'=>$data
+            'data'=>new ItemResource($data)
+            //'data'=>$data
         ];
     }
 
@@ -129,12 +130,11 @@ class ItemController extends Controller
             return [
             'code'=>200,
             'status'=>'ok',
-            
-            'data'=>$data,
             'page'=>$page,
             'size'=>$size,
             'record_count'=>$count,
-            'total_pages'=>$total
+            'total_pages'=>$total,
+            'data'=>ItemResource::collection($data)
         ];
     }
 }
