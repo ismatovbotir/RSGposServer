@@ -105,12 +105,12 @@ class ItemController extends Controller
         
         $token=substr($bToken,7);
         if ($token!=="xF38j92x81Sdf93Jskd82HsPzks82ks9aP9a"){
-            return [
+            return response()->json([
                 'code'=>500,
                 'status'=>'error',
                 'message'=>"Wrong Token",
                 
-            ];
+            ],400);
         }
         $data=Item::where('id',$id)->with([
             'category',
@@ -119,12 +119,12 @@ class ItemController extends Controller
             'currentStock'
             ])->first();
         
-            return [
+            return response()->json([
             'code'=>200,
             'status'=>'ok',
             'data'=>new ItemResource($data)
             //'data'=>$data
-        ];
+        ],200);
     }
 
     /**
@@ -149,7 +149,7 @@ class ItemController extends Controller
         $token=substr($bToken,7);
         if ($token!=="xF38j92x81Sdf93Jskd82HsPzks82ks9aP9a"){
             return [
-                'code'=>500,
+                'code'=>400,
                 'status'=>'error',
                 'message'=>"Wrong Token",
                 
@@ -174,12 +174,12 @@ class ItemController extends Controller
         $total=(int) ceil($count/$size);
 
         if($page>$total){
-            return [
+            return response()->json([
                 'code'=>500,
                 'status'=>'error',
                 'message'=>"page number out of range",
                 
-            ];
+            ],500);
         }
 
 
@@ -193,7 +193,7 @@ class ItemController extends Controller
             'currentStock'
             ])->offset(($page - 1) * $size)->limit($size)->get();
         
-        return [
+        return response()->json([
             'code'=>200,
             'status'=>'ok',
             'page'=>$page,
@@ -201,6 +201,6 @@ class ItemController extends Controller
             'record_count'=>$count,
             'total_pages'=>$total,
             'data'=>ItemResource::collection($data)
-        ];
+        ],200);
     }
 }
