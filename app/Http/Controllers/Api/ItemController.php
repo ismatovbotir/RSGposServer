@@ -15,6 +15,7 @@ class ItemController extends Controller
      */
     public function index()
     {
+       
         $id=Item::max('id');
         return  response()->json([
                                     'status'=>'done',
@@ -97,8 +98,20 @@ class ItemController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request,string $id)
     {
+        $bToken = $request->header('Authorization');
+        
+        
+        $token=substr($bToken,7);
+        if ($token!=="xF38j92x81Sdf93Jskd82HsPzks82ks9aP9a"){
+            return [
+                'code'=>500,
+                'status'=>'error',
+                'message'=>"Wrong Token",
+                
+            ];
+        }
         $data=Item::where('id',$id)->with([
             'category',
             'barcodes',
