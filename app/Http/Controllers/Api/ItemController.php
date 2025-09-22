@@ -56,8 +56,8 @@ class ItemController extends Controller
             return [
             'code'=>200,
             'status'=>'ok',
-            'data'=>new ItemResource($data)
-            //'data'=>$data
+            //'data'=>new ItemResource($data)
+            'data'=>$data
         ];
     }
 
@@ -127,7 +127,7 @@ class ItemController extends Controller
             'currentStock'
             ])->offset(($page - 1) * $size)->limit($size)->get();
         
-            return [
+        return [
             'code'=>200,
             'status'=>'ok',
             'page'=>$page,
