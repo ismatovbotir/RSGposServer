@@ -7,6 +7,7 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Models\Price;
 use App\Http\Resources\ItemResource;
+use App\Http\Resources\ItemArrResource;
 
 class ItemController extends Controller
 {
@@ -176,9 +177,8 @@ class ItemController extends Controller
                 ],404);
 
             }
-            $data=Item::whereIn('id',$ids)->with([
-                'category',
-                'barcodes',
+            $data=Item::select('id')->whereIn('id',$ids)->with([
+                
                 'sellPrice',
                 'currentStock'
                 ])->get();
@@ -187,7 +187,7 @@ class ItemController extends Controller
                 'code'=>200,
                 'status'=>'ok',
                 
-                'data'=>ItemResource::collection($data)
+                'data'=>ItemArrResource::collection($data)
             ],200);
             
 
