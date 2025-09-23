@@ -36,6 +36,7 @@ Route::resource('/stock',StockController::class);
 
 Route::post('/categories',[CategoryController::class,'categories']);
 Route::post('/items',[ItemController::class,'items']);
+//Route::post('/items',[ItemController::class,'itemsarr']);
 
 
 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('company_id')->default(1)->constrained();
             $table->string('name')->index();
             $table->string('mark')->nullable();
+            $table->integer('unit')->default(1);
             $table->string('class_code',17)->nullable();
             $table->integer('package_code')->nullable();
             $table->boolean('aslbelgi')->default(false);

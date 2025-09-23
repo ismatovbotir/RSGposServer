@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('item_id')->constrained();
             $table->foreignId('attribute_id')->nullable()->constrained();
             $table->foreignId('department_id')->default(1)->constrained();
-            $table->decimal('qty',15,3)->default(0);
+            $table->integer('qty')->default(0);
             $table->decimal('cost',15,2)->default(0);
             $table->date('stock_date');
             $table->timestamps();

@@ -157,50 +157,88 @@ class ItemController extends Controller
         }
 
         $reqBody=$request->all();
-        $page=$reqBody['page'] ?? 0;
-        $size = isset($reqBody['size']) 
-        ? min((int) $reqBody['size'], 500) 
-        : 500;
+       
+        if(isset($reqBody['data'])){
+            $ids=$reqBody['data'];
+            if (count($ids)==0){
+                return response()->json([
+                    'code'=>404,
+                    'status'=>'error',
+                    'message'=>"you have sent empty array of items"
+                ],404);
 
-        $count=Item::count();
-        if($count==0){
+            }
+            if (count($ids)>200){
+                return response()->json([
+                    'code'=>404,
+                    'status'=>'error',
+                    'message'=>"too many items in array (limit 200)"
+                ],404);
+
+            }
+            $data=Item::whereIn('id',$ids)->with([
+                'category',
+                'barcodes',
+                'sellPrice',
+                'currentStock'
+                ])->get();
+            
             return response()->json([
-                'code'=>404,
-                'status'=>'error',
-                'message'=>"no Items Found",
+                'code'=>200,
+                'status'=>'ok',
                 
-            ],404);
-        }
-        $total=(int) ceil($count/$size);
+                'data'=>ItemResource::collection($data)
+            ],200);
+            
 
-        if($page>$total){
+        }else{
+
+            $page=$reqBody['page'] ?? 0;
+            $size = isset($reqBody['size']) 
+            ? min((int) $reqBody['size'], 500) 
+            : 500;
+    
+            $count=Item::count();
+            if($count==0){
+                return response()->json([
+                    'code'=>404,
+                    'status'=>'error',
+                    'message'=>"no Items Found",
+                    
+                ],404);
+            }
+            $total=(int) ceil($count/$size);
+    
+            if($page>$total){
+                return response()->json([
+                    'code'=>500,
+                    'status'=>'error',
+                    'message'=>"page number out of range",
+                    
+                ],500);
+            }
+    
+    
+            //Price::where('shop_id',1)->firat();
+            //$offset=
+            //$shop_id=1;
+            $data=Item::with([
+                'category',
+                'barcodes',
+                'sellPrice',
+                'currentStock'
+                ])->offset(($page - 1) * $size)->limit($size)->get();
+            
             return response()->json([
-                'code'=>500,
-                'status'=>'error',
-                'message'=>"page number out of range",
-                
-            ],500);
+                'code'=>200,
+                'status'=>'ok',
+                'page'=>$page,
+                'size'=>$size,
+                'record_count'=>$count,
+                'total_pages'=>$total,
+                'data'=>ItemResource::collection($data)
+            ],200);
         }
-
-
-        //Price::where('shop_id',1)->firat();
-        //$offset=
-        //$shop_id=1;
-        $data=Item::with([
-            'category',
-            'barcodes',
-            'sellPrice',
-            'currentStock'
-            ])->offset(($page - 1) * $size)->limit($size)->get();
-        
-        return response()->json([
-            'code'=>200,
-            'status'=>'ok',
-            'page'=>$page,
-            'size'=>$size,
-            'record_count'=>$count,
-            'total_pages'=>$total,
-            'data'=>ItemResource::collection($data)
-        ],200);
     }
+   
 }

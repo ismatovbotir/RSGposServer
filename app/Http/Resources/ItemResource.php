@@ -19,6 +19,7 @@ class ItemResource extends JsonResource
             'id'=>$this->id,
             'name'=>$this->name,
             'mark'=>$this->mark,
+            'unit'=>$this->unit,
             'category'=>new CategoryResource($this->whenLoaded('category')),
             
             'mxik'=>[
