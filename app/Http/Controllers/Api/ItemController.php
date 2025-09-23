@@ -56,6 +56,7 @@ class ItemController extends Controller
                     [                      // что обновлять/создавать
                         'id'=>$item['id'],
                         'name'         => $item['name'],
+                        'unit'         => $item['unit'],
                         'category_id'  => $item['category_id'],
                         'partner_id'   => $item['partner_id'],
                         'mark'         => $item['mark'],
