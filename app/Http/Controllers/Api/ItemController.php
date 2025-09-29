@@ -160,39 +160,7 @@ class ItemController extends Controller
 
         $reqBody=$request->all();
        
-        if(isset($reqBody['data'])){
-            $ids=$reqBody['data'];
-            if (count($ids)==0){
-                return response()->json([
-                    'code'=>404,
-                    'status'=>'error',
-                    'message'=>"you have sent empty array of items"
-                ],404);
-
-            }
-            if (count($ids)>200){
-                return response()->json([
-                    'code'=>404,
-                    'status'=>'error',
-                    'message'=>"too many items in array (limit 200)"
-                ],404);
-
-            }
-            $data=Item::select('id')->whereIn('id',$ids)->with([
-                
-                'sellPrice',
-                'currentStock'
-                ])->get();
-            
-            return response()->json([
-                'code'=>200,
-                'status'=>'ok',
-                
-                'data'=>ItemArrResource::collection($data)
-            ],200);
-            
-
-        }else{
+        
 
             $page=$reqBody['page'] ?? 0;
             $size = isset($reqBody['size']) 
@@ -239,6 +207,106 @@ class ItemController extends Controller
                 'total_pages'=>$total,
                 'data'=>ItemResource::collection($data)
             ],200);
+        
+    }
+
+    public function pricestock(Request $request){
+        $bToken = $request->header('Authorization');
+        
+        
+        $token=substr($bToken,7);
+        if ($token!=="xF38j92x81Sdf93Jskd82HsPzks82ks9aP9a"){
+            return response()->json([
+                'code'=>401,
+                'status'=>'error',
+                'message'=>"Wrong Token",
+                
+            ],401);
+        }
+
+        $reqBody=$request->all();
+        if(isset($reqBody['data'])){
+            $ids=$reqBody['data'];
+            if (count($ids)==0){
+                return response()->json([
+                    'code'=>404,
+                    'status'=>'error',
+                    'message'=>"you have sent empty array of items"
+                ],404);
+
+            }
+            if (count($ids)>200){
+                return response()->json([
+                    'code'=>404,
+                    'status'=>'error',
+                    'message'=>"too many items in array (limit 200)"
+                ],404);
+
+            }
+            $data=Item::select('id')->whereIn('id',$ids)->with([
+                
+                'sellPrice',
+                'currentStock'
+                ])->get();
+            
+            
+
+
+            return response()->json([
+                'code'=>200,
+                'status'=>'ok',
+                
+                'data'=>ItemArrResource::collection($data)
+            ],200);
+            
+
+        }else{
+
+            $page=$reqBody['page'] ?? 0;
+            $size = isset($reqBody['size']) 
+            ? min((int) $reqBody['size'], 500) 
+            : 500;
+    
+            $count=Item::count();
+            if($count==0){
+                return response()->json([
+                    'code'=>404,
+                    'status'=>'error',
+                    'message'=>"no Items Found",
+                    
+                ],404);
+            }
+            $total=(int) ceil($count/$size);
+    
+            if($page>$total){
+                return response()->json([
+                    'code'=>500,
+                    'status'=>'error',
+                    'message'=>"page number out of range",
+                    
+                ],500);
+            }
+    
+    
+            //Price::where('shop_id',1)->firat();
+            //$offset=
+            //$shop_id=1;
+            $data=Item::select('id')->with([
+                
+                'sellPrice',
+                'currentStock'
+                ])->offset(($page - 1) * $size)->limit($size)->get();
+            
+            return response()->json([
+                'code'=>200,
+                'status'=>'ok',
+                'page'=>$page,
+                'size'=>$size,
+                'record_count'=>$count,
+                'total_pages'=>$total,
+                'data'=>ItemArrResource::collection($data)
+            ],200);
+
         }
     }
    
