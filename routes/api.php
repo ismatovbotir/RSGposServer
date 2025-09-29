@@ -34,11 +34,15 @@ Route::resource('/barcode',BarcodeController::class);
 Route::resource('/priceData',PriceDataController::class);
 Route::resource('/stock',StockController::class);
 
-Route::post('/categories',[CategoryController::class,'categories']);
-Route::post('/items',[ItemController::class,'items']);
-Route::post('/prices',[PriceController::class,'prices']);
-Route::post('/stocks',[PriceController::class,'stocks']);
-Route::post('/pricestock',[ItemController::class,'pricestock']);
+Route::group(['prefix' => 'andalusGO'],function(){
+    Route::post('/categories',[CategoryController::class,'categories']);
+    Route::post('/items',[ItemController::class,'items']);
+    Route::post('/prices',[PriceController::class,'prices']);
+    Route::post('/stocks',[PriceController::class,'stocks']);
+    Route::post('/pricestock',[ItemController::class,'pricestock']);
+
+});
+
 
 
 //Route::post('/items',[ItemController::class,'itemsarr']);
