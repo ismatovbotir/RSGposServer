@@ -27,4 +27,27 @@ class Handler extends ExceptionHandler
             //
         });
     }
+    public function render($request, Throwable $exception)
+{
+    if ($request->is('api/*')) {
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+            return response()->json([
+                'code' => 404,
+                'status' => 'error',
+                'message' => 'Not Found'
+            ], 404);
+        }
+
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException) {
+            return response()->json([
+                'code' => 405,
+                'status' => 'error',
+                'message' => 'Method Not Allowed'
+            ], 405);
+        }
+    }
+
+    return parent::render($request, $exception);
+}
+
 }
