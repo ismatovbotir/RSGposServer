@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\PriceController;
 use App\Http\Controllers\Api\PriceDataController;
 use App\Http\Controllers\Api\ShopController;
 use App\Http\Controllers\Api\StockController;
+use App\Http\Controllers\Api\WoltController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,13 @@ Route::group(['prefix' => 'andalusGO'],function(){
     Route::post('/pricestock',[ItemController::class,'pricestock']);
 
 });
+
+Route::group(['prefix' => 'wolt'],function(){
+    Route::post('/authorize',[WoltController::class,'autorize']);
+    ;
+
+});
+
 
 
 
