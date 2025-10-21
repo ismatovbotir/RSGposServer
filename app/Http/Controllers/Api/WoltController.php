@@ -66,5 +66,12 @@ class WoltController extends Controller
         
         return response()->json(['status' => 'done','data'=>$request->all()]);
 
+
+    }
+
+    public function woltWebhookOrders(Request $request){
+        
+        return response()->json(['status' => 'done','data'=>$request->all()]);
+
     }
 }
