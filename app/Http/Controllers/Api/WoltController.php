@@ -62,7 +62,7 @@ class WoltController extends Controller
     {
         //
     }
-    public function autorize(Request $request){
+    public function woltAuthorize(Request $request){
         
         return response()->json(['status' => 'done','data'=>$request->all()]);
 
