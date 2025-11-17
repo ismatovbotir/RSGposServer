@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Wolt;
 
 class WoltController extends Controller
 {
@@ -62,9 +63,26 @@ class WoltController extends Controller
     {
         //
     }
-    public function woltAuthorize(Request $request){
+    public function authorization(Request $request){
         
-        return response()->json(['status' => 'done','data'=>$request->all()]);
+        $headerKey = $request->header('X-API-Key');
+
+        if (!$headerKey || $headerKey !== env('WOLT')) {
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'missing X-API-Key',
+            ], 401); // 401 Unauthorized
+        }
+
+        $data=$request->all();
+        try{
+            $newToken=Wolt::create($data);
+            return response()->json(["status"=>"success"],200);
+
+        }catch(\Exception $e){
+            return response()->json(["status"=>"error"],500);
+
+        }
 
 
     }
