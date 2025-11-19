@@ -45,7 +45,7 @@ Route::group(['prefix' => 'andalusGO'],function(){
 });
 
 Route::group(['prefix' => 'wolt'],function(){
-    Route::post('/authorize',[WoltController::class,'authorization']);
+    Route::post('/authorization',[WoltController::class,'authorization']);
     Route::post('/webhook/orders',[WoltController::class,'woltWebhookOrders']);
 
 });
