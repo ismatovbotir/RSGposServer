@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\BarcodeController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ItemController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PartnerController;
 use App\Http\Controllers\Api\PriceController;
 use App\Http\Controllers\Api\PriceDataController;
@@ -42,6 +43,7 @@ Route::group(['prefix' => 'andalusGO'],function(){
     Route::post('/stocks',[PriceController::class,'stocks']);
     Route::post('/pricestock',[ItemController::class,'pricestock']);
 
+    Route::resource('/order',OrderController::class);
 });
 
 Route::group(['prefix' => 'wolt'],function(){
