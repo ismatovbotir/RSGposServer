@@ -76,7 +76,14 @@ class WoltController extends Controller
 
         $data=$request->all();
         try{
-            $newToken=Wolt::create($data);
+            $newToken=Wolt::firsOrCreate(
+                ['redirect_url'=>$data['redirect_url']],
+                [
+                    'authorization_code'=>$data['authorization_code'],
+                    'partner_venue_id'=>$data['partner_venue_id']
+                ]
+                
+            );
             return response()->json(["status"=>"success"],200);
 
         }catch(\Exception $e){
