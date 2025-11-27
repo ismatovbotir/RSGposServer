@@ -64,6 +64,7 @@ class SettingsController extends Controller
     }
 
     public function wolt(){
-        
+        return view('admin.settings.wolt');
+
     }
 }
