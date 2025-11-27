@@ -206,11 +206,17 @@
                                         <span class="nk-menu-text">Support</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item">
-                                    <a href="html/crm/settings.html" class="nk-menu-link">
+                                <li class="nk-menu-item has-sub">
+                                    <a href="#" class="nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-setting-alt-fill"></em></span>
                                         <span class="nk-menu-text">Settings</span>
                                     </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="{{route('admin.settings.wolt')}}" class="nk-menu-link"><span class="nk-menu-text">Wolt</span></a>
+                                        </li>
+                                        
+                                    </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Return to</h6>
