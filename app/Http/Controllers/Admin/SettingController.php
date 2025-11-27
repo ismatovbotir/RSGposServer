@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SettingsController extends Controller
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -64,7 +64,7 @@ class SettingsController extends Controller
     }
 
     public function wolt(){
-        return view('admin.settings.wolt');
+        return view('admin.setting.wolt');
 
     }
 }

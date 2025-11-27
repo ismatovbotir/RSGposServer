@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ItemController;
-use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +36,5 @@ Route::group(['middleware'=>'auth','prefix'=>'admin','as'=>'admin.'],function(){
     Route::resource('/partner',PartnerController::class);
     Route::resource('/category',CategoryController::class);
     Route::resource('/item',ItemController::class);
-    Route::get('/settings/wolt',[SettingsController::class,'wolt'])->name('settings.wolt');
+    Route::get('/setting/wolt',[SettingController::class,'wolt'])->name('setting.wolt');
 });
