@@ -56,15 +56,15 @@ class OrderController extends Controller
             "status"=>"new"
         ]);
 
-        return [
+        return response()->json([
             "id"=>$order->id,
             "status"=>"new"
-        ];
+        ],200);
         
         }catch(\Exception $e){
-            return [
+            return response()->json([
                 "error"=>$e->getMessage()
-            ];
+            ],500);
             
         }
         
