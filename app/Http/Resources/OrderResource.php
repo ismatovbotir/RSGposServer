@@ -19,6 +19,7 @@ class OrderResource extends JsonResource
             'code'=>$this->code,
             'customer' => $this->customer_name,
             'total' => $this->total_price,
+            'fiscal'=>$this->fiscal,
 
             // Items
             'items' => OrderItemResource::collection($this->items),
