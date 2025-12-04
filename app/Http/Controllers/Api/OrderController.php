@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\OrderResource;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -89,7 +90,7 @@ class OrderController extends Controller
         if($order){
             return response()->json([
                 'status'=>'ok',
-                'message'=>$order
+                'data'=>new OrderResource($order)
             ],200);
 
         }else{
