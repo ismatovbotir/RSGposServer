@@ -32,8 +32,10 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $data=$request->all();
-        dd($data);
-        $order=Order::create(
+        //dd($data);
+        try{
+
+           $order=Order::create(
             [
                 "code"=>$data["id"],
 
@@ -58,7 +60,14 @@ class OrderController extends Controller
             "id"=>$order->id,
             "status"=>"new"
         ];
-       
+        
+        }catch(\Exception $e){
+            return [
+                "error"=>$e->getMessage()
+            ];
+            
+        }
+        
     }
 
     /**
