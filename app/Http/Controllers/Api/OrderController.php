@@ -33,6 +33,15 @@ class OrderController extends Controller
     {
         $data=$request->all();
         //dd($data);
+        $is_order=Order::where('code',$data['id'])->first();
+        //dd($is_order);
+        if($is_order){
+            return response()->json([
+                "id"=>$is_order->id,
+                "message"=>"exsisting order"
+            ],201);
+
+        }
         try{
 
            $order=Order::create(
