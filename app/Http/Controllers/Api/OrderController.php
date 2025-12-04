@@ -32,6 +32,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $data=$request->all();
+        dd($data);
         $order=Order::create(
             [
                 "code"=>$data["id"],
