@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text("address")->nullable();
             
             $table->text('comment')->nullable();
-
+            $table->text('fiscal')->nullable();
             $table->timestamps();
         });
     }

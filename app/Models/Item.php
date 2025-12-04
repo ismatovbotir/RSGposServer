@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Partner;
 use App\Models\Barcode;
 use App\Models\Stock;
+use App\Models\OrderItem;
 
 class Item extends Model
 {
@@ -38,6 +39,9 @@ class Item extends Model
         return $this->hasOne(Stock::class)
         ->where('shop_id', $shop_id)
         ->latest('stock_date'); // latest by date
+    }
+    public function order(){
+        return $this->hasOne(OrderItem::class);
     }
 
     

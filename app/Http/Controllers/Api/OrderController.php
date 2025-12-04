@@ -33,11 +33,11 @@ class OrderController extends Controller
     {
         $data=$request->all();
         //dd($data);
-        $is_order=Order::where('code',$data['id'])->first();
+        $is_order=Order::where('code',$data['id'])->with(['items.item','lastStatus'])->first();
         //dd($is_order);
         if($is_order){
             return response()->json([
-                "id"=>$is_order->id,
+                "id"=>$is_order,
                 "message"=>"exsisting order"
             ],201);
 
