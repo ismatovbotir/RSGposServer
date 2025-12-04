@@ -18,7 +18,7 @@ class Order extends Model
         return $this->hasMany(OrderItem::class);
     }
     public function status(){
-        return $this->hasMany(OrderStatus::class);
+        return $this->hasMany(OrderStatus::class)->orderBy('created_at','desc');
     }
     public function lastStatus(){
         return $this->hasOne(OrderStatus::class)->latestOfMany();
