@@ -85,7 +85,7 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        $order=Order::where('code',$id)->with(['items.item','lastStatus'])->first();
+        $order=Order::where('code',$id)->with(['items.item','lastStatus','status'])->first();
         //dd($is_order);
         if($order){
             return response()->json([
