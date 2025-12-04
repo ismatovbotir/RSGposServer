@@ -37,7 +37,7 @@ class OrderController extends Controller
         //dd($is_order);
         if($is_order){
             return response()->json([
-                "id"=>$is_order,
+                "id"=>$is_order->id,
                 "message"=>"exsisting order"
             ],201);
 
@@ -84,10 +84,21 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        return [
-            'id'=>$id,
-            'status'=>'new'
-        ];
+        $order=Order::where('code',$id)->with(['items.item','lastStatus'])->first();
+        //dd($is_order);
+        if($order){
+            return response()->json([
+                'status'=>'ok',
+                'message'=>$order
+            ],200);
+
+        }else{
+            return response()->json([
+                'status'=>'error',
+                'message'=>"order not fount"
+            ],400);
+
+        }
     }
 
     /**
