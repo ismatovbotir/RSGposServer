@@ -38,9 +38,13 @@ class OrderController extends Controller
         //dd($is_order);
         if($is_order){
             return response()->json([
-                "id"=>$is_order->id,
-                "message"=>"exsisting order"
-            ],201);
+                "status"=>"ok",
+                "data"=>[
+                    "id"=>$is_order->id,
+                    "message"=>"exsisting order"
+
+                ]
+            ],200);
 
         }
         try{
@@ -56,8 +60,8 @@ class OrderController extends Controller
             $orderItem=OrderItem::create([
                 "order_id"=>$order->id,
                 "item_id"=>$item["productId"],
-                "order_qty"=>$item["price"],
-                "order_price"=>$item["quantity"]
+                "order_qty"=>$item["quantity"],
+                "order_price"=>$item["price"]
             ]);
 
         }
@@ -67,13 +71,20 @@ class OrderController extends Controller
         ]);
 
         return response()->json([
-            "id"=>$order->id,
-            "status"=>"new"
+
+            "status"=>"ok",
+            "data"=>[
+                    "id"=>$order->id,
+                    "status"=>"new"
+                ]
         ],200);
         
         }catch(\Exception $e){
             return response()->json([
-                "error"=>$e->getMessage()
+                "status"=>"error",
+                "data"=>[
+                        "error"=>$e->getMessage()
+                ]
             ],500);
             
         }
@@ -96,7 +107,9 @@ class OrderController extends Controller
         }else{
             return response()->json([
                 'status'=>'error',
-                'message'=>"order not fount"
+                'data'=>[
+                        "message"=>"order not fount"
+                ]
             ],400);
 
         }
