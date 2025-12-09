@@ -68,13 +68,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-sm-6">
-                                            <div class="form-group">
-                                                <div class="form-control-wrap">
-                                                    <button class="btn btn-info">Token</button>   
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
 
                                         <div class="col-lg-12 col-sm-12">
                                             <div class="form-group">
@@ -122,9 +116,12 @@
                                             </div>
                                         </div>
 
+                                      
+
                                         <div class="col-lg-3 col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
+                                                    <button class="btn btn-info">Token</button>
                                                    <button class="btn btn-success">Refresh Token</button>
                                                 </div>
                                             </div>
@@ -135,6 +132,7 @@
                                                 <div class="form-control-wrap">
                                                     <input type="text" class="form-control form-control-outlined" id="outlined-default" value="{{$wolt_token->refresh_token}}" disabled>
                                                     <label class="form-label-outlined" for="outlined-default">Refresh Token</label>
+
                                                 </div>
                                             </div>
                                         </div>
