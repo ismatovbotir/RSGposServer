@@ -60,11 +60,7 @@
                                     <hr class="preview-hr">
 
 
-                                    $table->text('access_token');
-            $table->integer('expires_in');
-            $table->string('refresh_token');
-            $table->string('scope');
-            $table->string('token_type');
+                               
 
                                     <span class="preview-title-lg overline-title">Wolt Token</span>
                                     <div class="row gy-4">
@@ -92,7 +88,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label class="form-label" for="default-textarea">Access Token</label>
                                                 <div class="form-control-wrap">
@@ -100,7 +96,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-12">
                                                             <div class="form-group">
                                                                 <label class="form-label" for="default-textarea">Refresh Token</label>
                                                                 <div class="form-control-wrap">
