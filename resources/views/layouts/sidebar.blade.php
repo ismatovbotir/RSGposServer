@@ -213,7 +213,7 @@
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
-                                            <a href="{{route('admin.settings.wolt')}}" class="nk-menu-link"><span class="nk-menu-text">Wolt</span></a>
+                                            <a href="{{route('admin.setting.wolt')}}" class="nk-menu-link"><span class="nk-menu-text">Wolt</span></a>
                                         </li>
                                         
                                     </ul><!-- .nk-menu-sub -->
