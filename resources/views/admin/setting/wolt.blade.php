@@ -50,7 +50,7 @@
                                     <span class="preview-title-lg overline-title">Wolt</span>
                                     <div class="row gy-4">
                                         
-                                        <div class="col-lg-6 col-sm-6">
+                                        <div class="col-lg-4 col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                     
@@ -59,12 +59,19 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-sm-6">
+                                        <div class="col-lg-4 col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                    
                                                     <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal" value="{{$wolt->partner_venue_id}}" disabled>
                                                     <label class="form-label-outlined" for="outlined-outlined-normal">Partner Venue ID</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="form-control-wrap">
+                                                    <button class="btn btn-info">Token</button>   
                                                 </div>
                                             </div>
                                         </div>
