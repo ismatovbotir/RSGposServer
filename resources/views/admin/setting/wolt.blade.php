@@ -25,7 +25,7 @@
                                         <div class="col-lg-12 col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal">
+                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal" value="{{$wolt->authiruzation_code}}" disabled>
                                                     <label class="form-label-outlined" for="outlined-normal">Authorization code</label>
                                                 </div>
                                             </div>
@@ -36,7 +36,7 @@
                                                     <div class="form-icon form-icon-right">
                                                         <em class="icon ni ni-user"></em>
                                                     </div>
-                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-right-icon">
+                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-right-icon" value="{{$wolt->redirect_url}}" disabled>
                                                     <label class="form-label-outlined" for="outlined-right-icon">Redirect URL</label>
                                                 </div>
                                             </div>
@@ -47,7 +47,7 @@
                                                     <div class="form-icon form-icon-right">
                                                         <em class="icon ni ni-user"></em>
                                                     </div>
-                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-right-icon">
+                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-right-icon" value="{{$wolt->partner_venue_id}}" disabled>
                                                     <label class="form-label-outlined" for="outlined-right-icon">Partner Venue ID</label>
                                                 </div>
                                             </div>

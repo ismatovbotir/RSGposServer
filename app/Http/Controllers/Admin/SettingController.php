@@ -66,7 +66,7 @@ class SettingController extends Controller
 
     public function wolt(){
         $wolt=Wolt::first();
-        dd($wolt);
+        //dd($wolt);
         return view('admin.setting.wolt',compact('wolt'));
 
     }
