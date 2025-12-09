@@ -22,7 +22,7 @@
                                 <div class="preview-block">
                                     <span class="preview-title-lg overline-title">Wolt</span>
                                     <div class="row gy-4">
-                                        <div class="col-lg-12 col-sm-6">
+                                        <div class="col-lg-12 col-sm-12">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                     <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal" value="{{$wolt->authorization_code}}" disabled>
@@ -30,7 +30,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-sm-6">
+                                        <div class="col-lg-12 col-sm-12">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                     <div class="form-icon form-icon-right">
@@ -41,7 +41,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-sm-6">
+                                        <div class="col-lg-12 col-sm-12">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                     <div class="form-icon form-icon-right">
