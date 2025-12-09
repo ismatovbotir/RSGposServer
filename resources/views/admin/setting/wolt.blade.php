@@ -8,9 +8,7 @@
         <div class="nk-content-inner">
             <div class="nk-content-body">
                 <div class="components-preview wide-md mx-auto">
-                    <div class="nk-block-head nk-block-head-lg wide-sm">
-
-                    </div><!-- .nk-block-head -->
+                    
 
 
                     <div class="nk-block nk-block-lg">
