@@ -18,9 +18,8 @@ return new class extends Migration
             $table->string('refresh_token');
             $table->string('scope');
             $table->string('token_type');
-
-
             $table->timestamps();
+            
         });
     }
 

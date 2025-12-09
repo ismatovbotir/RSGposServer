@@ -9,13 +9,13 @@
             <div class="nk-content-body">
                 <div class="components-preview wide-md mx-auto">
                     <div class="nk-block-head nk-block-head-lg wide-sm">
-                        
+
                     </div><!-- .nk-block-head -->
-                   
-                
+
+
                     <div class="nk-block nk-block-lg">
                         <div class="nk-block-head">
-                            
+
                         </div>
                         <div class="card card-preview">
                             <div class="card-inner">
@@ -52,41 +52,62 @@
                                                 </div>
                                             </div>
                                         </div>
-                                      
 
 
-                                       
+
+
                                     </div>
                                     <hr class="preview-hr">
-                                    <span class="preview-title-lg overline-title">Outlined Sizes</span>
+
+
+                                    $table->text('access_token');
+            $table->integer('expires_in');
+            $table->string('refresh_token');
+            $table->string('scope');
+            $table->string('token_type');
+
+                                    <span class="preview-title-lg overline-title">Wolt Token</span>
                                     <div class="row gy-4">
                                         <div class="col-lg-4 col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-xl">
-                                                    <label class="form-label-outlined" for="outlined-xl">Input text xl</label>
+                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-xl" value="{{$wolt_token->expires_in}}" disabled>
+                                                    <label class="form-label-outlined" for="outlined-xl">Expires in</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control form-control-lg form-control-outlined" id="outlined-lg">
-                                                    <label class="form-label-outlined" for="outlined-lg">Input text lg</label>
+                                                    <input type="text" class="form-control form-control-lg form-control-outlined" id="outlined-lg" value="{{$wolt_token->dcope}}" disabled>
+                                                    <label class="form-label-outlined" for="outlined-lg">Scope</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control form-control-outlined" id="outlined-default">
-                                                    <label class="form-label-outlined" for="outlined-default">Input text</label>
+                                                    <input type="text" class="form-control form-control-outlined" id="outlined-default" value="{{$wolt_token->token_type}}" disabled>
+                                                    <label class="form-label-outlined" for="outlined-default">Token Type</label>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <p class="text-soft">Use <code>.form-control-outlined</code> with <code>.form-control</code> for outlined form element and replace <code>.form-label</code> with <code>.form-label-outlined</code>, also place label after input/select element.</p>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="form-label" for="default-textarea">Access Token</label>
+                                                <div class="form-control-wrap">
+                                                    <textarea class="form-control no-resize" id="default-textarea">{{$wolt_token->access_token}}</textarea>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label" for="default-textarea">Refresh Token</label>
+                                                                <div class="form-control-wrap">
+                                                                    <textarea class="form-control no-resize" id="default-textarea">{{$wolt_token->refresh_token}}</textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                     </div>
                                 </div>
                             </div>
