@@ -22,33 +22,36 @@
                                 <div class="preview-block">
                                     <span class="preview-title-lg overline-title">Wolt</span>
                                     <div class="row gy-4">
+                                        
                                         <div class="col-lg-12 col-sm-12">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal" value="{{$wolt->authorization_code}}" disabled>
-                                                    <label class="form-label-outlined" for="outlined-normal">Authorization code</label>
+                                                    
+                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal" value="{{$wolt->redirect_url}}" disabled>
+                                                    <label class="form-label-outlined" for="outlined-outlined-normal">Redirect URL</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-sm-12">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <div class="form-icon form-icon-right">
-                                                        <em class="icon ni ni-user"></em>
-                                                    </div>
-                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-right-icon" value="{{$wolt->redirect_url}}" disabled>
-                                                    <label class="form-label-outlined" for="outlined-right-icon">Redirect URL</label>
+                                                   
+                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal" value="{{$wolt->partner_venue_id}}" disabled>
+                                                    <label class="form-label-outlined" for="outlined-outlined-normal">Partner Venue ID</label>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="col-lg-12 col-sm-12">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <div class="form-icon form-icon-right">
-                                                        <em class="icon ni ni-user"></em>
+                                                    <label class="form-label" for="default-textarea">Authorization Code</label>
+                                                    <div class="form-control-wrap">
+                                                        <textarea class="form-control no-resize" id="default-textarea" disabled>
+                                                            {{$wolt->authorization_code}}
+                                                        </textarea>
                                                     </div>
-                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-right-icon" value="{{$wolt->partner_venue_id}}" disabled>
-                                                    <label class="form-label-outlined" for="outlined-right-icon">Partner Venue ID</label>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -75,7 +78,7 @@
                                         <div class="col-lg-4 col-sm-4">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control form-control-lg form-control-outlined" id="outlined-lg" value="{{$wolt_token->dcope}}" disabled>
+                                                    <input type="text" class="form-control form-control-lg form-control-outlined" id="outlined-lg" value="{{$wolt_token->scope}}" disabled>
                                                     <label class="form-label-outlined" for="outlined-lg">Scope</label>
                                                 </div>
                                             </div>
