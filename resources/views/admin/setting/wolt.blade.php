@@ -25,7 +25,7 @@
                                         <div class="col-lg-12 col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal" value="{{$wolt->authiruzation_code}}" disabled>
+                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal" value="{{$wolt->authorization_code}}" disabled>
                                                     <label class="form-label-outlined" for="outlined-normal">Authorization code</label>
                                                 </div>
                                             </div>
