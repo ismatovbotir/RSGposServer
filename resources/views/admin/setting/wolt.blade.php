@@ -88,22 +88,24 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-lg-12 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control form-control-outlined" id="outlined-default" value="{{$wolt_token->refresh_token}}" disabled>
+                                                    <label class="form-label-outlined" for="outlined-default">Refresh Token</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label class="form-label" for="default-textarea">Access Token</label>
                                                 <div class="form-control-wrap">
-                                                    <textarea class="form-control no-resize" id="default-textarea">{{$wolt_token->access_token}}</textarea>
+                                                    <textarea class="form-control no-resize" id="default-textarea" disabled>{{$wolt_token->access_token}}</textarea>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-12">
-                                                            <div class="form-group">
-                                                                <label class="form-label" for="default-textarea">Refresh Token</label>
-                                                                <div class="form-control-wrap">
-                                                                    <textarea class="form-control no-resize" id="default-textarea">{{$wolt_token->refresh_token}}</textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                       
                                     </div>
                                 </div>
                             </div>
