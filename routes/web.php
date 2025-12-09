@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\SettingController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,11 +23,16 @@ use App\Http\Controllers\Admin\SettingController;
 */
 Route::resource('/price',PriceCheckerController::class);
 
-Auth::routes();
+
 Route::get('/',function(){
     return view('welcome');
 })->middleware('auth');
-Route::group(['middleware'=>'auth','prefix'=>'admin','as'=>'admin.'],function(){
+Auth::routes();
+Route::group([
+    'middleware'=>'auth',
+    'prefix'=>'admin',
+    'as'=>'admin.'
+    ],function(){
     
     Route::get('/',function(){
         return view('welcome');
