@@ -70,7 +70,7 @@ class SettingController extends Controller
         $wolt_user=WoltUser::first();
         $wolt=Wolt::first();
         $wolt_token=WoltToken::first();
-        dd($wolt_user);
+       //dd($wolt_user);
         return view('admin.setting.wolt',compact('wolt','wolt_token'));
 
     }

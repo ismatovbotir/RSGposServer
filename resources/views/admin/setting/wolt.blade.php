@@ -20,6 +20,35 @@
                         <div class="card card-preview">
                             <div class="card-inner">
                                 <div class="preview-block">
+                                <span class="preview-title-lg overline-title">Wolt User</span>
+                                    <div class="row gy-4">
+                                        
+                                        <div class="col-lg-12 col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-control-wrap">
+                                                    
+                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal" value="{{$wolt_user->client_id}}" disabled>
+                                                    <label class="form-label-outlined" for="outlined-outlined-normal">Client ID</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-control-wrap">
+                                                   
+                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-normal" value="{{$wolt_user->client_secret}}" disabled>
+                                                    <label class="form-label-outlined" for="outlined-outlined-normal">Client Secret</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                       
+
+
+
+
+                                    </div>
+                                    <hr class="preview-hr">
                                     <span class="preview-title-lg overline-title">Wolt</span>
                                     <div class="row gy-4">
                                         
@@ -61,10 +90,6 @@
 
                                     </div>
                                     <hr class="preview-hr">
-
-
-                               
-
                                     <span class="preview-title-lg overline-title">Wolt Token</span>
                                     <div class="row gy-4">
                                         <div class="col-lg-4 col-sm-4">
