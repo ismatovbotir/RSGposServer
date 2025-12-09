@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Wolt;
 use App\Models\WoltToken;
+use App\Models\WoltUser;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -66,9 +67,10 @@ class SettingController extends Controller
     }
 
     public function wolt(){
+        $wolt_user=WoltUser::first();
         $wolt=Wolt::first();
         $wolt_token=WoltToken::first();
-        //dd($wolt);
+        dd($wolt_user);
         return view('admin.setting.wolt',compact('wolt','wolt_token'));
 
     }

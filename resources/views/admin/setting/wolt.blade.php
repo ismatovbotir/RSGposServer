@@ -70,7 +70,7 @@
                                         <div class="col-lg-4 col-sm-4">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-xl" value="{{$wolt_token->expires_in}}" disabled>
+                                                    <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-default" value="{{$wolt_token->expires_in}}" disabled>
                                                     <label class="form-label-outlined" for="outlined-xl">Expires in</label>
                                                 </div>
                                             </div>
@@ -78,7 +78,7 @@
                                         <div class="col-lg-4 col-sm-4">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control form-control-lg form-control-outlined" id="outlined-lg" value="{{$wolt_token->scope}}" disabled>
+                                                    <input type="text" class="form-control form-control-lg form-control-outlined" id="outlined-default" value="{{$wolt_token->scope}}" disabled>
                                                     <label class="form-label-outlined" for="outlined-lg">Scope</label>
                                                 </div>
                                             </div>
