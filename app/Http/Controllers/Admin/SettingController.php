@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Wolt;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -64,7 +65,9 @@ class SettingController extends Controller
     }
 
     public function wolt(){
-        return view('admin.setting.wolt');
+        $wolt=Wolt::all();
+        dd($wolt);
+        return view('admin.setting.wolt',compact('wolt'));
 
     }
 }
