@@ -23,7 +23,7 @@
                                 <span class="preview-title-lg overline-title">Wolt User</span>
                                     <div class="row gy-4">
                                         
-                                        <div class="col-lg-12 col-sm-12">
+                                        <div class="col-lg-6 col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                     
@@ -32,7 +32,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-sm-12">
+                                        <div class="col-lg-6 col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                    
@@ -52,7 +52,7 @@
                                     <span class="preview-title-lg overline-title">Wolt</span>
                                     <div class="row gy-4">
                                         
-                                        <div class="col-lg-12 col-sm-12">
+                                        <div class="col-lg-6 col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                     
@@ -61,7 +61,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-sm-12">
+                                        <div class="col-lg-6 col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                    
@@ -96,7 +96,7 @@
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                     <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-default" value="{{$wolt_token->expires_in}}" disabled>
-                                                    <label class="form-label-outlined" for="outlined-xl">Expires in</label>
+                                                    <label class="form-label-outlined" for="outlined-default">Expires in</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -104,7 +104,7 @@
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                     <input type="text" class="form-control form-control-lg form-control-outlined" id="outlined-default" value="{{$wolt_token->scope}}" disabled>
-                                                    <label class="form-label-outlined" for="outlined-lg">Scope</label>
+                                                    <label class="form-label-outlined" for="outlined-default">Scope</label>
                                                 </div>
                                             </div>
                                         </div>
