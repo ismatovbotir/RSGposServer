@@ -64,7 +64,7 @@
 
                                     <span class="preview-title-lg overline-title">Wolt Token</span>
                                     <div class="row gy-4">
-                                        <div class="col-lg-4 col-sm-6">
+                                        <div class="col-lg-4 col-sm-4">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                     <input type="text" class="form-control form-control-xl form-control-outlined" id="outlined-xl" value="{{$wolt_token->expires_in}}" disabled>
@@ -72,7 +72,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-sm-6">
+                                        <div class="col-lg-4 col-sm-4">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                     <input type="text" class="form-control form-control-lg form-control-outlined" id="outlined-lg" value="{{$wolt_token->dcope}}" disabled>
@@ -80,7 +80,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-sm-6">
+                                        <div class="col-lg-4 col-sm-4">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                     <input type="text" class="form-control form-control-outlined" id="outlined-default" value="{{$wolt_token->token_type}}" disabled>
@@ -88,7 +88,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-sm-6">
+                                        <div class="col-lg-12 col-sm-12">
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                     <input type="text" class="form-control form-control-outlined" id="outlined-default" value="{{$wolt_token->refresh_token}}" disabled>
