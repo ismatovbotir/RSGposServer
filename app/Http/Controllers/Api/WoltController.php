@@ -149,8 +149,21 @@ class WoltController extends Controller
                 'refresh_token' => $wolt_token->refresh_token,
             ]);
 
-        $data = $response->json();
-            dd($data);
+            if($response->successful()){
+                $data = $response->json();
+                WoltToken::updateOrCreate(
+                    ['id' => 1],
+                    [
+                        'access_token'  => $data['access_token'],
+                        'refresh_token' => $data['refresh_token'],
+                        'expires_at'    => $data['expires_in']
+                    ]
+                );
+
+
+
+            }
+
         return $data;
     }
 }
