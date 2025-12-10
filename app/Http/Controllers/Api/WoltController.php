@@ -85,10 +85,10 @@ class WoltController extends Controller
                 "partner_venue_id"=>$data["partner_venue_id"]
             ]);
             
-            $newToken = Wolt::Create(
-                $data
+           // $newToken = Wolt::Create(
+             //   $data
 
-            );
+            //);
             return response()->json(["status" => "success"], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -108,7 +108,7 @@ class WoltController extends Controller
     {
         $wolt_user = WoltUser::first();
         $wolt = Wolt::first();
-        dd($wolt);
+        //dd($wolt);
         $response = Http::asForm()
             ->withBasicAuth($wolt_user->client_id, $wolt_user->client_secret)
             ->post('https://integrations-authentication-service.development.dev.woltapi.com/oauth2/token', [
