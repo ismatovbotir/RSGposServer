@@ -124,7 +124,7 @@ class WoltController extends Controller
                     [
                         'access_token'  => $data['access_token'],
                         'refresh_token' => $data['refresh_token'],
-                        'expires_at'    => $data['expires_in']
+                        'expires_in'    => $data['expires_in']
                     ]
                 );
 
@@ -156,7 +156,7 @@ class WoltController extends Controller
                     [
                         'access_token'  => $data['access_token'],
                         'refresh_token' => $data['refresh_token'],
-                        'expires_at'    => $data['expires_in']
+                        'expires_in'    => $data['expires_in']
                     ]
                 );
 
