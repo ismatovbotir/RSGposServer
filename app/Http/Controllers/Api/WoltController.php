@@ -129,10 +129,10 @@ class WoltController extends Controller
                 );
 
 
-
+                return 1;
             }
 
-        return $data;
+        return 0;
     }
 
     public function woltTokenRefresh()
@@ -160,10 +160,10 @@ class WoltController extends Controller
                     ]
                 );
 
-
+                return 1;
 
             }
 
-        return $data;
+        return 0;
     }
 }
