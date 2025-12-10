@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class WoltToken extends Model
 {
     use HasFactory;
+    public $guarded=[];
 }
