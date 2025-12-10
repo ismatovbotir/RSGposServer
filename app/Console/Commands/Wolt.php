@@ -28,6 +28,7 @@ class Wolt extends Command
     {
         $wolt= new WoltController;
         $token=$wolt->woltTokenRefresh();
+            echo($token);
             $this->info($token);
     }
 }
