@@ -14,7 +14,7 @@ class Token extends Component
         $this->wolt_token=WoltToken::first();
     }
     public function refreshToken(){
-        dd('refresh');
+        $this->refresh=false;
     }
     public function render()
     {
