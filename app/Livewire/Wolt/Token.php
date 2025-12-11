@@ -8,13 +8,13 @@ use App\Models\WoltToken;
 class Token extends Component
 {
     public $wolt_token=null; 
-    public $refresh=true;
+    public $isRefresh=true;
     public function mount(){
 
         $this->wolt_token=WoltToken::first();
     }
     public function refreshToken(){
-        $this->refresh=false;
+        $this->isRefresh=false;
     }
     public function render()
     {
