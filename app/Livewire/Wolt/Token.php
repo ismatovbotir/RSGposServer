@@ -11,12 +11,18 @@ class Token extends Component
     public $isRefresh=true;
     public function mount(){
 
-        $this->wolt_token=WoltToken::first();
+        $this->geetToken();
     }
     public function refreshToken(){
         $this->isRefresh=false;
        //dd($this->wolt_token);
+       $this->getToken();
     }
+
+    public function getToken(){
+        $this->wolt_token=WoltToken::first();    
+    }
+
     public function render()
     {
         
