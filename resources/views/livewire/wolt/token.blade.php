@@ -34,7 +34,7 @@
                @else
                 <button class="btn btn-info">Token</button>
                 @php
-    dd($wolt_token)
+    dd($wolt_token->refresh_token)
     @endphp
                @endif 
             </div>
