@@ -28,10 +28,6 @@ class WoltToken extends Command
     {
         $wolt= new WoltController;
         $token=$wolt->woltToken();
-           if($token==0){
-            $this->info("some error");
-           }else{
-            $this->info(json_encode($token));
-           }
+           $this->info($token);
     }
 }

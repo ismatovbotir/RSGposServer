@@ -136,7 +136,7 @@ class WoltController extends Controller
                 return $data;
             }
 
-        return 0;
+        return  $response->status();
     }
 
     public function woltTokenRefresh()
