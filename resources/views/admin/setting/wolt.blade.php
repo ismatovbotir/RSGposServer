@@ -90,7 +90,7 @@
                                     </div>
                                     <hr class="preview-hr">
                                     <span class="preview-title-lg overline-title">Wolt Token</span>
-                                    @livewire('wolt.token')
+                                    <livewire:wolt.token />
                                 </div>
                             </div>
                         </div><!-- .card-preview -->
