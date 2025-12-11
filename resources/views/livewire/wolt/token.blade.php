@@ -30,7 +30,7 @@
         <div class="form-group">
             <div class="form-control-wrap">
                 @if($refresh)
-                <button class="btn btn-success" wire:click="refreshToken">Refresh Token</button>
+                <button class="btn btn-success" wire:click="refreshToken()">Refresh Token</button>
                 @else
                 <button class="btn btn-info">Token</button>
                 @endif
