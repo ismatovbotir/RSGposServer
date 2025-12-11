@@ -13,7 +13,9 @@ class Token extends Component
 
         $this->wolt_token=WoltToken::first();
     }
-    
+    public function refreshToken(){
+        dd('refresh');
+    }
     public function render()
     {
         return view('livewire.wolt.token');
