@@ -33,9 +33,8 @@
                 <button class="btn btn-success" wire:click="refreshToken">Refresh Token</button>
                @else
                 <button class="btn btn-info">Token</button>
-                @php
-    dd($wolt_token->refresh_token)
-    @endphp
+             
+   
                @endif 
             </div>
         </div>
