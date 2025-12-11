@@ -15,7 +15,7 @@ class Token extends Component
     }
     public function refreshToken(){
         $this->isRefresh=false;
-       dd($this->wolt_token);
+       //dd($this->wolt_token);
     }
     public function render()
     {
