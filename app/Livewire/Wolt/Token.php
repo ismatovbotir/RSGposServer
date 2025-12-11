@@ -15,7 +15,7 @@ class Token extends Component
     }
     public function refreshToken(){
         $this->isRefresh=false;
-        dd('Pushed');
+       
     }
     public function render()
     {

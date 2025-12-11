@@ -29,11 +29,11 @@
     <div class="col-lg-3 col-sm-6">
         <div class="form-group">
             <div class="form-control-wrap">
-              
+              @if($isRefresh)
                 <button class="btn btn-success" wire:click="refreshToken">Refresh Token</button>
-               
+               @else
                 <button class="btn btn-info">Token</button>
-                
+               @endif 
             </div>
         </div>
     </div>
