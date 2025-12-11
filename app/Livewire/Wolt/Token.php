@@ -8,7 +8,7 @@ use App\Models\WoltToken;
 class Token extends Component
 {
     public $wolt_token=null; 
-    public $isRefresh=true;
+    public $isRefresh=false;
     public function mount(){
 
         $this->wolt_token=WoltToken::first();
