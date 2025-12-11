@@ -15,10 +15,11 @@ class Token extends Component
     }
     public function refreshToken(){
         $this->isRefresh=false;
-       
+       dd($this->wolt_token);
     }
     public function render()
     {
+        
         return view('livewire.wolt.token');
     }
 }
