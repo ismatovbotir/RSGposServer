@@ -120,6 +120,7 @@ class WoltController extends Controller
             if($response->successful()){
 
                 $data = $response->json();
+                dd($data);
                 if($response->status()==200){
 
                     WoltToken::updateOrCreate(
