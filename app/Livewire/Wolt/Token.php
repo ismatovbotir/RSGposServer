@@ -11,7 +11,7 @@ class Token extends Component
     public $isRefresh=true;
     public function mount(){
 
-        $this->geetToken();
+        $this->getToken();
     }
     public function refreshToken(){
         $this->isRefresh=false;
