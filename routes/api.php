@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PartnerController;
 use App\Http\Controllers\Api\PriceController;
 use App\Http\Controllers\Api\PriceDataController;
+use App\Http\Controllers\Api\SellController;
 use App\Http\Controllers\Api\ShopController;
 use App\Http\Controllers\Api\StockController;
 use App\Http\Controllers\Api\WoltController;
@@ -35,6 +36,7 @@ Route::resource('/item',ItemController::class);
 Route::resource('/barcode',BarcodeController::class);
 Route::resource('/priceData',PriceDataController::class);
 Route::resource('/stock',StockController::class);
+Route::resource('/sell',SellController::class);
 
 Route::group(['prefix' => 'andalusGO'],function(){
     Route::post('/categories',[CategoryController::class,'categories']);

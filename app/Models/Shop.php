@@ -24,4 +24,8 @@ class Shop extends Model
     public function price(){
         return $this->belongsTo(Price::class);
     }
+    public function sells(){
+        
+        return $this->hasMany(Sell::class);
+    }
 }

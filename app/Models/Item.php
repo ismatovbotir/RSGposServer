@@ -9,6 +9,7 @@ use App\Models\Partner;
 use App\Models\Barcode;
 use App\Models\Stock;
 use App\Models\OrderItem;
+use App\Models\Sell;
 
 class Item extends Model
 {
@@ -17,11 +18,15 @@ class Item extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
     public function partner(){
         return $this->belongsTo(Partner::class);
     }
     public function barcodes(){
         return $this->hasMany(Barcode::class);
+    }
+    public function sells(){
+        return $this->hasMany(Sell::class);
     }
     public function prices(){
         return $this->hasMany(PriceData::class);
