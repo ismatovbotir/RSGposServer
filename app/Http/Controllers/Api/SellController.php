@@ -34,7 +34,7 @@ class SellController extends Controller
             Sell::upsert(
                 $chunk->toArray(),
                 ['shop_id', 'item_id', 'abc_date'],
-                ['qty', 'cost', 'total']
+                ['qty', 'margin', 'total']
             );
         });
     }

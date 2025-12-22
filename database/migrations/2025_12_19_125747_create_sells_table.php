@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('shop_id')->constrained();
             $table->foreignId('item_id')->constrained();
             $table->decimal('qty',15,3)->nullable();
-            $table->decimal('cost',15,2)->nullable();
+            $table->decimal('margin',15,2)->nullable();
             $table->decimal('total',15,2)->nullable();
             $table->date('abc_date');
             //$table->timestamps();
