@@ -34,6 +34,7 @@ class FiscalController extends Controller
             [
                 'order_id'=>$data['order_id'],
                 'total'=>$data['total'],
+                'type'=>$data['type']
 
 
             ]
