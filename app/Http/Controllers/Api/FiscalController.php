@@ -29,21 +29,36 @@ class FiscalController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'order_id' => 'nullable|uuid|exists:orders,id',
+            'fiscal_data' => 'required|array',
+            'fiscal_data.*.total' => 'required|numeric|min:0',
+            'fiscal_data.*.type' => 'required|in:items,delivery,collect',
+        ]);
+        
+        $resData=[];
         $data=$request->all();
-        $fiscal=Fiscal::create(
-            [
-                'order_id'=>$data['order_id'],
-                'total'=>$data['total'],
-                'type'=>$data['type']
+        $order_id = $data['order_id'] ?? null;
+        $fiscal_data=$data['fiscal_data'];
+        foreach($fiscal_data as $item){
+            $fiscal=Fiscal::create(
+                [
+                    'order_id'=>$order_id,
+                    'total'=>$item['total'],
+                    'type'=>$item['type']
+    
+    
+                ]
+            );
+            $resData[]=$fiscal;
 
-
-            ]
-        );
+        }
+       
         return response()->json([
             'code'=>200,
             'status'=>'ok',
             
-            'data'=>$fiscal
+            'data'=>$resData
         ],200);
     }
 
