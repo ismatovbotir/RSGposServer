@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Fiscal;
 use Illuminate\Http\Request;
-use App\Models\Sell;
 
-class SellController extends Controller
+class FiscalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,12 +30,20 @@ class SellController extends Controller
     public function store(Request $request)
     {
         $data=$request->all();
-            Sell::upsert(
-                $data,
-                ['shop_id', 'item_id', 'abc_date'],
-                ['qty', 'margin', 'total']
-            );
-        
+        $fiscal=Fiscal::create(
+            [
+                'order_id'=>$data['order_id'],
+                'total'=>$data['total'],
+
+
+            ]
+        );
+        return response()->json([
+            'code'=>200,
+            'status'=>'ok',
+            
+            'data'=>$fiscal
+        ],200);
     }
 
     /**

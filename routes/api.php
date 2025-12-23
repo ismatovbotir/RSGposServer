@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\SellController;
 use App\Http\Controllers\Api\ShopController;
 use App\Http\Controllers\Api\StockController;
 use App\Http\Controllers\Api\WoltController;
+use App\Http\Controllers\Api\FiscalController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,7 +45,7 @@ Route::group(['prefix' => 'andalusGO'],function(){
     Route::post('/prices',[PriceController::class,'prices']);
     Route::post('/stocks',[PriceController::class,'stocks']);
     Route::post('/pricestock',[ItemController::class,'pricestock']);
-
+    Route::resource('/fiscal',FiscalController::class);
     Route::resource('/order',OrderController::class);
 });
 
