@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('fiscals', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('order_id')->nullable()->constrained();
-            $table->decimal('total',15,2);
-            $table->enum('type',['items','delivery','collect'])->default('items');
+            $table->decimal('total',15,2)->default(0);
+            $table->enum('type',['items','delivery','collect','services'])->default('services');
             $table->text('fiscal_url')->nullable();
             $table->timestamps();
         });
