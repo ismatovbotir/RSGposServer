@@ -64,9 +64,11 @@ class FiscalController extends Controller
                 'total'=>$resData['total'],
                 'fiscal_url'=>$resData['url']['qrCodeURL']
             ]);
-            $code=200;    
+            $code=200; 
+            $status="ok" ;  
         }else{
             $code=500;
+            $status="error";
 
         }
         
@@ -75,10 +77,10 @@ class FiscalController extends Controller
        
         return response()->json([
             'code'=>$code,
-            'status'=>'ok',
+            'status'=>$status,
             
             'data'=>$resData
-        ],200);
+        ],$code);
     }
 
     public function test(){
