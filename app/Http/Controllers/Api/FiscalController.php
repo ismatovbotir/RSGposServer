@@ -17,7 +17,10 @@ class FiscalController extends Controller
 
     public function index()
     {
-        //
+        return response()->json([
+            'code'=>200,
+            'status'=>'ok'
+        ],200); 
     }
 
     /**
@@ -40,11 +43,12 @@ class FiscalController extends Controller
             'fiscal_data.*.type' => 'required|in:items,delivery,collect',
         ]);
         
-        $resData=[];
+        //$resData=[];
         $data=$request->all();
         $order_id = $data['order_id'] ?? null;
         $fiscal_data=$data['fiscal_data'];
         $payments=$data['payments'];
+        
         $fiscal=Fiscal::create(
             [
                 'order_id'=>$order_id
