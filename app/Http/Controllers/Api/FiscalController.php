@@ -44,7 +44,7 @@ class FiscalController extends Controller
         
         $order_id = $data['order_id'] ?? null;
         if($order_id!=null){
-            $order=Order::where('id',$order_id)->first();
+            $order=Order::where('id',$order_id)->with('fiscals')->first();
             if(!$order){
                 $order_id=null;
 
@@ -59,15 +59,22 @@ class FiscalController extends Controller
                 ]
             );
         $resData=$this->sell($fiscal_data,$payments,$fiscal->id);
-        $fiscal->update([
-            'total'=>$resData['total'],
-            'fiscal_url'=>$resData['url']['qrCodeURL']
-        ]);
+        if($resData['error']==false){
+            $fiscal->update([
+                'total'=>$resData['total'],
+                'fiscal_url'=>$resData['url']['qrCodeURL']
+            ]);
+            $code=200;    
+        }else{
+            $code=500;
+
+        }
+        
 
         
        
         return response()->json([
-            'code'=>200,
+            'code'=>$code,
             'status'=>'ok',
             
             'data'=>$resData
@@ -92,6 +99,7 @@ class FiscalController extends Controller
                 ]
             );
         $resData=$this->sell($fiscal_data,$payments,$fiscal->id);
+       
         $fiscal->update([
             'total'=>$resData['total'],
             'fiscal_url'=>$resData['url']['qrCodeURL']
@@ -108,8 +116,12 @@ class FiscalController extends Controller
 
     }
 
+
+
+
     private function sell($items,$payments,$id){
         $res=[
+            'error'=>false,
             'total'=>0,
             'url'=>''
         ];
@@ -191,9 +203,23 @@ class FiscalController extends Controller
             // ]
         ];
         $response = Http::post($this->url, $body);
-        //dd($response->body());
-        $data = $response->json();
-        $res['url']=$data['info'];
+
+        if($response->successful()){
+
+            //dd($response->body());
+            $data = $response->json();
+            if($data['error']==false){
+                $res['url']=$data['info'];
+            }else{
+                $res['error']=true;
+                $res['url']=$data['message'];
+            }
+        }else{
+            $res['error']=true;
+            $res['url']=$response->status();
+
+
+        }
         
        
 
