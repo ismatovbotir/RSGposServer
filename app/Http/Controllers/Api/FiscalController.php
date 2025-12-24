@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Fiscal;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -36,16 +37,19 @@ class FiscalController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'order_id' => 'nullable|uuid|exists:orders,id',
-            'fiscal_data' => 'required|array',
-            'fiscal_data.*.total' => 'required|numeric|min:0',
-            'fiscal_data.*.type' => 'required|in:items,delivery,collect',
-        ]);
+       
         
         //$resData=[];
         $data=$request->all();
+        
         $order_id = $data['order_id'] ?? null;
+        if($order_id!=null){
+            $order=Order::where('id',$order_id)->first();
+            if(!$order){
+                $order_id=null;
+
+            }
+        }
         $fiscal_data=$data['fiscal_data'];
         $payments=$data['payments'];
         
