@@ -183,7 +183,7 @@ class FiscalController extends Controller
             // ]
         ];
         $response = Http::post($this->url, $body);
-        
+        dd($response->body());
         $data = $response->json();
         $res['url']=$data['info'];
         
