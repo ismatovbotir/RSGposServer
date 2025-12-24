@@ -44,12 +44,13 @@ class FiscalController extends Controller
         $data=$request->all();
         $order_id = $data['order_id'] ?? null;
         $fiscal_data=$data['fiscal_data'];
+        $payments=$data['payments'];
         $fiscal=Fiscal::create(
             [
                 'order_id'=>$order_id
                 ]
             );
-        $resData=$this->sell($fiscal_data,$fiscal->id);
+        $resData=$this->sell($fiscal_data,$payments,$fiscal->id);
         $fiscal->update([
             'total'=>$resData['total'],
             'fiscal_url'=>$resData['url']['qrCodeURL']
@@ -65,7 +66,7 @@ class FiscalController extends Controller
         ],200);
     }
 
-    private function sell($items,$id){
+    private function sell($items,$payments,$id){
         $res=[
             'total'=>0,
             'url'=>''
@@ -130,8 +131,8 @@ class FiscalController extends Controller
                       //              "subtraction"=> "0",
                         //            "remainder"=> "1530000"
                           //      ],
-                "receivedCash"=> 150000,
-                "receivedCard"=> 650000,
+                "receivedCash"=> $payments['cash']*100,
+                "receivedCard"=> $payments['card']*100,
                 "extraInfos"=> [
                                 "ЦОТУ"=> "E-POS Systems LLC",
                                 "Модель виртуальной кассы"=> "E-POS"
