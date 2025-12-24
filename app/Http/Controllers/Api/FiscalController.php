@@ -66,6 +66,40 @@ class FiscalController extends Controller
         ],200);
     }
 
+    public function test(){
+        $order_id =  null;
+        $fiscal_data=[
+            [
+                "total"=>1200,
+                "type"=>"delivery"
+            ]
+        ];
+        $payments=[
+            "cash"=>1200,
+            "card"=>0
+        ];
+        $fiscal=Fiscal::create(
+            [
+                'order_id'=>$order_id
+                ]
+            );
+        $resData=$this->sell($fiscal_data,$payments,$fiscal->id);
+        $fiscal->update([
+            'total'=>$resData['total'],
+            'fiscal_url'=>$resData['url']['qrCodeURL']
+        ]);
+
+        
+       
+        dd(json_encode([
+            'code'=>200,
+            'status'=>'ok',
+            
+            'data'=>$resData
+        ]));
+
+    }
+
     private function sell($items,$payments,$id){
         $res=[
             'total'=>0,
