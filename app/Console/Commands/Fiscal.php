@@ -26,7 +26,7 @@ class Fiscal extends Command
      */
     public function handle()
     {
-        $fiscal=app(Fiscal::class);
+        $fiscal=app(FiscalController::class);
         $fiscal->test();
     }
 }
