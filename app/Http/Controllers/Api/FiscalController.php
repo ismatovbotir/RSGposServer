@@ -109,12 +109,12 @@ class FiscalController extends Controller
             'delivery'=>[
                 'name'=>'Служба доставки товаров',
                 'class_code'=>'10112006002000000',
-                'package_code'=>''
+                'package_code'=>'1542432'
             ],
             'collect'=>[
                 'name'=>"Boshqa yordamchi xizmat ko’rsatish (yeg'uvchiga)",
                 'class_code'=>'10705001001000000',
-                'package_code'=>''
+                'package_code'=>'1495108'
 
             ]
 
