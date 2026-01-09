@@ -17,7 +17,7 @@ class ItemController extends Controller
     public function index()
     {
        
-        $id=Item::max('id');
+        $id = Item::query()->max('id') ?? 0;
         return  response()->json([
                                     'status'=>'done',
                                     'data' => $id
