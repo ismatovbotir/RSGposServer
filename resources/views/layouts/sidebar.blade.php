@@ -24,6 +24,21 @@
                                 <li class="nk-menu-item has-sub">
                                     <a href="" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                                        <span class="nk-menu-text">AndalusGO</span>
+                                    </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="{{route('admin.client.index')}}" class="nk-menu-link"><span class="nk-menu-text">Company</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="{{route('admin.order.index')}}" class="nk-menu-link"><span class="nk-menu-text">Shop</span></a>
+                                        </li>
+                                        
+                                    </ul><!-- .nk-menu-sub -->
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item has-sub">
+                                    <a href="" class="nk-menu-link nk-menu-toggle">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
                                         <span class="nk-menu-text">Main</span>
                                     </a>
                                     <ul class="nk-menu-sub">
