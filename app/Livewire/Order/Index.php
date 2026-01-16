@@ -4,13 +4,20 @@ namespace App\Livewire\Order;
 
 use Livewire\Component;
 use App\Models\Order;
+use Livewire\WithPagination;
+
+
+
 class Index extends Component
 {
-    public $data=[];
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
+    //public $data=[];
 
     public function mount(){
-        $data=Order::with('items')->get();
-        dd($data);
+        $data=Order::with('items')->paginate(10);
+       // dd($data);
 
     }
     

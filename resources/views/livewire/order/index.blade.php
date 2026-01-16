@@ -12,11 +12,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($data as $idx=>$item)
+                                            @foreach($data as $idx=>$order)
                                             <tr>
                                                 <th scope="row">{{$idx+1}}</th>
-                                                <td>{{$item->name}}</td>
-                                                <td>{{$item->items_count}}</td>
+                                                <td>{{$order->code}}</td>
+                                                <td>{{$order->created_at}}</td>
                                               
                                             </tr>
                                             @endforeach
