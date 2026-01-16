@@ -13,10 +13,10 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $data=[];
+    //public $data=[];
 
     public function mount(){
-        $this->data=Order::with('items')->paginate(10);
+      
        // dd($data);
 
     }
@@ -24,6 +24,7 @@ class Index extends Component
     public function render()
     {
         
-        return view('livewire.order.index',['data'=>$this->data]);
+        return view('livewire.order.index',[
+            'data'=>Order::with('items')->paginate(10)]);
     }
 }
