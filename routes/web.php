@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ClientController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -44,6 +45,7 @@ Route::group([
     Route::resource('/category',CategoryController::class);
     Route::resource('/item',ItemController::class);
     Route::resource('/order',OrderController::class);
+    Route::resource('/client',ClientController::class);
     
     Route::get('/setting/wolt',[SettingController::class,'wolt'])->name('setting.wolt');
 });
