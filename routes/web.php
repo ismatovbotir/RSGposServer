@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\OrderController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -42,5 +43,7 @@ Route::group([
     Route::resource('/partner',PartnerController::class);
     Route::resource('/category',CategoryController::class);
     Route::resource('/item',ItemController::class);
+    Route::resource('/order',OrderController::class);
+    
     Route::get('/setting/wolt',[SettingController::class,'wolt'])->name('setting.wolt');
 });
