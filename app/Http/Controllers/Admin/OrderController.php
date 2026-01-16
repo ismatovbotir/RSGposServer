@@ -37,7 +37,7 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        $order=Order::where('id',$id)->first();
+        $order=Order::where('id',$id)->with(['items','lastStatus'])->first();
         dd($order);
     }
 
