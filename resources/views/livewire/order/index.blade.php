@@ -17,7 +17,7 @@
                                             <tr>
                                                 <th scope="row">{{$idx+1}}</th>
                                                 <td>{{$order->code}}</td>
-                                                <td>{{$order->lastStatus}}</td>
+                                                <td>{{$order->lastStatus->status}}</td>
                                                 <td>{{$order->created_at}}</td>
                                               
                                             </tr>
