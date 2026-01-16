@@ -9,7 +9,7 @@ class Index extends Component
     public $data=[];
 
     public function mount(){
-        $data=Order::with('items')->all();
+        $data=Order::with('items')->get();
         dd($data);
 
     }
