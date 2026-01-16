@@ -16,7 +16,7 @@
                                             @foreach($data as $idx=>$order)
                                             <tr>
                                                 <th scope="row">{{$idx+1}}</th>
-                                                <td>{{$order->code}}</td>
+                                                <td><a href="{{admin.order.show}}" target="_blank">{{$order->code}}</a></td>
                                                 <td>{{$order->lastStatus->status}}</td>
                                                 <td>{{$order->created_at}}</td>
                                               
