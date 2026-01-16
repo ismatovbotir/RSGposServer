@@ -25,6 +25,6 @@ class Index extends Component
     {
         
         return view('livewire.order.index',[
-            'data'=>Order::with('items')->paginate(10)]);
+            'data'=>Order::with('items')->latest()->paginate(10)]);
     }
 }
