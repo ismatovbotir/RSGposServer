@@ -13,10 +13,10 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    //public $data=[];
+    public $data=[];
 
     public function mount(){
-        $data=Order::with('items')->paginate(10);
+        $this->data=Order::with('items')->paginate(10);
        // dd($data);
 
     }
