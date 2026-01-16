@@ -6,8 +6,9 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Items</th>
+                                                <th scope="col">Order No</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Created_at</th>
                                                 
                                             </tr>
                                         </thead>
@@ -16,6 +17,7 @@
                                             <tr>
                                                 <th scope="row">{{$idx+1}}</th>
                                                 <td>{{$order->code}}</td>
+                                                <td>{{$order->lastStatus}}</td>
                                                 <td>{{$order->created_at}}</td>
                                               
                                             </tr>
