@@ -28,10 +28,10 @@
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
-                                            <a href="{{route('admin.client.index')}}" class="nk-menu-link"><span class="nk-menu-text">Company</span></a>
+                                            <a href="{{route('admin.client.index')}}" class="nk-menu-link"><span class="nk-menu-text">Clients</span></a>
                                         </li>
                                         <li class="nk-menu-item">
-                                            <a href="{{route('admin.order.index')}}" class="nk-menu-link"><span class="nk-menu-text">Shop</span></a>
+                                            <a href="{{route('admin.order.index')}}" class="nk-menu-link"><span class="nk-menu-text">Orders</span></a>
                                         </li>
                                         
                                     </ul><!-- .nk-menu-sub -->
