@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string("client")->nullable();
             $table->string("phone")->nullable();
             $table->text("address")->nullable();
-            
             $table->text('comment')->nullable();
             $table->text('fiscal')->nullable();
             $table->timestamps();

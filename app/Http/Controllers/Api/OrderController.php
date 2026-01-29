@@ -138,4 +138,25 @@ class OrderController extends Controller
     {
         //
     }
+    public function getCashDesk($id){
+        $order=Order::where('code',$id)->with(['items.item','lastStatus','status'])->first();
+        //dd($is_order);
+        if($order){
+            return response()->json([
+                'status'=>'ok',
+                'data'=>new OrderResource($order)
+            ],200);
+
+        }else{
+            return response()->json([
+                'status'=>'error',
+                'data'=>[
+                        "message"=>"order not fount"
+                ]
+            ],400);
+
+        }                                    
+
+        
+    }
 }

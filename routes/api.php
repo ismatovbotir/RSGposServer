@@ -39,7 +39,7 @@ Route::resource('/priceData',PriceDataController::class);
 Route::resource('/stock',StockController::class);
 Route::resource('/sell',SellController::class);
 
-Route::group(['prefix' => 'andalusGO'],function(){
+Route::group(['prefix' => 'mobApp'],function(){
     Route::post('/categories',[CategoryController::class,'categories']);
     Route::post('/items',[ItemController::class,'items']);
     Route::post('/prices',[PriceController::class,'prices']);
@@ -48,6 +48,12 @@ Route::group(['prefix' => 'andalusGO'],function(){
     Route::resource('/fiscal',FiscalController::class);
     Route::resource('/order',OrderController::class);
 });
+
+Route::group(['prefix' => 'cashDesk'],function(){
+    Route::resource('/order/{id}',OrderController::class);
+
+});
+
 
 Route::group(['prefix' => 'wolt'],function(){
     Route::post('/authorization',[WoltController::class,'authorization']);
