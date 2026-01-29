@@ -50,7 +50,7 @@ Route::group(['prefix' => 'mobApp'],function(){
 });
 
 Route::group(['prefix' => 'cashDesk'],function(){
-    Route::resource('/order/{id}',OrderController::class);
+    Route::resource('/order',OrderController::class);
 
 });
 
