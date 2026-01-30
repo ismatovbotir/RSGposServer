@@ -39,7 +39,7 @@ Route::resource('/priceData',PriceDataController::class);
 Route::resource('/stock',StockController::class);
 Route::resource('/sell',SellController::class);
 
-Route::group(['prefix' => 'mobApp'],function(){
+Route::group(['prefix' => 'mobApp','middleware'=>'api.logger'],function(){
     Route::post('/categories',[CategoryController::class,'categories']);
     Route::post('/items',[ItemController::class,'items']);
     Route::post('/prices',[PriceController::class,'prices']);

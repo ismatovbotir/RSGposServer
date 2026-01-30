@@ -128,7 +128,25 @@ class OrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $order=Order::where('code',$id)->first();
+        //dd($is_order);
+        if($order){
+
+            
+            return response()->json([
+                'status'=>'ok',
+                'data'=>new OrderResource($order)
+            ],200);
+
+        }else{
+            return response()->json([
+                'status'=>'error',
+                'data'=>[
+                        "message"=>"order not fount"
+                ]
+            ],400);
+
+        }
     }
 
     /**
