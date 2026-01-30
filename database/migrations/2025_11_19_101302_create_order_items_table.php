@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignUuid('order_id')->constrained();
             $table->foreignId('item_id')->constrained();
-            $table->double('order_qty',3);
-            $table->double('order_price',2);
-            $table->double('dilivery_qty',3)->default(0);
-            $table->double('dilivery_price',2)->default(0);
+            $table->decimal('order_qty',10,3);
+            $table->decimal('order_price',10,2);
+            $table->decimal('delivery_qty',10,3)->default(0);
+            $table->decimal('delivery_price',10,2)->default(0);
             $table->string('comment')->nullable();
             
             

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderStatus;
+use App\Models\Fiscal;
 
 class OrderController extends Controller
 {
@@ -96,7 +97,7 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        $order=Order::where('code',$id)->with(['items.item','lastStatus','status'])->first();
+        $order=Order::where('code',$id)->with(['items.item','lastStatus','status','fiscals'])->first();
         //dd($is_order);
         if($order){
             return response()->json([
@@ -128,11 +129,60 @@ class OrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $order=Order::where('code',$id)->first();
-        //dd($is_order);
+        $order=Order::where('code',$id)->with(['lastStatus'])->first();
+        $data=$request->all();
+        $status=$data['status'];
         if($order){
+            if($order->lastStatus->status!='new'){
+                if($status=="fiscal"){
+                    $order->update([
+                        'fiscal'=>$data['fiscal']
+                    ]);
+                    OrderStatus::create([
+                        "order_id"=>$order->id,
+                        "status"=>"fiscal"
+                    ]);
+                    Fiscal::create([
+                            'order_id'=>$order->id,
+                            'type'=>'tems',
+                            'fiscal_url'=>$data['fiscal']
 
-            
+                    ]);
+                    $o_items=$data["order_items"];
+                    foreach($o_items as $o_item){
+                        $order_item=OrderItem::where([
+                            ['order_id',$order->id],
+                            ['item_id',(int)$o_item['code']]
+                            ])->first();
+
+                        if($order_item){
+                            $order_item->update([
+                                "delivery_qty"=>$o_item["qty"],
+                                "delivery_price"=>$o_item["price"]  
+                            ]);
+
+                        }else{
+                            OrderItem::create([
+                                    "order_id"=>$order->id,
+                                    "item_id"=>(int)$o_item["code"],
+                                    "order_qty"=>$o_item["qty"],
+                                    "order_price"=>$o_item["price"],
+                                    "delivery_qty"=>$o_item["qty"],
+                                    "delivery_price"=>$o_item["price"]
+
+                            ]);
+                            
+                        }
+
+                    }
+
+                }
+
+
+
+            }
+
+
             return response()->json([
                 'status'=>'ok',
                 'data'=>new OrderResource($order)
@@ -156,25 +206,5 @@ class OrderController extends Controller
     {
         //
     }
-    public function getCashDesk($id){
-        $order=Order::where('code',$id)->with(['items.item','lastStatus','status'])->first();
-        //dd($is_order);
-        if($order){
-            return response()->json([
-                'status'=>'ok',
-                'data'=>new OrderResource($order)
-            ],200);
-
-        }else{
-            return response()->json([
-                'status'=>'error',
-                'data'=>[
-                        "message"=>"order not fount"
-                ]
-            ],400);
-
-        }                                    
-
-        
-    }
+    
 }
