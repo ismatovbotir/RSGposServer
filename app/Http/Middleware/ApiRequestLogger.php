@@ -19,14 +19,19 @@ class ApiRequestLogger
         
         $startTime = microtime(true);
         //dd($request->path());
-        $apiReqLog= ApiRequestLog::create([
-            'method'      => $request->method(),
-            'endpoint'    => $request->path(),
-            'ip'          => $request->ip(),
-            'status'      => 0,
-            'duration_ms' => 0,
-            'payload'     => $request->except(['token', 'password']),
-        ]);
+        try{
+            $apiReqLog= ApiRequestLog::create([
+                'method'      => $request->method(),
+                'endpoint'    => $request->path(),
+                'ip'          => $request->ip(),
+                'status'      => 0,
+                'duration_ms' => 0,
+                'payload'     => $request->except(['token', 'password']),
+            ]);
+        }catch(\Exception $e){
+
+        }
+        
         // Run controller + next middleware
         $response = $next($request);
 
@@ -34,11 +39,15 @@ class ApiRequestLogger
         $durationMs = (int) ((microtime(true) - $startTime) * 1000);
 
         // Save log safely
+        try{
+            $apiReqLog->update([
+                'status'      => $response->status(),
+                'duration_ms' => $durationMs
+            ]);
+        }catch(\Exception $e){
+
+        }
        
-        $apiReqLog->update([
-            'status'      => $response->status(),
-            'duration_ms' => $durationMs
-        ]);
 
         return $response;
         
