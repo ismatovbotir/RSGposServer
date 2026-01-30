@@ -168,7 +168,8 @@ class OrderController extends Controller
                                     "order_qty"=>$o_item["qty"],
                                     "order_price"=>$o_item["price"],
                                     "delivery_qty"=>$o_item["qty"],
-                                    "delivery_price"=>$o_item["price"]
+                                    "delivery_price"=>$o_item["price"],
+                                    "comment"=>"buyurtmada bolmagan maxsulot"
 
                             ]);
                             
