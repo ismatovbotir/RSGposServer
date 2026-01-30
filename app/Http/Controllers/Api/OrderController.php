@@ -168,6 +168,7 @@ class OrderController extends Controller
                     Fiscal::create([
                             'order_id'=>$order->id,
                             'type'=>'items',
+                            'total'=>$data['total'],
                             'fiscal_url'=>$data['fiscal']
 
                     ]);
