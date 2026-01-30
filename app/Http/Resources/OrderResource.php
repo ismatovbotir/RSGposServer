@@ -20,7 +20,7 @@ class OrderResource extends JsonResource
             'customer' => $this->customer_name,
             'total' => $this->total_price,
             'fiscal'=>$this->fiscal,
-            'current_status'=>$this->lastStatus,
+            'current_status'=>$this->lastStatus->status,
             // Items
             'items' => OrderItemResource::collection($this->items),
             
