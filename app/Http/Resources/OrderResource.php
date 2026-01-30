@@ -26,7 +26,8 @@ class OrderResource extends JsonResource
             
             // Last Status
            // 'current_status' =>  new OrderStatusResource($this->whenLoaded('lastStatus')),
-            'statuses'=>OrderStatusResource::collection($this->status)
+            'statuses'=>OrderStatusResource::collection($this->status),
+            'fiscals'=>OrderFiscalResource::collection($this->fiscals)
         ];
     }
 }

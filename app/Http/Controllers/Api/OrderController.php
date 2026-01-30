@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderStatus;
 use App\Models\Fiscal;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
@@ -129,6 +130,28 @@ class OrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validator = Validator::make($request->all(), [
+            'status' => 'required|string|in:fiscal,draft,completed',
+            
+            'fiscal' => 'required_if:status,fiscal|url',
+        
+            'order_items' => 'required|array|min:1',
+        
+            
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json([
+                'status'=>'error',
+                'data'=>[
+                        "message"=> $validator->errors()
+                ]
+            ], 422);
+        }
+        
+        $data = $validator->validated();
+        
+        
         $order=Order::where('code',$id)->with(['lastStatus'])->first();
         $data=$request->all();
         $status=$data['status'];
