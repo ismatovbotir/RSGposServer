@@ -156,7 +156,7 @@ class OrderController extends Controller
         $data=$request->all();
         $status=$data['status'];
         if($order){
-            if($order->lastStatus->status!='new'){
+            if($order->lastStatus->status=='new'){
                 if($status=="fiscal"){
                     $order->update([
                         'fiscal'=>$data['fiscal']
