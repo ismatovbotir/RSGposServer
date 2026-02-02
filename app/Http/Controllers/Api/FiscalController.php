@@ -42,12 +42,14 @@ class FiscalController extends Controller
         //$resData=[];
         $data=$request->all();
         
-        $order_id = $data['order_id'] ?? null;
-        if($order_id!=null){
-            $order=Order::where('code',$order_id)->with('fiscals')->first();
+        $order_code = $data['order_id'] ?? null;
+        if($order_code!=null){
+            $order=Order::where('code',$order_code)->with('fiscals')->first();
             if(!$order){
                 $order_id=null;
 
+            }else{
+                $order_id=$order->id;
             }
         }
         $fiscal_data=$data['fiscal_data'];
