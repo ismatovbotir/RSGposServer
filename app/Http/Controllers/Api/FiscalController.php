@@ -44,7 +44,7 @@ class FiscalController extends Controller
         
         $order_id = $data['order_id'] ?? null;
         if($order_id!=null){
-            $order=Order::where('id',$order_id)->with('fiscals')->first();
+            $order=Order::where('code',$order_id)->with('fiscals')->first();
             if(!$order){
                 $order_id=null;
 
