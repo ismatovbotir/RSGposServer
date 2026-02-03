@@ -266,4 +266,98 @@ class FiscalController extends Controller
     {
         //
     }
+
+    public function openShift(){
+        $body=[
+            "token"=> "DXJFX32CN1296678504F2",
+            "method"=> "openZreport"
+
+        ];
+        $response = Http::post($this->url, $body);
+
+        if($response->successful()){
+
+            //dd($response->body());
+            $data = $response->json();
+            if($data['error']==false){
+                $res['status']='ok';
+                $res['data']=$data;
+            }else{
+                $res['status']='error';
+                $res['data']=$data;
+            }
+        }else{
+            $res['status']='error';
+            $res['url']=$response->status();
+
+
+        }
+
+        return $res;
+            
+        
+
+    }
+    public function closeShift(){
+        $body=[
+            "token"=> "DXJFX32CN1296678504F2",
+		    "method"=> "closeZreport"
+
+        ];
+        $response = Http::post($this->url, $body);
+
+        if($response->successful()){
+
+            //dd($response->body());
+            $data = $response->json();
+            if($data['error']==false){
+                $res['status']='ok';
+                $res['data']=$data;
+            }else{
+                $res['status']='error';
+                $res['data']=$data;
+            }
+        }else{
+            $res['status']='error';
+            $res['url']=$response->status();
+
+
+        }
+
+        return $res;
+            
+        
+
+    }
+    public function checkStatus(){
+        $body=[
+            "token"=> "DXJFX32CN1296678504F2",
+            "method"=> "checkStatus"
+
+        ];
+        $response = Http::post($this->url, $body);
+
+        if($response->successful()){
+
+            //dd($response->body());
+            $data = $response->json();
+            if($data['error']==false){
+                $res['status']='ok';
+                $res['data']=$data;
+            }else{
+                $res['status']='error';
+                $res['data']=$data;
+            }
+        }else{
+            $res['status']='error';
+            $res['url']=$response->status();
+
+
+        }
+
+        return $res;
+            
+        
+
+    }
 }

@@ -5,14 +5,14 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Http\Controllers\Api\FiscalController;
 
-class Fiscal extends Command
+class FiscalOpen extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'fiscal';
+    protected $signature = 'shiftopen';
 
     /**
      * The console command description.
@@ -27,7 +27,7 @@ class Fiscal extends Command
     public function handle()
     {
         $fiscal = app(FiscalController::class);
-        $res = $fiscal->checkStatus();
+        $res = $fiscal->openShift();
         $this->info($res);
     }
 }
