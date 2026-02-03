@@ -12,7 +12,7 @@ class FiscalClose extends Command
      *
      * @var string
      */
-    protected $signature = 'app:fiscal-close';
+    protected $signature = 'shiftclose';
 
     /**
      * The console command description.
