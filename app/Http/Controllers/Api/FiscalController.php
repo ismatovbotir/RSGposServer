@@ -14,8 +14,12 @@ class FiscalController extends Controller
      * Display a listing of the resource.
     
      */
-    public $url='http://integration.epos.uz:8347/uzpos';
+    public $url='';
 
+    public function __construct()
+    {
+        $this->url='http://'.env('EPOS').':8347/uzpos';
+    }
     public function index()
     {
         return response()->json([
