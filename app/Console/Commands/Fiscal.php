@@ -28,6 +28,6 @@ class Fiscal extends Command
     {
         $fiscal = app(FiscalController::class);
         $res = $fiscal->checkStatus();
-        $this->info($res);
+        $this->info(json_encode($res, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 }

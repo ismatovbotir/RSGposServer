@@ -28,6 +28,6 @@ class FiscalOpen extends Command
     {
         $fiscal = app(FiscalController::class);
         $res = $fiscal->openShift();
-        $this->info($res);
+        $this->info(json_encode($res, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 }
