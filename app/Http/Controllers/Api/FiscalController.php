@@ -199,16 +199,16 @@ class FiscalController extends Controller
                                 "ЦОТУ"=> "E-POS Systems LLC",
                                 "Модель виртуальной кассы"=> "E-POS"
                                 ]
-            ]
-            // "extraInfo"=> [
+            ],
+            "extraInfo"=> [
             //     "tin"=> "915673415",
             //     "pinfl"=> "12345678901234",
             //     "phoneNumber"=> "998991234567",
             //     "carNumber"=> "01A123BC",
             //     "cashedOutFromCard"=> 200000,
-            //     "cardType"=> 2,
+                   "cardType"=> $payments['type']
             //     "pptid"=> "1212322112"
-            // ]
+            ]
         ];
         $response = Http::post($this->url, $body);
 
