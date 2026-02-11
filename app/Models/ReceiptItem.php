@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ReceiptItem extends Model
 {
     use HasFactory;
+    public $guarded=[];
+
+    public function receipt(){
+        return $this->belongsTo(Receipt::class);
+    }
 }

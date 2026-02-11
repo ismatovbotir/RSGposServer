@@ -13,6 +13,31 @@ return new class extends Migration
     {
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
+            $table->string('no')->nullalbe();
+            $table->string('barcode')->nullalbe();
+            $table->string('shift')->nullalbe();
+            
+            $table->dateTime('dateOpen')->nullable();
+            $table->dateTime('dateClose')->nullable();
+            $table->string('type')->default('sell');
+            $table->string('cashier')->nullable();
+            $table->string('consultant')->nullable();
+            $table->foreignId('shop_id')->nullable()->constrained();
+            $table->foreignId('pos_id')->nullable()->constrained();
+            $table->boolean('status')->default(true);//cancel
+            $table->string('client_id')->nullable();
+            $table->string('client_card')->nullable();
+            $table->string('client_name')->nullable();
+            $table->string('client_phone')->nullable();
+            $table->decimal('sub_total',15,2)->default(0);
+            $table->decimal('discount',15,2)->default(0);
+            $table->decimal('total',15,2);
+            $table->string('fiscal')->nullable();
+
+
+            
+
+
             $table->timestamps();
         });
     }

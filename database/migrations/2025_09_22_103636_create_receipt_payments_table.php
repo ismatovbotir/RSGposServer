@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('receipt_payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('receipt_id');
+            $table->string('type')->default('cash');
+            $table->decimal('value');
+           
             $table->timestamps();
         });
     }

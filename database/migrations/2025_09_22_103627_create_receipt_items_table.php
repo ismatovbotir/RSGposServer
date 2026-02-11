@@ -13,6 +13,22 @@ return new class extends Migration
     {
         Schema::create('receipt_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('receipt_id');
+            $table->foreignId('item_id')->constrained();
+            $table->foreignId('attribute_id')->nullable()->constrained();
+            $table->boolean('status')->default(true);
+            $table->decimal('qty',10,3);
+            $table->decimal('price',15,3);
+            $table->decimal('sub_total',15,3)->default(0);
+            $table->decimal('discount',15,3)->default(0);
+            $table->decimal('round',8,3)->default(0);
+            $table->decimal('total',8,3)->default(0);
+            
+            
+            
+            
+            
+
             $table->timestamps();
         });
     }
