@@ -28,4 +28,8 @@ class Shop extends Model
         
         return $this->hasMany(Sell::class);
     }
+    public function pos(){
+        return $this->hasMany(Pos::class);
+    }
+
 }

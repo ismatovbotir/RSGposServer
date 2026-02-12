@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
-            $table->string('no')->nullalbe();
-            $table->string('barcode')->nullalbe();
-            $table->string('shift')->nullalbe();
+            $table->string('no')->nullable();
+            $table->string('barcode')->nullable();
+            $table->string('shift')->nullable();
             
             $table->dateTime('dateOpen')->nullable();
             $table->dateTime('dateClose')->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('consultant')->nullable();
             $table->foreignId('shop_id')->nullable()->constrained();
             $table->foreignId('pos_id')->nullable()->constrained();
-            $table->boolean('status')->default(true);//cancel
+            $table->boolean('status')->default(true);
             $table->string('client_id')->nullable();
             $table->string('client_card')->nullable();
             $table->string('client_name')->nullable();

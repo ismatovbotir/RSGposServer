@@ -13,7 +13,10 @@ class StockController extends Controller
      */
     public function index()
     {
-        //
+        Stock::update([
+            'qty'=>0,
+            'cost'=>0
+        ]);
     }
 
     /**

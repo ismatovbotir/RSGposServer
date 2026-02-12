@@ -12,9 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pos', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
+            $table->uuid('uuid')->unique();
+            $table->foreignId('shop_id')->constrained();
+            $table->string('code');
+            
+            $table->string('name');
             
             $table->timestamps();
+            $table->unique(['shop_id', 'code']);
         });
     }
 
