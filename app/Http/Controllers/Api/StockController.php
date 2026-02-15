@@ -47,7 +47,12 @@ class StockController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return response()->json(['status' => 'done','data'=>$id]);
+        Stock::where('stock_date','<>',$id)->update([
+            'qty'=>0,
+            'cost'=>0
+        ]);
+        return response()->json(['status' => 'done']);
     }
 
     /**
