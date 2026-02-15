@@ -133,7 +133,7 @@ class OrderController extends Controller
         $validator = Validator::make($request->all(), [
             'status' => 'required|string|in:fiscal,draft,completed',
             
-            'fiscal' => 'required_if:status,fiscal|url',
+            //'fiscal' => 'required_if:status,fiscal|url',
         
             'order_items' => 'required|array|min:1',
         
