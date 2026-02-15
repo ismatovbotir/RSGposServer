@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         ->dailyAt('03:00')   // каждый день в 3 ночи
         ->withoutOverlapping()
         ->runInBackground();
+        $schedule->command('cleanupApiLogs')->daily();
 }
     /**
      * Register the commands for the application.
