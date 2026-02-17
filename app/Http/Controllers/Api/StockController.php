@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Stock;
+use App\Models\StockData;
 use Illuminate\Http\Request;
 
 class StockController extends Controller
@@ -39,6 +40,13 @@ class StockController extends Controller
             ['qty','cost']
 
         );
+        StockData::upsert(
+            $data,
+            ['item_id','shop_id','stock_date'],
+            ['qty','cost']
+
+        );
+
         return response()->json(['status' => 'done']);
     }
 
