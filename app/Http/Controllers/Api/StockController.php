@@ -43,7 +43,7 @@ class StockController extends Controller
         StockData::upsert(
             $data,
             ['item_id','shop_id','stock_date'],
-            ['qty','cost']
+            ['qty','cost'] 
 
         );
 
