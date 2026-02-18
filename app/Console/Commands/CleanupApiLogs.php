@@ -33,7 +33,8 @@ class CleanupApiLogs extends Command
 
         Http::post("https://api.telegram.org/bot8050191968:AAFp2gr1xhqCmOk8tAM32DB1cGF7a-3DUdU/sendMessage", [
             'chat_id' => 1936361,
-            'text' => 'Log Tozalandi',]);
+            'text' => "Log Tozalandi: {$deleted}",
+        ]);
 
     $this->info("Deleted {$deleted} old api logs.");
 
