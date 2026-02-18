@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Wolt;
 use App\Models\WoltToken;
 use App\Models\WoltUser;
+use App\Models\WoltWebhook;
 use Illuminate\Support\Facades\Http;
 
 class WoltController extends Controller
@@ -98,11 +99,41 @@ class WoltController extends Controller
         }
     }
 
+    
     public function woltWebhookOrders(Request $request)
     {
+        $headerKey = $request->header('X-API-Key');
 
-        return response()->json(['status' => 'done', 'data' => $request->all()]);
+        if (!$headerKey || $headerKey !== env('WOLT', "c4a7f8d1b0f45a9f3e6de8a3c22e7df9ff0e76a80b1b6f40b1f9a1227e36b142")) {
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'missing X-API-Key',
+            ], 401); // 401 Unauthorized
+        }
+
+        $data = $request->all();
+        try {
+            WoltWebhook::create(
+                [
+                    'webhook_id'=>$data['id'],
+                    'type'=>$data['type'],
+                    'order_id'=>$data['order']['id'],
+                    'order_venue_id'=>$data['order']['venue_id'],
+                    'order_status'=>$data['order']['status'],
+                    'resource_url'=>$data['resource_url']
+
+                ]
+            );
+            return response()->json(["status" => "success"], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                "status" => "error",
+                "message" => $e->getMessage()
+            ], 500);
+        }
     }
+
+
 
     public function woltToken()
     {
