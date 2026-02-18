@@ -38,6 +38,7 @@ Route::resource('/barcode',BarcodeController::class);
 Route::resource('/priceData',PriceDataController::class);
 Route::resource('/stock',StockController::class);
 Route::resource('/sell',SellController::class);
+Route::resource('/receipt',ReceiptController::class);
 
 Route::group(['prefix' => 'mobApp','middleware'=>'api.logger'],function(){
     Route::post('/categories',[CategoryController::class,'categories']);
@@ -64,7 +65,18 @@ Route::group(['prefix' => 'wolt'],function(){
 });
 
 
+Route::fallback(function (Request $request) {
+    // Проверяем, ожидает ли клиент JSON (например, API-запрос)
+    if ($request->expectsJson()) {
+        return response()->json([
+            'error' => 'Страница не найдена',
+            'code' => 404,
+        ], 404);
+    }
 
+    // Для обычных web-запросов — возвращаем шаблон 404
+    return response()->view('errors.404', [], 404);
+});
 
 //Route::post('/items',[ItemController::class,'itemsarr']);
 
