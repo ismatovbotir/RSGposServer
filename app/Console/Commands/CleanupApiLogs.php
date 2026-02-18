@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\ApiRequestLog;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Http;
 
 class CleanupApiLogs extends Command
 {
@@ -29,6 +30,10 @@ class CleanupApiLogs extends Command
     {
         $deleted = ApiRequestLog::where('created_at', '<', Carbon::now()->subDays(7))
         ->delete();
+
+        Http::post("https://api.telegram.org/bot8050191968:AAFp2gr1xhqCmOk8tAM32DB1cGF7a-3DUdU/sendMessage", [
+            'chat_id' => 1936361,
+            'text' => 'Log Tozalandi',]);
 
     $this->info("Deleted {$deleted} old api logs.");
 
