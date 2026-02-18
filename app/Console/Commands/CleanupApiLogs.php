@@ -28,7 +28,7 @@ class CleanupApiLogs extends Command
      */
     public function handle()
     {
-        $deleted = ApiRequestLog::where('created_at', '<', Carbon::now()->subDays(7))
+        $deleted = ApiRequestLog::where('created_at', '<', Carbon::now()->subDays(5))
         ->delete();
 
         Http::post("https://api.telegram.org/bot8050191968:AAFp2gr1xhqCmOk8tAM32DB1cGF7a-3DUdU/sendMessage", [

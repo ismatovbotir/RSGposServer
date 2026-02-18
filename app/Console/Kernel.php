@@ -17,7 +17,7 @@ class Kernel extends ConsoleKernel
         ->withoutOverlapping()
         ->runInBackground();
     $schedule->command('cleanupApiLogs')
-        ->dailyAt('02:00')
+        ->hourly()
         ->runInBackground();
 }
     /**
