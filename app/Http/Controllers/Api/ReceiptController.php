@@ -8,6 +8,7 @@ use App\Models\Receipt;
 use App\Models\ReceiptItem;
 use App\Models\ReceiptPayment;
 use App\Models\Shop;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReceiptController extends Controller
@@ -56,8 +57,8 @@ class ReceiptController extends Controller
                 'barcode'=>$data['barcode'],
                 'shift'=>$data['shift'],
                 
-                'dateOpen'=>'',
-                'dateClose'=>'',
+                //'dateOpen'=>'',
+                //'dateClose'=>'',
                 'type'=>$data['type'],
                 'cashier'=>$data['cashier'],
                 'consultant'=>$data['consultant'],
@@ -149,5 +150,33 @@ class ReceiptController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function frontolDate($value){
+        if (!$value) {
+            return null;
+        }
+
+        $value = trim($value);
+
+        try {
+            // Если год 2-значный
+            if (preg_match('/\d{2}\.\d{2}\.\d{2}\s\d{2}:\d{2}:\d{2}/', $value)) {
+                $date = Carbon::createFromFormat('d.m.y H:i:s', $value);
+            }
+            // Если год 4-значный
+            elseif (preg_match('/\d{2}\.\d{2}\.\d{4}\s\d{2}:\d{2}:\d{2}/', $value)) {
+                $date = Carbon::createFromFormat('d.m.Y H:i:s', $value);
+            } else {
+                return null;
+            }
+
+            return $date->format('Y-m-d H:i:s');
+
+        } catch (\Exception $e) {
+            return null;
+        }
+    
+
     }
 }

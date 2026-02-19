@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('receipt_id');
             $table->foreignId('item_id')->constrained();
             $table->string('gtin')->nullable();
-            
             $table->foreignId('attribute_id')->nullable()->constrained();
             $table->boolean('status')->default(true);
             $table->decimal('qty',10,3);

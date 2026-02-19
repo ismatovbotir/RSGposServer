@@ -13,7 +13,7 @@ class WoltTokenRefresh extends Command
      *
      * @var string
      */
-    protected $signature = 'wolttokenrefresh';
+    protected $signature = 'wolt:tokenrefresh';
 
     /**
      * The console command description.
