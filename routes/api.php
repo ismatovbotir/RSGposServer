@@ -12,7 +12,7 @@ use App\Http\Controllers\Api\ShopController;
 use App\Http\Controllers\Api\StockController;
 use App\Http\Controllers\Api\WoltController;
 use App\Http\Controllers\Api\FiscalController;
-use App\Http\Controllers\API\ReceiptController;
+use App\Http\Controllers\Api\ReceiptController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
