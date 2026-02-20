@@ -52,7 +52,7 @@ Route::group(['prefix' => 'mobApp','middleware'=>'api.logger'],function(){
 
 Route::group(['prefix' => 'cashDesk'],function(){
     Route::resource('/order',OrderController::class);
-    Route::resource('/receipt',ReceiptController::class);
+    //Route::resource('/receipt',ReceiptController::class);
 
 
 });
