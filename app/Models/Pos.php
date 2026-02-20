@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pos extends Model
 {
-    use HasFactory,HasUuids;
+    use HasFactory;
     public $guarded=[];
     
     public function shop(){
