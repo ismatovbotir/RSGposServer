@@ -83,7 +83,7 @@ class ReceiptController extends Controller
         foreach($items as $item){
             ReceiptItem::create([
                 'receipt_id'=>$receipt->id,
-                'item_id'=>$item["item_id"],
+                'item_id'=>$item["item"],
                 'status'=>$item['status'],
                 'qty'=>$item['qty'],
                 'price'=>$item['price'],
