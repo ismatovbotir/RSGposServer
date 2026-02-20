@@ -118,7 +118,7 @@ class ReceiptController extends Controller
                 "data"=>[
                         "error"=>$e->getMessage()
                 ]
-            ],500);
+            ],505);
             
         }
     }
