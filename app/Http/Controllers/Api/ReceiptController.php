@@ -51,12 +51,13 @@ class ReceiptController extends Controller
                     'name' => "Pos-".$data['pos']
                 ]  // создаём если нет
             );
-           $receipt=Receipt::create(
+           $receiptDate=$this->frontolDate($data['dateOpen']);
+            $receipt=Receipt::create(
             [
                 'no'=>$data['no'],
                 'barcode'=>$data['barcode'],
                 'shift'=>$data['shift'],
-                
+                'receipt_date'=>$receiptDate,
                 //'dateOpen'=>'',
                 //'dateClose'=>'',
                 'type'=>$data['type'],
@@ -71,8 +72,10 @@ class ReceiptController extends Controller
                 //'client_phone'=>nullable();
                 'sub_total'=>$data['sub_total'],
                 'discount'=>$data['discount'],
-                'total'=>$data['total']
-                //'fiscal'
+                'total'=>$data['total'],
+                'created_at'=>$receiptDate,
+                'updated_at'=>now(),
+                'fiscal'=>$data['fiscal']
 
             ]
         );

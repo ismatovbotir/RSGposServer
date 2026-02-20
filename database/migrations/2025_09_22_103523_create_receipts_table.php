@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('no')->nullable();
             $table->string('barcode')->nullable();
             $table->string('shift')->nullable();
-            
+            $table->date('receipt_date');
             $table->dateTime('dateOpen')->nullable();
             $table->dateTime('dateClose')->nullable();
             $table->string('type')->default('sell');
@@ -33,12 +33,8 @@ return new class extends Migration
             $table->decimal('discount',15,2)->default(0);
             $table->decimal('total',15,2);
             $table->string('fiscal')->nullable();
-
-
-            
-
-
             $table->timestamps();
+            $table->unique(['receipt_date','barcode','shop_id','pos_id']);
         });
     }
 
