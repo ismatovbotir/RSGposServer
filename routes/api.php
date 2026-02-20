@@ -38,7 +38,7 @@ Route::resource('/barcode',BarcodeController::class);
 Route::resource('/priceData',PriceDataController::class);
 Route::resource('/stock',StockController::class);
 Route::resource('/sell',SellController::class);
-Route::resource('/receipt',ReceiptController::class);
+//Route::resource('/receipt',ReceiptController::class);
 
 Route::group(['prefix' => 'mobApp','middleware'=>'api.logger'],function(){
     Route::post('/categories',[CategoryController::class,'categories']);
@@ -52,7 +52,7 @@ Route::group(['prefix' => 'mobApp','middleware'=>'api.logger'],function(){
 
 Route::group(['prefix' => 'cashDesk'],function(){
     Route::resource('/order',OrderController::class);
-    //Route::resource('/receipt',ReceiptController::class);
+    Route::resource('/receipt',ReceiptController::class);
 
 
 });
