@@ -27,7 +27,7 @@ class WoltStock extends Command
      */
     public function handle()
     {
-        $items=Shop::all();
+        $items=Item::select('id as external_id')->with('inventory')->get();
         $this->info($items);
     }
 }

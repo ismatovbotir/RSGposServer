@@ -45,6 +45,13 @@ class Item extends Model
         ->where('shop_id', $shop_id)
         ->latest('stock_date'); // latest by date
     }
+    public function inventory()
+    {
+        $shop_id=env('SHOP',1);
+        return $this->hasOne(Stock::class)
+        ->where('shop_id', $shop_id)
+        ->latest('stock_date'); // latest by date
+    }
     public function order(){
         return $this->hasOne(OrderItem::class);
     }
