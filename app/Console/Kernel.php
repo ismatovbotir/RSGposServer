@@ -16,7 +16,13 @@ class Kernel extends ConsoleKernel
         ->dailyAt('03:00')   // каждый день в 3 ночи
         ->withoutOverlapping()
         ->runInBackground();
-    $schedule->command('cleanupApiLogs')
+    
+        $schedule->command('wolt:stock')
+        ->hourly()
+        ->between('6:00', '23:00')
+        ->runInBackground();
+    
+        $schedule->command('cleanupApiLogs')
         ->hourly()
         ->runInBackground();
 }

@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use App\Models\Item;
 use App\Models\Shop;
 use App\Models\Stock;
-
+use Illuminate\Support\Facades\Http;
 
 class WoltStock extends Command
 {
@@ -43,6 +43,10 @@ class WoltStock extends Command
         $wolt= new WoltController;
         $res=$wolt->woltStockUpload(['data'=>$stock->toArray()]);
         
+        Http::post("https://api.telegram.org/bot8050191968:AAFp2gr1xhqCmOk8tAM32DB1cGF7a-3DUdU/sendMessage", [
+            'chat_id' => 125538059,
+            'text' => "WOLT - {$stock->count} ta maxsulot qoldigi yuklandi. status: {$res->status()}",
+        ]); 
         $this->info($stock->count());
     }
 }
