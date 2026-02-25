@@ -43,6 +43,6 @@ class WoltStock extends Command
         $wolt= new WoltController;
         $res=$wolt->woltStockUpload(['data'=>$stock->toArray()]);
         
-        $this->info($res);
+        $this->info($res->status());
     }
 }
