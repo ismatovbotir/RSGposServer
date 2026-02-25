@@ -213,6 +213,17 @@ class WoltController extends Controller
         
         return $response;
     }
+    public function woltPriceUpload($body)
+    {
+        $wolt_token = WoltToken::first();
+        $response = Http::withHeaders([
+                            'Content-Type'=>'application/json',
+                            'Authorization'=>'Bearer '.$wolt_token->access_token
+                        ])
+                        ->patch('https://pos-integration-service.wolt.com/venues/$venueId/options/values', $body);
+        
+        return $response;
+    }
 
    
 }

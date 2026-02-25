@@ -19,7 +19,11 @@ class Kernel extends ConsoleKernel
     
         $schedule->command('wolt:stock')
         ->hourly()
-        ->between('6:00', '23:00')
+        ->between('6:55', '23:59')
+        ->runInBackground();
+        $schedule->command('wolt:price')
+        ->hourly()
+        ->between('6:45', '23:50')
         ->runInBackground();
     
         $schedule->command('cleanupApiLogs')
