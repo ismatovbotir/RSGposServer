@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Item;
 use App\Models\Shop;
+use App\Models\Stock;
 
 class WoltStock extends Command
 {
@@ -27,7 +28,7 @@ class WoltStock extends Command
      */
     public function handle()
     {
-        $items=Item::select('id as external_id')->with('inventory')->get();
-        $this->info($items);
+        $stock=Stock::all();
+        $this->info($stock);
     }
 }

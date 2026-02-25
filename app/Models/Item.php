@@ -50,7 +50,7 @@ class Item extends Model
         $shop_id=1;
         return $this->hasOne(Stock::class)
         ->where('shop_id', $shop_id)
-        ->latest('stock_date'); // latest by date
+        ->latestOfMany('stock_date'); // latest by date
     }
     public function order(){
         return $this->hasOne(OrderItem::class);
