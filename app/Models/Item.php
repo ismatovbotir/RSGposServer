@@ -47,7 +47,7 @@ class Item extends Model
     }
     public function inventory()
     {
-        $shop_id=env('SHOP',1);
+        $shop_id=1;
         return $this->hasOne(Stock::class)
         ->where('shop_id', $shop_id)
         ->latest('stock_date'); // latest by date
