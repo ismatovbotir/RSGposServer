@@ -36,6 +36,7 @@ class WoltStock extends Command
                 ])
                 ->where('shop_id',1)
                 ->where('stock_date', Carbon::today())
+                ->where('qty',0)
                 ->get();
         $this->info($stock);
     }
