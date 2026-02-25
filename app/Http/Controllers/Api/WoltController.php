@@ -202,6 +202,17 @@ class WoltController extends Controller
 
         return 0;
     }
+    public function woltStockUpload($body)
+    {
+        $wolt_token = WoltToken::first();
+        $response = Http::withHeaders([
+                            'Content-Type'=>'application/json',
+                            'Authorization'=>'Bearer '.$wolt_token->access_token
+                        ])
+                        ->patch('https://pos-integration-service.wolt.com/venues/$venueId/items/inventory', $body);
+        
+        return $response;
+    }
 
    
 }

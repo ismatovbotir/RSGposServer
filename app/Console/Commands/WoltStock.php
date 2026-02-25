@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Http\Controllers\Api\WoltController;
 use Carbon\Carbon;
 use App\Models\Item;
 use App\Models\Shop;
@@ -36,8 +37,12 @@ class WoltStock extends Command
                 ])
                 ->where('shop_id',1)
                 ->where('stock_date', Carbon::today())
-                ->where('qty',0)
+                //->where('qty',0)
                 ->get();
-        $this->info($stock);
+
+        $wolt= new WoltController;
+        $res=$wolt->woltStockUpload(['data'=>$stock->toArray()]);
+        
+        $this->info($res);
     }
 }
