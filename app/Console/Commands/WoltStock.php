@@ -3,9 +3,11 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Carbon\Carbon;
 use App\Models\Item;
 use App\Models\Shop;
 use App\Models\Stock;
+
 
 class WoltStock extends Command
 {
@@ -28,7 +30,13 @@ class WoltStock extends Command
      */
     public function handle()
     {
-        $stock=Stock::all();
+        $stock=Stock::select([
+                'item_id as external_id',
+                'qty as inventory'
+                ])
+                ->where('shop_id',1)
+                ->where('stock_date', Carbon::today())
+                ->get();
         $this->info($stock);
     }
 }
