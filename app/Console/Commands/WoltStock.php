@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Item;
+use App\Models\Shop;
 
 class WoltStock extends Command
 {
@@ -26,7 +27,7 @@ class WoltStock extends Command
      */
     public function handle()
     {
-        $items=Item::all();
-        $this->info($item);
+        $items=Shop::all();
+        $this->info($items);
     }
 }
