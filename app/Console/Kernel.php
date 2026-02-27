@@ -17,13 +17,11 @@ class Kernel extends ConsoleKernel
         ->withoutOverlapping()
         ->runInBackground();
     
-        $schedule->command('wolt:stock')
-        ->hourly()
-        ->between('6:55', '23:59')
+        $schedule->command('shiftclose')
+        ->dailyAt('05:55')
         ->runInBackground();
-        $schedule->command('wolt:price')
-        ->hourly()
-        ->between('6:45', '23:50')
+        $schedule->command('shiftopen')
+        ->dailyAt('05:56')
         ->runInBackground();
     
         $schedule->command('cleanupApiLogs')
