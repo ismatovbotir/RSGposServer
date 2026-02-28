@@ -16,7 +16,7 @@ class VerifyXToken
     public function handle(Request $request, Closure $next): Response
     {
         $token = $request->header('Authorization');
-        if (!$token || $token !== config('services.api.token')) {
+        if (!$token || $token !== 'Bearer '.config('services.api.token')) {
              return response()->json([
                  'message' => 'Unauthorized'
              ], 401);
