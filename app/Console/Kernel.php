@@ -24,9 +24,9 @@ class Kernel extends ConsoleKernel
         ->dailyAt('05:56')
         ->runInBackground();
     
-        $schedule->command('cleanupApiLogs')
-        ->hourly()
-        ->runInBackground();
+        // $schedule->command('cleanupApiLogs')
+        // ->hourly()
+        // ->runInBackground();
 }
     /**
      * Register the commands for the application.

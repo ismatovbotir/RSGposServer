@@ -66,6 +66,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         'api.logger' => \App\Http\Middleware\ApiRequestLogger::class,
+        'local.api' => \App\Http\Middleware\LocalOnly::class,
+        'x.token' => \App\Http\Middleware\VerifyXToken::class,
 
     ];
 }

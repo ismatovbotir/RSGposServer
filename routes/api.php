@@ -27,20 +27,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/price-check',[PriceController::class,'priceCheck']);
+Route::group(['middleware'=>'local.api'],function(){
 
-Route::resource('/price',PriceController::class);
-Route::resource('/shop',ShopController::class);
-Route::resource('/partner',PartnerController::class);
-Route::resource('/category',CategoryController::class);
-Route::resource('/item',ItemController::class);
-Route::resource('/barcode',BarcodeController::class);
-Route::resource('/priceData',PriceDataController::class);
-Route::resource('/stock',StockController::class);
-Route::resource('/sell',SellController::class);
+    Route::post('/price-check',[PriceController::class,'priceCheck']);
+    Route::resource('/price',PriceController::class);
+    Route::resource('/shop',ShopController::class);
+    Route::resource('/partner',PartnerController::class);
+    Route::resource('/category',CategoryController::class);
+    Route::resource('/item',ItemController::class);
+    Route::resource('/barcode',BarcodeController::class);
+    Route::resource('/priceData',PriceDataController::class);
+    Route::resource('/stock',StockController::class);
+    Route::resource('/sell',SellController::class);
 //Route::resource('/receipt',ReceiptController::class);
+});
 
-Route::group(['prefix' => 'mobApp','middleware'=>'api.logger'],function(){
+
+Route::group(['prefix' => 'mobApp','middleware'=>'x.token'],function(){
     Route::post('/categories',[CategoryController::class,'categories']);
     Route::post('/items',[ItemController::class,'items']);
     Route::post('/prices',[PriceController::class,'prices']);
@@ -50,7 +53,7 @@ Route::group(['prefix' => 'mobApp','middleware'=>'api.logger'],function(){
     Route::resource('/order',OrderController::class);
 });
 
-Route::group(['prefix' => 'cashDesk'],function(){
+Route::group(['prefix' => 'cashDesk','middleware'=>'local.api'],function(){
     Route::resource('/order',OrderController::class);
     Route::resource('/receipt',ReceiptController::class);
 
@@ -58,11 +61,11 @@ Route::group(['prefix' => 'cashDesk'],function(){
 });
 
 
-Route::group(['prefix' => 'wolt'],function(){
-    Route::post('/authorization',[WoltController::class,'authorization']);
-    Route::post('/webhook/orders',[WoltController::class,'woltWebhookOrders']);
+// Route::group(['prefix' => 'wolt'],function(){
+//     Route::post('/authorization',[WoltController::class,'authorization']);
+//     Route::post('/webhook/orders',[WoltController::class,'woltWebhookOrders']);
 
-});
+// });
 
 
 Route::fallback(function (Request $request) {
