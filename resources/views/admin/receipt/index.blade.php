@@ -22,7 +22,7 @@
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
                     <div class="row g-gs">
-                        @foreach($receipts as $receipt)
+                    @foreach($receipts as $receipt)
                         <div class="col-sm-6 col-lg-4 col-xxl-3">
 
                             <div class="card card-bordered h-100">
@@ -30,10 +30,10 @@
                                     <div class="project">
                                         <div class="project-head">
                                             <a href="{{route('admin.receipt.show',['receipt'=>$receipt->id])}}" class="project-title">
-                                                <div class="user-avatar sq bg-purple"><span>DD</span></div>
+                                               
                                                 <div class="project-info">
                                                     <h6 class="title">Shop {{$receipt->shop_id}}, Kassa-{{$receipt->pos_id}}</h6>
-                                                    <span class="sub-text">Kassir {{$receipt->cashier}}</span>
+                                                    <span class="sub-text">{{$receipt->cashier}}</span>
                                                 </div>
                                             </a>
                                             <div class="drodown">
@@ -53,7 +53,7 @@
                                         <div class="project-progress">
                                             <div class="project-progress-details">
                                                 <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>3 Tasks</span></div>
-                                                <div class="project-progress-percent">93.5%</div>
+                                                <div class="project-progress-percent">{{$receipt->total}}</div>
                                             </div>
                                             <div class="progress progress-pill progress-md bg-light">
                                                 <div class="progress-bar" data-progress="93.5" style="width: 93.5%;"></div>
@@ -77,9 +77,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-                    
                     @endforeach
                     </div>
                 </div><!-- .nk-block -->
