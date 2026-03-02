@@ -48,7 +48,9 @@
                                             </div>
                                         </div>
                                         <div class="project-details">
-                                            <p>Design and develop the DashLite template for Envato Marketplace.</p>
+                                            @foreach($receipt->payments as $payment)
+                                            <p>{{$payment}}</p>
+                                            @endforeach
                                         </div>
                                         <div class="project-progress">
                                             <div class="project-progress-details">
