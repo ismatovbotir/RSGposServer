@@ -49,7 +49,7 @@
                                         </div>
                                         <div class="project-details">
                                             @foreach($receipt->payments as $payment)
-                                            <p>{{$payment}}</p>
+                                            <p>{{$payment->type}}: {{$payment->value}}</p>
                                             @endforeach
                                         </div>
                                         <div class="project-progress">
