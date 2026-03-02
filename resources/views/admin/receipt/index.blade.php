@@ -56,10 +56,10 @@
                                                 <span>Total</span>
                                             </td>
                                             <td class="nk-tb-col">
-                                                <span>{{number_format($cashier->receipt_count, 0, '.', ' ')}}</span>
+                                                <span>{{number_format($qty, 0, '.', ' ')}}</span>
                                             </td>
                                             <td class="nk-tb-col">
-                                                <span>{{number_format($cashier->total_sum, 0, '.', ' ')}}</span>
+                                                <span>{{number_format($total, 0, '.', ' ')}}</span>
                                             </td>
                                            
                                         </tr><!-- .nk-tb-item -->
