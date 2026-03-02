@@ -17,7 +17,9 @@
                                         
                                         <th scope="col">Item</th>
                                         <th scope="col">order_qty</th>
+                                        <th scope="col">order_price</th>
                                         <th scope="col">delivery_qty</th>
+                                        <th scope="col">delivery_price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -27,8 +29,9 @@
                                         
                                         <td>{{$row->item->name}}</td>
                                         <td>{{$row->order_qty}}</td>
+                                        <td>{{$row->order_price}}</td>
                                         <td>{{$row->delivery_qty}}</td>
-                                        <td>{{$row->delivery_total}}</td>
+                                        <td>{{$row->delivery_price}}</td>
 
                                     </tr> 
                                
