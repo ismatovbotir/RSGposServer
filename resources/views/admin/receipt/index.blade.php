@@ -37,7 +37,7 @@
                                                 </div>
                                             </a>
                                             <div>
-                                               {{$receipt->created_at->setTimezone(config('app.timezone'))->format('d.m.Y H:i:s') }}
+                                                {{$receipt->created_at->setTimezone(config('app.timezone'))->format('d.m.Y H:i:s') }}
                                             </div>
                                         </div>
                                         <div class="project-details" style="min-height:80px; max-height:80px; overflow:auto;">
@@ -58,6 +58,9 @@
                                                 <div class="project-progress-percent">{{number_format($receipt->total, 0, '.', ' ')}}</div>
                                             </div>
 
+                                        </div>
+                                        <div class="text-center mt-2">
+                                            {!! QrCode::size(120)->generate($receipt->fiscal) !!}
                                         </div>
 
                                     </div>
