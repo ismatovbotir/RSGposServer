@@ -99,7 +99,7 @@ class OrderController extends Controller
     public function show(string $id)
     {
         $order=Order::where('code',$id)->with(['items.item','lastStatus','status','fiscals'])->first();
-        //dd($is_order);
+        dd($order);
         if($order){
             return response()->json([
                 'status'=>'ok',
