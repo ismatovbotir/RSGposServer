@@ -47,9 +47,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="project-details">
+                                        <div class="project-details" style="min-height:80px; max-height:80px; overflow:auto;">
                                             @foreach($receipt->payments as $payment)
-                                            <p>{{$payment->type}}: {{$payment->value}}</p>
+                                            <p>{{$payment->type}}: {{number_format($payment->value,0,'.',' ')}}</p>
                                             @endforeach
                                         </div>
                                         <div class="project-progress">
