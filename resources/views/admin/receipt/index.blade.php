@@ -36,10 +36,11 @@
                                                     <span class="sub-text">{{$receipt->cashier}}</span>
                                                 </div>
                                             </a>
-                                            <div>
+                                           
+                                        </div>
+                                        <div>
                                                 {{$receipt->created_at->setTimezone(config('app.timezone'))->format('d.m.Y H:i:s') }}
                                             </div>
-                                        </div>
                                         <div class="project-details" style="min-height:80px; max-height:80px; overflow:auto;">
                                             @foreach($receipt->payments as $payment)
                                             <div class="d-flex justify-content-between align-items-center mb-1">
