@@ -21,9 +21,15 @@ class ReceiptController extends Controller
         $start = Carbon::today('Asia/Tashkent')
             ->setTime(6, 0, 0)   // 06:00 Tashkent
             ->setTimezone('UTC'); // переводим в UTC
+        
+            $cashiers = Receipt::selectRaw('cashier as name, SUM(total) as total_sum, COUNT(*) as receipt_count')
+            ->where('created_at', '>=', $start)
+            ->groupBy('cashier')
+            ->get();
+
         $receipts=Receipt::where('created_at', '>=', $start)->with(['items','payments'])->get();
         //dd($receipts->toArray());
-        return view('admin.receipt.index',compact('receipts'));
+        return view('admin.receipt.index',compact('receipts','cashiers'));
     }
 
     /**

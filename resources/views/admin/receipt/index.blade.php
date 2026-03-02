@@ -7,6 +7,49 @@
     <div class="container-fluid">
         <div class="nk-content-inner">
             <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="card card-bordered card-full">
+                        <div class="card-inner-group">
+                            <div class="card-inner">
+                                <div class="card-title-group">
+                                    <div class="card-title">
+                                        <h6 class="title">Cashiers</h6>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="card-inner p-0">
+                                <table class="nk-tb-list nk-tb-ulist">
+                                    <thead>
+                                        <tr class="nk-tb-item nk-tb-head">
+                                            <th class="nk-tb-col"><span class="sub-text">Cashier</span></th>
+                                            <th class="nk-tb-col"><span class="sub-text">Receipts</span></th>
+                                            <th class="nk-tb-col"><span class="sub-text">Total</span></th>
+                                            
+                                        </tr><!-- .nk-tb-item -->
+                                    </thead>
+                                    <tbody>
+                                        @foreach($cashiers as $cashier)
+                                        <tr class="nk-tb-item">
+                                            <td class="nk-tb-col">
+                                                <span>$cashier->name</span>
+                                            </td>
+                                            <td class="nk-tb-col">
+                                                <span>$cashier->receipt_count</span>
+                                            </td>
+                                            <td class="nk-tb-col">
+                                                <span>$cashier->total_sum</span>
+                                            </td>
+                                           
+                                        </tr><!-- .nk-tb-item -->
+                                       @endforeach
+                                    </tbody>
+                                </table><!-- .nk-tb-list -->
+                            </div><!-- .card-inner -->
+                        </div>
+                    </div><!-- .card -->
+                </div>
+
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
@@ -36,11 +79,11 @@
                                                     <span class="sub-text">{{$receipt->cashier}}</span>
                                                 </div>
                                             </a>
-                                           
+
                                         </div>
                                         <div>
-                                                {{$receipt->created_at->setTimezone(config('app.timezone'))->format('d.m.Y H:i:s') }}
-                                            </div>
+                                            {{$receipt->created_at->setTimezone(config('app.timezone'))->format('d.m.Y H:i:s') }}
+                                        </div>
                                         <div class="project-details" style="min-height:80px; max-height:80px; overflow:auto;">
                                             @foreach($receipt->payments as $payment)
                                             <div class="d-flex justify-content-between align-items-center mb-1">
