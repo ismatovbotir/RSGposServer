@@ -10,9 +10,9 @@
                                 <div class="nk-block-head nk-block-head-sm">
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title">Projects</h3>
+                                            <h3 class="nk-block-title page-title">Receipts</h3>
                                             <div class="nk-block-des text-soft">
-                                                <p>You have total 95 projects.</p>
+                                                <p>You have total {{$receipts->count()}} receipts.</p>
                                             </div>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
