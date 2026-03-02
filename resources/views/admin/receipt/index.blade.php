@@ -22,8 +22,9 @@
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block">
                                     <div class="row g-gs">
-                                        <div class="col-sm-6 col-lg-4 col-xxl-3">
-                                        @foreach($receipts as $receipt)    
+                                    @foreach($receipts as $receipt)       
+                                    <div class="col-sm-6 col-lg-4 col-xxl-3">
+                                         
                                         <div class="card card-bordered h-100">
                                                 <div class="card-inner">
                                                     <div class="project">
@@ -76,9 +77,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @endforeach
+                                  
                                         
                                     </div>
+                                    @endforeach
                                 </div><!-- .nk-block -->
                             </div>
                         </div>
