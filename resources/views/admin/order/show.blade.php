@@ -28,6 +28,8 @@
                                         <td>{{$row->item->name}}</td>
                                         <td>{{$row->order_qty}}</td>
                                         <td>{{$row->delivery_qty}}</td>
+                                        <td>{{$row->delivery_total}}</td>
+
                                     </tr> 
                                
                                 @endforeach
