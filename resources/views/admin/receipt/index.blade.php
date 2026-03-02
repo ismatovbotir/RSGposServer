@@ -22,7 +22,7 @@
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
                     <div class="row g-gs">
-                    @foreach($receipts as $receipt)
+                        @foreach($receipts as $receipt)
                         <div class="col-sm-6 col-lg-4 col-xxl-3">
 
                             <div class="card card-bordered h-100">
@@ -30,41 +30,41 @@
                                     <div class="project">
                                         <div class="project-head">
                                             <a href="{{route('admin.receipt.show',['receipt'=>$receipt->id])}}" class="project-title">
-                                               
+
                                                 <div class="project-info">
                                                     <h6 class="title">Shop {{$receipt->shop_id}}, Kassa-{{$receipt->pos_id}}</h6>
                                                     <span class="sub-text">{{$receipt->cashier}}</span>
                                                 </div>
                                             </a>
-                                            <div class="drodown">
-                                                <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <ul class="link-list-opt no-bdr">
-                                                        <li><a href="html/apps-kanban.html"><em class="icon ni ni-eye"></em><span>View Project</span></a></li>
-                                                        <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit Project</span></a></li>
-                                                        <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Mark As Done</span></a></li>
-                                                    </ul>
-                                                </div>
+                                            <div>
+                                               {{$receipt->created_at->setTimezone(config('app.timezone'))->format('d.m.Y H:i:s') }}
                                             </div>
                                         </div>
                                         <div class="project-details" style="min-height:80px; max-height:80px; overflow:auto;">
                                             @foreach($receipt->payments as $payment)
-                                            <p>{{$payment->type}}: {{number_format($payment->value,0,'.',' ')}}</p>
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <span class="text-muted">
+                                                    {{$payment->type}}
+                                                </span>
+                                                <span class="fw-bold">
+                                                    {{ number_format($payment->value, 0, '.', ' ') }}
+                                                </span>
+                                            </div>
                                             @endforeach
                                         </div>
                                         <div class="project-progress">
                                             <div class="project-progress-details">
                                                 <div class="project-progress-task"><span>{{$receipt->items->count()}} items</span></div>
-                                                <div class="project-progress-percent">{{$receipt->total}}</div>
+                                                <div class="project-progress-percent">{{number_format($receipt->total, 0, '.', ' ')}}</div>
                                             </div>
-                                           
+
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                        @endforeach
                     </div>
                 </div><!-- .nk-block -->
             </div>
