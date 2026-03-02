@@ -28,7 +28,7 @@
                                                 <div class="card-inner">
                                                     <div class="project">
                                                         <div class="project-head">
-                                                            <a href="{{route('admin.receipt.show',[receipt=>$receipt->id])}}" class="project-title">
+                                                            <a href="{{route('admin.receipt.show',['receipt'=>$receipt->id])}}" class="project-title">
                                                                 <div class="user-avatar sq bg-purple"><span>DD</span></div>
                                                                 <div class="project-info">
                                                                     <h6 class="title">Shop {{$receip->shop_id}}, Kassa-{{$receipt->pos_id}}</h6>
