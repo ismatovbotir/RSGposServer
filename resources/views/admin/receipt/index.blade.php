@@ -52,27 +52,12 @@
                                         </div>
                                         <div class="project-progress">
                                             <div class="project-progress-details">
-                                                <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>3 Tasks</span></div>
+                                                <div class="project-progress-task"><span>{{$receipt->items->count()}} items</span></div>
                                                 <div class="project-progress-percent">{{$receipt->total}}</div>
                                             </div>
-                                            <div class="progress progress-pill progress-md bg-light">
-                                                <div class="progress-bar" data-progress="93.5" style="width: 93.5%;"></div>
-                                            </div>
+                                           
                                         </div>
-                                        <div class="project-meta">
-                                            <ul class="project-users g-1">
-                                                <li>
-                                                    <div class="user-avatar sm bg-primary"><span>A</span></div>
-                                                </li>
-                                                <li>
-                                                    <div class="user-avatar sm bg-blue"><img src="./images/avatar/b-sm.jpg" alt=""></div>
-                                                </li>
-                                                <li>
-                                                    <div class="user-avatar bg-light sm"><span>+12</span></div>
-                                                </li>
-                                            </ul>
-                                            <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>5 Days Left</span></span>
-                                        </div>
+                                       
                                     </div>
                                 </div>
                             </div>

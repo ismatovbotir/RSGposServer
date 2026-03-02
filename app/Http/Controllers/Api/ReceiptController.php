@@ -18,7 +18,7 @@ class ReceiptController extends Controller
      */
     public function index()
     {
-        $receipts=Receipt::whereDate('receipt_date', today())->get();
+        $receipts=Receipt::whereDate('receipt_date', today())->with(['items','payments'])->get();
         //dd($receipts->toArray());
         return view('admin.receipt.index',compact('receipts'));
     }
