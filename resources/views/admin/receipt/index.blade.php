@@ -29,20 +29,40 @@
                                         </tr><!-- .nk-tb-item -->
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $total=0;
+                                            $qty=0;
+                                           
+                                        @endphp
                                         @foreach($cashiers as $cashier)
                                         <tr class="nk-tb-item">
                                             <td class="nk-tb-col">
                                                 <span>{{$cashier->name}}</span>
                                             </td>
                                             <td class="nk-tb-col">
-                                                <span>{{$cashier->receipt_count}}</span>
+                                                <span>{{number_format($cashier->receipt_count, 0, '.', ' ')}}</span>
                                             </td>
                                             <td class="nk-tb-col">
-                                                <span>{{$cashier->total_sum}}</span>
+                                                <span>{{number_format($cashier->total_sum, 0, '.', ' ')}}</span>
+                                            </td>
+                                            @php
+                                                $total+=$cashier->total_sum;
+                                                $qty+=$cashier->receipt_count
+                                            @endphp
+                                        </tr><!-- .nk-tb-item -->
+                                       @endforeach
+                                       <tr class="nk-tb-item">
+                                            <td class="nk-tb-col">
+                                                <span>Total</span>
+                                            </td>
+                                            <td class="nk-tb-col">
+                                                <span>{{number_format($cashier->receipt_count, 0, '.', ' ')}}</span>
+                                            </td>
+                                            <td class="nk-tb-col">
+                                                <span>{{number_format($cashier->total_sum, 0, '.', ' ')}}</span>
                                             </td>
                                            
                                         </tr><!-- .nk-tb-item -->
-                                       @endforeach
                                     </tbody>
                                 </table><!-- .nk-tb-list -->
                             </div><!-- .card-inner -->
