@@ -18,7 +18,10 @@ class ReceiptController extends Controller
      */
     public function index()
     {
-        $receipts=Receipt::whereDate('receipt_date', today())->with(['items','payments'])->get();
+        $start = Carbon::today('Asia/Tashkent')
+            ->setTime(6, 0, 0)   // 06:00 Tashkent
+            ->setTimezone('UTC'); // переводим в UTC
+        $receipts=Receipt::where('created_at', '>=', $start)->with(['items','payments'])->get();
         //dd($receipts->toArray());
         return view('admin.receipt.index',compact('receipts'));
     }
