@@ -46,8 +46,8 @@
                                                 <span>{{number_format($cashier->total_sum, 0, '.', ' ')}}</span>
                                             </td>
                                             @php
-                                                $total+=$cashier->total_sum;
-                                                $qty+=$cashier->receipt_count
+                                                $total=$total+$cashier->total_sum;
+                                                $qty=$qty+$cashier->receipt_count
                                             @endphp
                                         </tr><!-- .nk-tb-item -->
                                        @endforeach
