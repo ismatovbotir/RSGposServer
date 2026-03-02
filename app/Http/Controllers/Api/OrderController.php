@@ -180,8 +180,9 @@ class OrderController extends Controller
                             ])->first();
 
                         if($order_item){
+                            $delivery_qty=$order_item->delivery_qty;
                             $order_item->update([
-                                "delivery_qty"=>$o_item["qty"],
+                                "delivery_qty"=>$o_item["qty"]+$delivery_qty,
                                 "delivery_price"=>$o_item["price"]  
                             ]);
 
