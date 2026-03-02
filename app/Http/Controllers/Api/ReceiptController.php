@@ -25,6 +25,7 @@ class ReceiptController extends Controller
             $cashiers = Receipt::selectRaw('cashier as name, SUM(total) as total_sum, COUNT(*) as receipt_count')
             ->where('created_at', '>=', $start)
             ->groupBy('cashier')
+            ->orderByDesc('total_sum')
             ->get();
 
         $receipts=Receipt::where('created_at', '>=', $start)->with(['items','payments'])->get();

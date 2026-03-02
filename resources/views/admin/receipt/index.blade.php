@@ -32,13 +32,13 @@
                                         @foreach($cashiers as $cashier)
                                         <tr class="nk-tb-item">
                                             <td class="nk-tb-col">
-                                                <span>$cashier->name</span>
+                                                <span>{{$cashier->name}}</span>
                                             </td>
                                             <td class="nk-tb-col">
-                                                <span>$cashier->receipt_count</span>
+                                                <span>{{$cashier->receipt_count}}</span>
                                             </td>
                                             <td class="nk-tb-col">
-                                                <span>$cashier->total_sum</span>
+                                                <span>{{$cashier->total_sum}}</span>
                                             </td>
                                            
                                         </tr><!-- .nk-tb-item -->
