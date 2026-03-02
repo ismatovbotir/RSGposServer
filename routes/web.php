@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Api\ReceiptController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -46,6 +47,7 @@ Route::group([
     Route::resource('/item',ItemController::class);
     Route::resource('/order',OrderController::class);
     Route::resource('/client',ClientController::class);
+    Route::resource('/receipt',ReceiptController::class)->only(['index','show']);
     
-    Route::get('/setting/wolt',[SettingController::class,'wolt'])->name('setting.wolt');
+    //Route::get('/setting/wolt',[SettingController::class,'wolt'])->name('setting.wolt');
 });

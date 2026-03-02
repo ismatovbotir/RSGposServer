@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('status')->default(true);
             $table->decimal('qty',10,3);
             $table->decimal('price',15,2);
+            $table->decimal('cost',15,2)->nullable();
             $table->decimal('sub_total',15,2)->default(0);
             $table->decimal('discount',15,2)->default(0);
             $table->decimal('round',8,2)->default(0);

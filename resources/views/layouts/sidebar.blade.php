@@ -21,6 +21,12 @@
                                         <span class="nk-menu-text">Dashboard</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="{{route('admin.receipt.index')}}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-invoice-fill"></em></span>
+                                        <span class="nk-menu-text">Receipts</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item has-sub">
                                     <a href="" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
@@ -221,7 +227,7 @@
                                         <span class="nk-menu-text">Support</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item has-sub">
+                                {{--<li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-setting-alt-fill"></em></span>
                                         <span class="nk-menu-text">Settings</span>
@@ -232,7 +238,7 @@
                                         </li>
                                         
                                     </ul><!-- .nk-menu-sub -->
-                                </li><!-- .nk-menu-item -->
+                                </li><!-- .nk-menu-item -->--}}
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Return to</h6>
                                 </li><!-- .nk-menu-item -->

@@ -18,7 +18,9 @@ class ReceiptController extends Controller
      */
     public function index()
     {
-        return 'hi';
+        $receipts=Receipt::whereDate('receipt_date', today())->get();
+        dd($receipts);
+        return view('admin.receipt.index');
     }
 
     /**
