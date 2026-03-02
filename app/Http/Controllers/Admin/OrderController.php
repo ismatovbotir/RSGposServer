@@ -38,7 +38,7 @@ class OrderController extends Controller
     public function show(string $id)
     {
         $order=Order::where('id',$id)->with(['items.item','lastStatus'])->first();
-        //dd($order);
+        dd($order->toJson());
         return view('admin.order.show',['order'=>$order]);
     }
 
