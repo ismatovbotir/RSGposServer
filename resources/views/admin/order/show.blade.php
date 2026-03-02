@@ -11,8 +11,8 @@
                         <div class="nk-block-head nk-block-head-lg">
                             <div class="nk-block-head-content">
                                  <h2 class="nk-block-title fw-normal">Order №: {{$order->code}}</h2>
-                                 @foreach($order as $item)
-                                 <p>{{$item->item->name}}</p>
+                                 @foreach($order as $row)
+                                 <p>{{$row->items->item->name}}</p>
                                  @endforeach
                             </div>
                         </div>
