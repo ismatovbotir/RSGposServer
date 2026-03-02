@@ -19,7 +19,7 @@ class ReceiptController extends Controller
     public function index()
     {
         $receipts=Receipt::whereDate('receipt_date', today())->get();
-        dd($receipts);
+        dd($receipts->toArray());
         return view('admin.receipt.index');
     }
 
