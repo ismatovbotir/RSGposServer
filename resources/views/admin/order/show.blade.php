@@ -12,7 +12,7 @@
                             <div class="nk-block-head-content">
                                  <h2 class="nk-block-title fw-normal">Order №: {{$order->code}}</h2>
                                  @foreach($order as $item)
-                                 <p>{{$item}}</p>
+                                 <p>{{$item->item->name}}</p>
                                  @endforeach
                             </div>
                         </div>
