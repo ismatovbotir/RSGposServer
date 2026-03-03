@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("phone")->nullable();
             $table->text("address")->nullable();
             $table->text('comment')->nullable();
+            $table->decimal('total',15,2)->default(0);
             $table->text('fiscal')->nullable();
             $table->timestamps();
         });
