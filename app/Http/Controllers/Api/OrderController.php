@@ -181,9 +181,11 @@ class OrderController extends Controller
 
                         if($order_item){
                             $delivery_qty=$order_item->delivery_qty;
+                            $delivery_price=$order_item->delivery_price;
+                            
                             $order_item->update([
                                 "delivery_qty"=>$o_item["qty"]+$delivery_qty,
-                                "delivery_price"=>$o_item["price"]  
+                                "delivery_price"=>$o_item["price"]+$delivery_price  
                             ]);
 
                         }else{
