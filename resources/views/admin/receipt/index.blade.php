@@ -124,7 +124,9 @@
 
                                         </div>
                                         <div class="text-center mt-2">
+                                            @if($receipt->fiscal!='')
                                             {!! QrCode::size(120)->generate($receipt->fiscal) !!}
+                                            @endif
                                         </div>
 
                                     </div>
