@@ -166,13 +166,15 @@ class OrderController extends Controller
                         "order_id"=>$order->id,
                         "status"=>"fiscal"
                     ]);
-                    Fiscal::create([
-                            'order_id'=>$order->id,
-                            'type'=>'items',
-                            'total'=>$data['total'],
-                            'fiscal_url'=>$data['fiscal']
+                    if($data['fiscal']!=''){
+                        Fiscal::create([
+                                'order_id'=>$order->id,
+                                'type'=>'items',
+                                'total'=>$data['total'],
+                                'fiscal_url'=>$data['fiscal']
 
-                    ]);
+                        ]);
+                    }
                     $o_items=$data["order_items"];
                     foreach($o_items as $o_item){
                         $order_item=OrderItem::where([
