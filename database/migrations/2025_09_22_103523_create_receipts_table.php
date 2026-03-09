@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('no')->nullable();
             $table->string('barcode')->nullable();
             $table->string('shift')->nullable();
-            $table->date('receipt_date');
+            $table->date('receipt_date')->index();
             $table->dateTime('dateOpen')->nullable();
             $table->dateTime('dateClose')->nullable();
             $table->integer('receipt_h')->nullable();

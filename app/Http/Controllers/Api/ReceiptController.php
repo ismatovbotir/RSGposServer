@@ -8,6 +8,7 @@ use App\Models\Receipt;
 use App\Models\ReceiptItem;
 use App\Models\ReceiptPayment;
 use App\Models\Shop;
+use App\Models\Stock;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -96,12 +97,20 @@ class ReceiptController extends Controller
         );
         $items=$data["items"];
         foreach($items as $item){
+            $cost=Stock::where('shop_id',$shop->id)->where('item_id',$item["item"])->latest('stock_date')->first();
+            $item_cost=0;
+            if($cost){
+                if($cost->qty>0){
+                                    $item_cost=$cost->cost/$cost->qty;
+                }
+            }
             ReceiptItem::create([
                 'receipt_id'=>$receipt->id,
                 'item_id'=>$item["item"],
                 'status'=>$item['status'],
                 'qty'=>$item['qty'],
                 'price'=>$item['price'],
+                'cost'=>$item_cost,
                 'sub_total'=>$item['sub_total'],
                 'discount'=>$item['discount'],
                 'round'=>$item['round'],
