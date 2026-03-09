@@ -78,6 +78,9 @@ class ReceiptController extends Controller
                 'shop_id'=>$shop->id,
                 'pos_id'=>$pos->id,
                 'status'=>$data['status'],
+                'receipt_h'=>now()->format('H'),
+                'receipt_m'=>now()->format('i'),
+                'receipt_s'=>now()->format('s'),
                 //'client_id'=>'';
                 //'client_card'=>nullable();
                 //'client_name'=>nullable();

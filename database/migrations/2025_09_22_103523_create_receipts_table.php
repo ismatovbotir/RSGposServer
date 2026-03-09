@@ -19,6 +19,10 @@ return new class extends Migration
             $table->date('receipt_date');
             $table->dateTime('dateOpen')->nullable();
             $table->dateTime('dateClose')->nullable();
+            $table->integer('receipt_h')->nullable();
+            $table->integer('receipt_m')->nullable();
+            $table->integer('receipt_s')->nullable();
+            
             $table->string('type')->default('sell');
             $table->string('cashier')->nullable();
             $table->string('consultant')->nullable();
