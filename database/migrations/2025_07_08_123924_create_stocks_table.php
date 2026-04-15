@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('department_id')->default(1)->constrained();
             $table->decimal('qty',15,3)->default(0);
             $table->decimal('cost',15,2)->default(0);
-            $table->date('stock_date');
+            $table->date('stock_date')->index();
             $table->timestamps();
             $table->unique(['item_id','department_id','shop_id','stock_date']);
         });

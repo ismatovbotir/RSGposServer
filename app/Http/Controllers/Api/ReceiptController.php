@@ -11,6 +11,7 @@ use App\Models\Shop;
 use App\Models\Stock;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ReceiptController extends Controller
 {
@@ -58,7 +59,8 @@ class ReceiptController extends Controller
             $pos=Pos::firstOrCreate(
                 [
                     'code' => $data['pos'],
-                    'shop_id'=>$shop->id
+                    'shop_id'=>$shop->id,
+                    'uuid'=>Str::uuid()
                 ], // ищем по уникальному полю
                 [
                     'name' => "Pos-".$data['pos']
