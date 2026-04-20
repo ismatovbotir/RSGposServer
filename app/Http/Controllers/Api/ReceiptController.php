@@ -59,11 +59,11 @@ class ReceiptController extends Controller
             $pos=Pos::firstOrCreate(
                 [
                     'code' => $data['pos'],
-                    'shop_id'=>$shop->id,
-                    'uuid'=>Str::uuid()
+                    'shop_id'=>$shop->id
                 ], // ищем по уникальному полю
                 [
-                    'name' => "Pos-".$data['pos']
+                    'name' => "Pos-".$data['pos'],
+                    'uuid'=>Str::uuid()
                 ]  // создаём если нет
             );
            $receiptDate=$this->frontolDate($data['dateOpen']);
