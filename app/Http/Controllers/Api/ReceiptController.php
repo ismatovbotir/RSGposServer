@@ -67,19 +67,26 @@ class ReceiptController extends Controller
                 ]  // создаём если нет
             );
            $receiptDate=$this->frontolDate($data['dateOpen']);
-            $receipt=Receipt::create(
+           //'receipt_date','barcode','shop_id','pos_id' 
+           $receipt=Receipt::firstOrcreate(
+            [
+                'receipt_date'=>$receiptDate,
+                'barcode'=>$data['barcode'],
+                'shop_id'=>$shop->id,
+                'pos_id'=>$pos->id
+            ],
             [
                 'no'=>$data['no'],
-                'barcode'=>$data['barcode'],
+                //'barcode'=>$data['barcode'],
                 'shift'=>$data['shift'],
-                'receipt_date'=>$receiptDate,
+                //'receipt_date'=>$receiptDate,
                 //'dateOpen'=>'',
                 //'dateClose'=>'',
                 'type'=>$data['type'],
                 'cashier'=>$data['cashier'],
                 'consultant'=>$data['consultant'],
-                'shop_id'=>$shop->id,
-                'pos_id'=>$pos->id,
+                //'shop_id'=>$shop->id,
+                //'pos_id'=>$pos->id,
                 'status'=>$data['status'],
                 'receipt_h'=>now()->format('H'),
                 'receipt_m'=>now()->format('i'),
@@ -116,7 +123,8 @@ class ReceiptController extends Controller
                 'sub_total'=>$item['sub_total'],
                 'discount'=>$item['discount'],
                 'round'=>$item['round'],
-                'total'=>$item['total']
+                'total'=>$item['total'],
+                'receipt_status'=>$receipt->status
             ]);
 
         }
