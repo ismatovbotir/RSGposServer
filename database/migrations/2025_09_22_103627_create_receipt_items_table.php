@@ -25,7 +25,7 @@ return new class extends Migration
             $table->decimal('discount',15,2)->default(0);
             $table->decimal('round',8,2)->default(0);
             $table->decimal('total',15,2)->default(0);
-            $table->decimal('total',15,2)->default(0);
+           
             $table->boolean('receipt_status')->default(true);
             
             
