@@ -59,6 +59,12 @@ Route::group(['prefix' => 'cashDesk','middleware'=>'local.api'],function(){
 
 
 });
+Route::group(['prefix' => 'globalCashDesk','middleware'=>'x.token'],function(){
+   
+    Route::resource('/receipt',ReceiptController::class);
+
+
+});
 
 
 // Route::group(['prefix' => 'wolt'],function(){
