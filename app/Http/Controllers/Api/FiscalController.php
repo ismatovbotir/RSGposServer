@@ -18,7 +18,7 @@ class FiscalController extends Controller
 
     public function __construct()
     {
-        $this->url='http://'.env('EPOS').':8347/uzpos';
+        $this->url='http://192.168.1.245:8347/uzpos';
     }
     public function index()
     {
