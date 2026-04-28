@@ -27,6 +27,7 @@ class FiscalOpen extends Command
     public function handle()
     {
         $fiscal = app(FiscalController::class);
+        $this->info($fiscal->url);
         $res = $fiscal->openShift();
         $this->info(json_encode($res, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
