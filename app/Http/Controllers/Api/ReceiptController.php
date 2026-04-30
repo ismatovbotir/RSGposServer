@@ -11,6 +11,7 @@ use App\Models\Shop;
 use App\Models\Stock;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class ReceiptController extends Controller
@@ -23,16 +24,16 @@ class ReceiptController extends Controller
         $start = Carbon::today('Asia/Tashkent')
             ->setTime(6, 0, 0)   // 06:00 Tashkent
             ->setTimezone('UTC'); // переводим в UTC
-        
-            $cashiers = Receipt::selectRaw('cashier as name, SUM(total) as total_sum, COUNT(*) as receipt_count')
+
+        $cashiers = Receipt::selectRaw('cashier as name, SUM(total) as total_sum, COUNT(*) as receipt_count')
             ->where('created_at', '>=', $start)
             ->groupBy('cashier')
             ->orderByDesc('total_sum')
             ->get();
 
-        $receipts=Receipt::where('created_at', '>=', $start)->with(['items','payments'])->get();
+        $receipts = Receipt::where('created_at', '>=', $start)->with(['items', 'payments'])->get();
         //dd($receipts->toArray());
-        return view('admin.receipt.index',compact('receipts','cashiers'));
+        return view('admin.receipt.index', compact('receipts', 'cashiers'));
     }
 
     /**
@@ -48,112 +49,114 @@ class ReceiptController extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request->all();
-        
-        try{
+        $data = $request->all();
+
+        DB::beginTransaction();
+
+        try {
 
             $shop = Shop::firstOrCreate(
                 ['id' => $data['shop']], // ищем по уникальному полю
-                ['name' => "Shop-".$data['shop']]  // создаём если нет
+                ['name' => "Shop-" . $data['shop']]  // создаём если нет
             );
-            $pos=Pos::firstOrCreate(
+            $pos = Pos::firstOrCreate(
                 [
                     'code' => $data['pos'],
-                    'shop_id'=>$shop->id
+                    'shop_id' => $shop->id
                 ], // ищем по уникальному полю
                 [
-                    'name' => "Pos-".$data['pos'],
-                    'uuid'=>Str::uuid()
+                    'name' => "Pos-" . $data['pos'],
+                    'uuid' => Str::uuid()
                 ]  // создаём если нет
             );
-           $receiptDate=$this->frontolDate($data['dateOpen']);
-           //'receipt_date','barcode','shop_id','pos_id' 
-           $receipt=Receipt::firstOrcreate(
-            [
-                'receipt_date'=>$receiptDate,
-                'barcode'=>$data['barcode'],
-                'shop_id'=>$shop->id,
-                'pos_id'=>$pos->id
-            ],
-            [
-                'no'=>$data['no'],
-                //'barcode'=>$data['barcode'],
-                'shift'=>$data['shift'],
-                //'receipt_date'=>$receiptDate,
-                //'dateOpen'=>'',
-                //'dateClose'=>'',
-                'type'=>$data['type'],
-                'cashier'=>$data['cashier'],
-                'consultant'=>$data['consultant'],
-                //'shop_id'=>$shop->id,
-                //'pos_id'=>$pos->id,
-                'status'=>$data['status'],
-                'receipt_h'=>now()->format('H'),
-                'receipt_m'=>now()->format('i'),
-                'receipt_s'=>now()->format('s'),
-                //'client_id'=>'';
-                //'client_card'=>nullable();
-                //'client_name'=>nullable();
-                //'client_phone'=>nullable();
-                'sub_total'=>$data['sub_total'],
-                'discount'=>$data['discount'],
-                'total'=>$data['total'],
-                'created_at'=>$receiptDate,
-                'updated_at'=>now(),
-                'fiscal'=>$data['fiscal']
+            $receiptDate = $this->frontolDate($data['dateOpen']);
+            //'receipt_date','barcode','shop_id','pos_id' 
+            $receipt = Receipt::firstOrcreate(
+                [
+                    'receipt_date' => $receiptDate,
+                    'barcode' => $data['barcode'],
+                    'shop_id' => $shop->id,
+                    'pos_id' => $pos->id
+                ],
+                [
+                    'no' => $data['no'],
+                    //'barcode'=>$data['barcode'],
+                    'shift' => $data['shift'],
+                    //'receipt_date'=>$receiptDate,
+                    //'dateOpen'=>'',
+                    //'dateClose'=>'',
+                    'type' => $data['type'],
+                    'cashier' => $data['cashier'],
+                    'consultant' => $data['consultant'],
+                    //'shop_id'=>$shop->id,
+                    //'pos_id'=>$pos->id,
+                    'status' => $data['status'],
+                    'receipt_h' => now()->format('H'),
+                    'receipt_m' => now()->format('i'),
+                    'receipt_s' => now()->format('s'),
+                    //'client_id'=>'';
+                    //'client_card'=>nullable();
+                    //'client_name'=>nullable();
+                    //'client_phone'=>nullable();
+                    'sub_total' => $data['sub_total'],
+                    'discount' => $data['discount'],
+                    'total' => $data['total'],
+                    'created_at' => $receiptDate,
+                    'updated_at' => now(),
+                    'fiscal' => $data['fiscal']
 
-            ]
-        );
-        $items=$data["items"];
-        foreach($items as $item){
-            $cost=Stock::where('shop_id',$shop->id)->where('item_id',$item["item"])->latest('stock_date')->first();
-            $item_cost=0;
-            if($cost){
-                if($cost->qty>0){
-                                    $item_cost=$cost->cost/$cost->qty;
+                ]
+            );
+            $items = $data["items"];
+            foreach ($items as $item) {
+                $cost = Stock::where('shop_id', $shop->id)->where('item_id', $item["item"])->latest('stock_date')->first();
+                $item_cost = 0;
+                if ($cost) {
+                    if ($cost->qty > 0) {
+                        $item_cost = $cost->cost / $cost->qty;
+                    }
                 }
+                ReceiptItem::create([
+                    'receipt_id' => $receipt->id,
+                    'item_id' => $item["item"],
+                    'status' => $item['status'],
+                    'qty' => $item['qty'],
+                    'price' => $item['price'],
+                    'cost' => $item_cost,
+                    'sub_total' => $item['sub_total'],
+                    'discount' => $item['discount'],
+                    'round' => $item['round'],
+                    'total' => $item['total'],
+                    'receipt_status' => $receipt->status
+                ]);
             }
-            ReceiptItem::create([
-                'receipt_id'=>$receipt->id,
-                'item_id'=>$item["item"],
-                'status'=>$item['status'],
-                'qty'=>$item['qty'],
-                'price'=>$item['price'],
-                'cost'=>$item_cost,
-                'sub_total'=>$item['sub_total'],
-                'discount'=>$item['discount'],
-                'round'=>$item['round'],
-                'total'=>$item['total'],
-                'receipt_status'=>$receipt->status
-            ]);
+            $payments = $data["payments"];
+            foreach ($payments as $payment) {
+                ReceiptPayment::create([
+                    'receipt_id' => $receipt->id,
+                    'type' => $payment['type'],
+                    'value' => $payment['value']
 
-        }
-        $payments=$data["payments"];
-        foreach($payments as $payment){
-            ReceiptPayment::create([
-                'receipt_id'=>$receipt->id,
-                'type'=>$payment['type'],
-                'value'=>$payment['value']
-                
-            ]);
-        }
-        return response()->json([
+                ]);
+            }
 
-            "status"=>"ok",
-            "data"=>[
-                    "id"=>$receipt->id,
-                    "status"=>"stored"
-                ]
-        ],200);
-        
-        }catch(\Exception $e){
+            DB::commit();
             return response()->json([
-                "status"=>"error",
-                "data"=>[
-                        "error"=>$e->getMessage()
+
+                "status" => "ok",
+                "data" => [
+                    "id" => $receipt->id,
+                    "status" => "stored"
                 ]
-            ],505);
-            
+            ], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                "status" => "error",
+                "data" => [
+                    "error" => $e->getMessage()
+                ]
+            ], 505);
         }
     }
 
@@ -189,7 +192,8 @@ class ReceiptController extends Controller
         //
     }
 
-    public function frontolDate($value){
+    public function frontolDate($value)
+    {
         if (!$value) {
             return null;
         }
@@ -209,11 +213,8 @@ class ReceiptController extends Controller
             }
 
             return $date->format('Y-m-d H:i:s');
-
         } catch (\Exception $e) {
             return null;
         }
-    
-
     }
 }
