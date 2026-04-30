@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('cost',15,2)->default(0);
             $table->date('stock_date');
             $table->timestamps();
-            $table->unique(['item_id','department_id','shop_id','stock_date']);
+            $table->unique(['item_id','shop_id','stock_date']);
         });
     }
 
