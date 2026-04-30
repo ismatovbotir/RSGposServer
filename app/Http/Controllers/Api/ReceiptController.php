@@ -112,9 +112,9 @@ class ReceiptController extends Controller
                 $cost = Stock::where('shop_id', $shop->id)->where('item_id', $item["item"])->latest('stock_date')->first();
                 $item_cost = 0;
                 if ($cost) {
-                    if ($cost->qty > 0) {
-                        $item_cost = $cost->cost / $cost->qty;
-                    }
+                   // if ($cost->qty > 0) {
+                        $item_cost = $cost->cost;// / $cost->qty;
+                    //}
                 }
                 ReceiptItem::create([
                     'receipt_id' => $receipt->id,
