@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use App\Models\Item;
 use App\Models\PriceData;
@@ -59,6 +60,14 @@ class ItemTable extends Component
         $this->activeFilter = '';
         $this->resetPage();
     }
+
+    public function openItem(int $id): void
+    {
+        $this->dispatch('openItemModal', id: $id);
+    }
+
+    #[On('item-updated')]
+    public function onItemUpdated(): void {}
 
     public function hasActiveFilters(): bool
     {

@@ -33,7 +33,6 @@ Route::resource('/price',PriceCheckerController::class);
 Auth::routes();
 Route::group([
     'middleware'=>'auth',
-    'prefix'=>'admin',
     'as'=>'admin.'
     ],function(){
 

@@ -870,3 +870,27 @@ tbody tr:hover td {
     border-top: 1px solid #e8e8e6;
 }
 .detail-warn { color: #854f0b; font-weight: 500; }
+
+/* ----------------------------------------------------------
+   15. Modal tabs
+---------------------------------------------------------- */
+.modal-tab {
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    margin-bottom: -2px;
+    border-bottom: 2px solid transparent;
+    color: #888;
+    transition: color 0.12s, border-color 0.12s;
+}
+
+.modal-tab:hover { color: #1a1a1a; }
+
+.modal-tab.active {
+    border-bottom-color: #185fa5;
+    color: #185fa5;
+}

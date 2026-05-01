@@ -157,7 +157,7 @@
             </thead>
             <tbody>
                 @forelse ($items as $item)
-                <tr>
+                <tr class="tr-clickable" wire:click="openItem({{ $item->id }})">
                     <td class="td-muted">{{ $item->id }}</td>
                     <td class="td-strong">{{ $item->name }}</td>
                     <td>{{ $item->category->name ?? '—' }}</td>
@@ -179,4 +179,6 @@
     <div style="margin-top:14px;">
         {{ $items->links() }}
     </div>
+
+    @livewire('admin.item-modal')
 </div>
