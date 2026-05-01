@@ -1,6 +1,9 @@
-<section class="section" id="section-abc">
+@extends('admin.layout')
 
-    <div class="page-header">
+@section('title', 'ABC Analysis')
+
+@section('content')
+<div class="page-header">
         <h1 class="page-title">ABC Analysis</h1>
         <div class="btn-group">
             <input type="date" style="padding: 6px 10px; border: 1px solid #d0d0ce; border-radius: 7px; font-size: 12px; font-family: inherit;">
@@ -44,4 +47,4 @@
         </table>
     </div>
 
-</section>
+@endsection

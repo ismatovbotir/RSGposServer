@@ -1,6 +1,9 @@
-<section class="section" id="section-prices">
+@extends('admin.layout')
 
-    <div class="page-header">
+@section('title', 'Prices')
+
+@section('content')
+<div class="page-header">
         <h1 class="page-title">Prices</h1>
         <button class="btn btn-primary">+ Add price type</button>
     </div>
@@ -56,4 +59,4 @@
         </table>
     </div>
 
-</section>
+@endsection

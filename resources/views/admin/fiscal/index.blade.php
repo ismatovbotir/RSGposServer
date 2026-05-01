@@ -1,6 +1,9 @@
-<section class="section" id="section-fiscal">
+@extends('admin.layout')
 
-    <div class="page-header">
+@section('title', 'Fiscals')
+
+@section('content')
+<div class="page-header">
         <h1 class="page-title">Fiscals</h1>
         <div class="btn-group">
             <button class="btn btn-secondary">Open shift</button>
@@ -45,4 +48,4 @@
         </table>
     </div>
 
-</section>
+@endsection

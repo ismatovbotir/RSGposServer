@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Admin') — POS Server</title>
     <link rel="stylesheet" href="{{ asset('assets/admin/css/admin.css') }}">
+    @livewireStyles
     @stack('styles')
 </head>
 <body>
@@ -86,10 +87,6 @@
         <nav class="nav-section">
             <div class="nav-section-label">Integrations</div>
             <a href="#" class="nav-item">
-                <span style="font-weight:700;font-size:13px;">W</span>
-                Wolt
-            </a>
-            <a href="#" class="nav-item">
                 <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 2a5 5 0 110 10A5 5 0 018 3zm-.5 2v4l3 1.5-.5 1L6 10V5h1.5z"/></svg>
                 Price Checker
             </a>
@@ -115,7 +112,7 @@
         <header class="topbar">
             <span class="topbar-title">@yield('title', 'Dashboard')</span>
             <span class="env-badge">{{ env('DB_DATABASE') }}</span>
-            <span class="topbar-env">Shop #{{ env('SHOP', 1) }} · {{ env('WOLT_SERVICE_NAME', 'POS') }}</span>
+            <span class="topbar-env">Shop #{{ env('SHOP', 1) }}</span>
             <div class="topbar-avatar">{{ strtoupper(substr(auth()->user()->name ?? 'AD', 0, 2)) }}</div>
         </header>
 
@@ -126,6 +123,7 @@
 
 </div>
 <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
+@livewireScripts
 @stack('scripts')
 </body>
 </html>

@@ -1,6 +1,9 @@
-<section class="section" id="section-apilogs">
+@extends('admin.layout')
 
-    <div class="page-header">
+@section('title', 'API Logs')
+
+@section('content')
+<div class="page-header">
         <h1 class="page-title">API Logs</h1>
         <button class="btn btn-danger">Cleanup old logs</button>
     </div>
@@ -72,4 +75,4 @@
         </table>
     </div>
 
-</section>
+@endsection

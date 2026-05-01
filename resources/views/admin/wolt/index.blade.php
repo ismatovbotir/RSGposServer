@@ -1,6 +1,9 @@
-<section class="section" id="section-wolt">
+@extends('admin.layout')
 
-    <div class="page-header">
+@section('title', 'Wolt Integration')
+
+@section('content')
+<div class="page-header">
         <h1 class="page-title">Wolt Integration</h1>
     </div>
 
@@ -79,4 +82,4 @@
         </table>
     </div>
 
-</section>
+@endsection

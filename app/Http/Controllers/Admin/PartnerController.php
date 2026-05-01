@@ -13,9 +13,9 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        $data=Partner::withCount('items')->paginate(20);
-        //dd($data);
-        return view('admin.partner.index',['data'=>$data]);
+        $data = Partner::withCount('items')->orderBy('name')->paginate(20);
+
+        return view('admin.partner.index', compact('data'));
     }
 
     /**

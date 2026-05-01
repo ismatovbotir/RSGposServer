@@ -1,6 +1,9 @@
-<section class="section" id="section-settings">
+@extends('admin.layout')
 
-    <div class="page-header">
+@section('title', 'Settings')
+
+@section('content')
+<div class="page-header">
         <h1 class="page-title">Settings</h1>
     </div>
 
@@ -40,4 +43,4 @@
 
     </div>
 
-</section>
+@endsection

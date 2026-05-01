@@ -10,7 +10,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ClientController;
-use App\Http\Controllers\Api\ReceiptController;
+use App\Http\Controllers\Admin\ReceiptController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -26,9 +27,9 @@ use Illuminate\Support\Facades\Auth;
 Route::resource('/price',PriceCheckerController::class);
 
 
-Route::get('/',function(){
-    return view('welcome');
-})->middleware('auth');
+// Route::get('/',function(){
+//     return view('welcome');
+// })->middleware('auth');
 Auth::routes();
 Route::group([
     'middleware'=>'auth',
@@ -36,9 +37,7 @@ Route::group([
     'as'=>'admin.'
     ],function(){
 
-    Route::get('/',function(){
-        return view('admin.index');
-    })->name('index');
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::resource('/company',CompanyController::class);
     Route::resource('/shop',ShopController::class);
     Route::resource('/partner',PartnerController::class);

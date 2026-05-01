@@ -109,6 +109,8 @@ CategoryController, ClientController, CompanyController, ItemController, OrderCo
 | `Pos` | POS terminal config |
 
 ### Wolt Integration
+> **Note: Wolt integration is not active in this project. Skip Wolt when planning admin panel features or suggesting next steps.**
+
 | Model | Key Notes |
 |---|---|
 | `Wolt` | Wolt venue/menu config |

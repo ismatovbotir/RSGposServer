@@ -1,6 +1,9 @@
-<section class="section" id="section-pricechecker">
+@extends('admin.layout')
 
-    <div class="page-header">
+@section('title', 'Price Checker')
+
+@section('content')
+<div class="page-header">
         <h1 class="page-title">Price Checker</h1>
     </div>
 
@@ -47,4 +50,4 @@
 
     </div>
 
-</section>
+@endsection

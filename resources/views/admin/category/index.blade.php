@@ -1,54 +1,39 @@
-@extends('layouts.app')
+@extends('admin.layout')
+
+@section('title', 'Categories')
 
 @section('content')
+<div class="page-header">
+    <h1 class="page-title">Categories</h1>
+    <span class="td-muted" style="font-size:12px;">{{ $data->count() }} total</span>
+</div>
 
-    
-    <div class="nk-content ">
-        <div class="container-fluid">
-            <div class="nk-content-inner">
-                <div class="nk-content-body">
-                    <div class="components-preview ">
-                        <div class="nk-block-head nk-block-head-lg">
-                            <div class="nk-block-head-content">
-                                 <h2 class="nk-block-title fw-normal">Category</h2>
-                                
-                            </div>
-                        </div>
-                        <div class="nk-block nk-block-lg">
-                           
-                            <div class="card card-bordered card-preview">
-                                <div class="card-inner">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Items</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($data as $idx=>$item)
-                                            <tr>
-                                                <th scope="row">{{$idx+1}}</th>
-                                                <td>{{$item->name}}</td>
-                                                <td>{{$item->items_count}}</td>
-                                              
-                                            </tr>
-                                            @endforeach
-                                           
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            
-                        </div>
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-   
-
+<div class="full-card">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Parent</th>
+                <th>Items</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($data as $category)
+            <tr>
+                <td class="td-muted">{{ $category->id }}</td>
+                <td class="td-strong" style="{{ $category->category_id ? 'padding-left:24px;' : '' }}">
+                    {{ $category->name }}
+                </td>
+                <td class="td-muted">{{ $category->parent->name ?? '—' }}</td>
+                <td>{{ $category->items_count }}</td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="4" style="text-align:center;padding:32px;color:#aaa;">No categories found.</td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>
 @endsection

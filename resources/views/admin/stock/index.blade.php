@@ -1,6 +1,9 @@
-<section class="section" id="section-stock">
+@extends('admin.layout')
 
-    <div class="page-header">
+@section('title', 'Stock')
+
+@section('content')
+<div class="page-header">
         <h1 class="page-title">Stock</h1>
         <span class="td-muted" style="font-size: 12px;">Shop #{{ env('SHOP', 1) }} · Last updated: today</span>
     </div>
@@ -97,4 +100,4 @@
         </table>
     </div>
 
-</section>
+@endsection

@@ -13,11 +13,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $data = Item::with(['category', 'partner', 'barcodes', 'sellPrice', 'currentStock'])
-            ->withCount('barcodes')
-            ->paginate(20);
-
-        return view('admin.sections.items', compact('data'));
+        return view('admin.item.index');
     }
 
     /**
